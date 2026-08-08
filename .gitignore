@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Backup/split folders and temporary mockups
+campusconnect-split/
+campusconnect/
+*.pdf
+*.png
+~$*
+

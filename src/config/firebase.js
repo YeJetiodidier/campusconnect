@@ -7,12 +7,13 @@ import { getMessaging } from "firebase/messaging";
 
 // TODO: Replace with your actual Firebase project configuration
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "your-project.firebaseapp.com",
-  projectId: "your-project",
-  storageBucket: "your-project.firebasestorage.app",
-  messagingSenderId: "123456789",
-  appId: "1:123456789:web:abcdef123"
+  apiKey: "AIzaSyABWsxkcPCNP7QtsMYppa_JiW5PwwjGXQs",
+  authDomain: "campusconnect-899f8.firebaseapp.com",
+  projectId: "campusconnect-899f8",
+  storageBucket: "campusconnect-899f8.firebasestorage.app",
+  messagingSenderId: "118873847122",
+  appId: "1:118873847122:web:ca531760da697841d7b68b",
+  measurementId: "G-1WPMVZQ7V5"
 };
 
 // Initialize Firebase
@@ -26,7 +27,7 @@ export const functions = getFunctions(app);
 // We wrap messaging in a try-catch because it's only supported on certain environments
 export let messaging = null; 
 try { 
-  messaging = getMessaging(app); 
+  messaging = getMessaging(app);
 } catch (error) {
   console.log("Firebase Messaging not supported on this device/browser.", error);
 }
