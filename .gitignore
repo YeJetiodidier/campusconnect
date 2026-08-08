@@ -24,3 +24,11 @@ dist-ssr
 *.sw?
 serviceAccountKey.json
 .env
+
+# Backup/split folders and temporary mockups
+campusconnect-split/
+campusconnect/
+*.pdf
+*.png
+~$*
+
