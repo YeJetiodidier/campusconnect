@@ -2,7 +2,8 @@ import { auth } from '../../config/firebase.js';
 import { 
   createUserWithEmailAndPassword, 
   signInWithPopup, 
-  GoogleAuthProvider 
+  GoogleAuthProvider,
+  updateProfile
 } from 'firebase/auth';
 
 (function () {
@@ -320,20 +321,19 @@ import {
         const password = document.getElementById("password").value;
         
         createUserWithEmailAndPassword(auth, email, password)
-          .then(() => {
-            if (email.endsWith('@test.edu')) {
-              showToast("Test account registered! Redirecting to dashboard...", "check_circle");
+          .then((userCredential) => {
+            const user = userCredential.user;
+            const firstName = document.getElementById("firstName").value.trim();
+            const lastName = document.getElementById("lastName").value.trim();
+            
+            return updateProfile(user, {
+              displayName: `${firstName} ${lastName}`.trim()
+            }).then(() => {
+              showToast("Account created successfully! Redirecting...", "check_circle");
               setTimeout(() => {
-                window.location.href = "/dashboard.html";
+                  window.location.href = "/dashboard.html";
               }, 1500);
-            } else {
-              document.getElementById("registerForm").classList.add("hidden");
-              document.getElementById("loginLinkRow").classList.add("hidden");
-              document.querySelector("nav[aria-label='Registration progress']").classList.add("hidden");
-              document.getElementById("successEmail").textContent = email;
-              document.getElementById("successPanel").classList.remove("hidden");
-              showToast("Account created successfully", "mark_email_read");
-            }
+            });
           })
           .catch((error) => {
             console.error(error);

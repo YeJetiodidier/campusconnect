@@ -1,30 +1,283 @@
-<!DOCTYPE html>
+h <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CampusConnect - Dashboard</title>    <link rel="stylesheet" href="/src/modules/dashboard/dashboard.css" />
+    <title>CampusConnect - Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="/src/modules/dashboard/dashboard.css" />
   </head>
   <body>
-    <div id="app">
-      <nav>
-        <a href="/">Home</a>
-        <a href="/dashboard.html">Dashboard</a>
-        <a href="/marketplace.html">Marketplace</a>
-        <a href="/services.html">Services</a>
-        <a href="/internships.html">Internships</a>
-        <a href="/events.html">Events</a>
-        <a href="/announcements.html">Announcements</a>
-        <a href="/profile.html">Profile</a>
-        <a href="/referrals.html">Referrals</a>
-      </nav>
-      <main>
-        <h1>Dashboard</h1>
-        <p>This module uses Firebase entirely for backend.</p>
-      </main>
+    <!-- ========== SPLASH SCREEN ========== -->
+    <div id="splashScreen" class="splash-container">
+      <div class="floating-icon icon-1"><span class="material-symbols-outlined">school</span></div>
+      <div class="floating-icon icon-2"><span class="material-symbols-outlined">menu_book</span></div>
+      <div class="floating-icon icon-3"><span class="material-symbols-outlined">hub</span></div>
+      <div class="floating-icon icon-4"><span class="material-symbols-outlined">work</span></div>
+      <div class="floating-icon icon-5"><span class="material-symbols-outlined">group</span></div>
+      <div class="floating-icon icon-6"><span class="material-symbols-outlined">calendar_today</span></div>
+      <div class="splash-content">
+        <img src="/src/assets/campusconnect-logo.png" alt="CampusConnect" class="splash-logo-img">
+        <h1 class="brand-title">CampusConnect</h1>
+        <p class="brand-tagline">connect, collaborate and grow</p>
+        <div class="loading-bar-container"><div class="loading-bar-progress"></div></div>
+        <div class="welcome-text">WELCOME BACK!</div>
+      </div>
+      <div class="splash-footer">&copy; 2024 CampusConnect University Platform. All rights reserved.</div>
     </div>
-    <!-- Script corresponding to this module -->
+
+    <!-- ========== APP SHELL ========== -->
+    <div id="app">
+      <!-- LEFT SIDEBAR -->
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <div class="sidebar-logo">
+          <img src="/src/assets/campusconnect-logo.png" alt="CampusConnect" class="sidebar-logo-img">
+        </div>
+          <span class="sidebar-portal-label">Student Portal</span>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="/dashboard.html" class="nav-item active" id="nav-dashboard">
+            <span class="material-symbols-outlined">grid_view</span>
+            <span>Dashboard</span>
+          </a>
+          <a href="/chats.html" class="nav-item" id="nav-messages">
+            <span class="material-symbols-outlined">chat_bubble</span>
+            <span>Messages</span>
+          </a>
+          <a href="#" class="nav-item" id="nav-saved">
+            <span class="material-symbols-outlined">bookmark</span>
+            <span>Saved Items</span>
+          </a>
+          <a href="#" class="nav-item" id="nav-notifications">
+            <span class="material-symbols-outlined">notifications</span>
+            <span>Notifications</span>
+            <span class="notif-badge" id="notifBadge"></span>
+          </a>
+          <a href="/profile.html" class="nav-item" id="nav-profile">
+            <span class="material-symbols-outlined">person</span>
+            <span>Profile</span>
+          </a>
+          <a href="#" class="nav-item" id="nav-settings">
+            <span class="material-symbols-outlined">settings</span>
+            <span>Settings</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <button class="quick-post-btn" id="quickPostBtn">
+            <span class="material-symbols-outlined">add</span>
+            Quick Post
+          </button>
+          <div class="sidebar-user">
+            <img src="https://ui-avatars.com/api/?name=Alex+Rivera&background=635bff&color=fff&size=40&font-size=0.4" alt="Avatar" class="user-avatar" id="userAvatar">
+            <div class="user-info">
+              <span class="user-name" id="userName">Alex Rivera</span>
+              <span class="user-major" id="userMajor">Computer Science '25</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <main class="main-content">
+        <!-- Top row: title + search -->
+        <div class="main-header">
+          <div class="main-header-text">
+            <h1 class="dashboard-title">Dashboard</h1>
+            <p class="dashboard-subtitle">Welcome back to your campus hub.</p>
+          </div>
+          <div class="search-bar">
+            <span class="material-symbols-outlined search-icon">search</span>
+            <input type="text" placeholder="Search campus..." id="dashboardSearch" autocomplete="off">
+          </div>
+        </div>
+
+        <!-- Hero + Stats row -->
+        <div class="hero-stats-row">
+          <!-- Hero Card -->
+          <div class="hero-card">
+            <h2 class="hero-greeting" id="heroGreeting">Good Morning, Alex!</h2>
+            <p class="hero-body">Check out your latest notifications. 3 new students are interested in your Organic Chemistry notes.</p>
+            <a href="#" class="hero-btn">
+              View Notifications
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+          </div>
+
+          <!-- Stats column -->
+          <div class="stats-col">
+            <div class="stat-card">
+              <div class="stat-icon blue"><span class="material-symbols-outlined">list_alt</span></div>
+              <div class="stat-info">
+                <span class="stat-label">ACTIVE<br>LISTINGS</span>
+                <span class="stat-value" id="statListings">12</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon amber"><span class="material-symbols-outlined">chat</span></div>
+              <div class="stat-info">
+                <span class="stat-label">NEW<br>MESSAGES</span>
+                <span class="stat-value" id="statMessages">5</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon green"><span class="material-symbols-outlined">favorite</span></div>
+              <div class="stat-info">
+                <span class="stat-label">SAVED<br>ITEMS</span>
+                <span class="stat-value" id="statSaved">28</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Listings & Messages row -->
+        <div class="content-row">
+          <!-- Your Recent Listings -->
+          <section class="section-card listings-section">
+            <div class="section-header">
+              <h3>Your Recent Listings</h3>
+              <a href="/marketplace.html" class="section-link">Manage All</a>
+            </div>
+            <div class="listings-grid" id="listingsGrid">
+              <!-- Listing card 1 -->
+              <div class="listing-card">
+                <div class="listing-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=300&h=200&fit=crop" alt="Engineering Books">
+                  <span class="listing-badge active-badge">Active</span>
+                </div>
+                <div class="listing-body">
+                  <p class="listing-title">Engineering Mechanics Bundle</p>
+                  <div class="listing-meta">
+                    <span class="listing-price">$45.00</span>
+                    <span class="listing-views"><span class="material-symbols-outlined">visibility</span> 124 views</span>
+                  </div>
+                </div>
+              </div>
+              <!-- Listing card 2 -->
+              <div class="listing-card">
+                <div class="listing-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=300&h=200&fit=crop" alt="Desk Lamp">
+                  <span class="listing-badge pending-badge">Pending</span>
+                </div>
+                <div class="listing-body">
+                  <p class="listing-title">Minimalist LED Desk Lamp</p>
+                  <div class="listing-meta">
+                    <span class="listing-price">$15.00</span>
+                    <span class="listing-views"><span class="material-symbols-outlined">visibility</span> 89 views</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Promo nudge -->
+            <div class="nudge-card">
+              <div class="nudge-icon"><span class="material-symbols-outlined">sell</span></div>
+              <div class="nudge-text">
+                <p class="nudge-title">Need extra cash?</p>
+                <p class="nudge-body">List your textbooks or furniture in seconds.</p>
+              </div>
+              <a href="/marketplace.html" class="nudge-btn">List Item</a>
+            </div>
+          </section>
+
+          <!-- Messages & Events column -->
+          <div class="right-col">
+            <!-- Messages preview -->
+            <section class="section-card messages-section">
+              <div class="section-header">
+                <h3>Messages</h3>
+                <a href="/chats.html" class="section-link">See All</a>
+              </div>
+              <div class="messages-list" id="messagesList">
+                <div class="msg-item">
+                  <img src="https://ui-avatars.com/api/?name=Sam+K&background=a855f7&color=fff&size=40" alt="" class="msg-avatar">
+                  <div class="msg-body">
+                    <span class="msg-name">Sam K.</span>
+                    <span class="msg-preview">Is the lamp still available?</span>
+                  </div>
+                  <span class="msg-dot online"></span>
+                </div>
+                <div class="msg-item">
+                  <img src="https://ui-avatars.com/api/?name=Priya+M&background=f97316&color=fff&size=40" alt="" class="msg-avatar">
+                  <div class="msg-body">
+                    <span class="msg-name">Priya M.</span>
+                    <span class="msg-preview">Thanks for the notes!</span>
+                  </div>
+                </div>
+                <div class="msg-item">
+                  <img src="https://ui-avatars.com/api/?name=Elias+B&background=22c55e&color=fff&size=40" alt="" class="msg-avatar">
+                  <div class="msg-body">
+                    <span class="msg-name">Elias B.</span>
+                    <span class="msg-preview">Let's meet tomorrow at 10</span>
+                  </div>
+                </div>
+              </div>
+              <a href="/chats.html" class="go-inbox-btn">Go to Inbox</a>
+            </section>
+
+            <!-- Campus Events Today -->
+            <section class="section-card events-section">
+              <div class="section-header">
+                <h3>Campus Events Today</h3>
+              </div>
+              <div class="events-list" id="eventsList">
+                <div class="event-item">
+                  <div class="event-date">
+                    <span class="event-day">14</span>
+                    <span class="event-month">OCT</span>
+                  </div>
+                  <div class="event-info">
+                    <p class="event-title">Fall Career Fair</p>
+                    <p class="event-location">Student Union Hall</p>
+                  </div>
+                </div>
+                <div class="event-item">
+                  <div class="event-date">
+                    <span class="event-day">14</span>
+                    <span class="event-month">OCT</span>
+                  </div>
+                  <div class="event-info">
+                    <p class="event-title">Web Dev Workshop</p>
+                    <p class="event-location">Room 302, Science Bldg</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </main>
+
+      <!-- RIGHT INFO PANEL -->
+      <aside class="info-panel">
+        <div class="info-brand">
+          <div class="info-logo">GC</div>
+          <p class="info-desc">Empowering students to connect, trade, and grow within the university ecosystem. Built for the modern campus experience.</p>
+        </div>
+        <div class="info-links">
+          <div class="info-link-col">
+            <p class="info-link-heading">Platform</p>
+            <a href="#">About Us</a>
+            <a href="/marketplace.html">Marketplace</a>
+            <a href="/services.html">Services</a>
+            <a href="/dashboard.html">Dashboard</a>
+          </div>
+          <div class="info-link-col">
+            <p class="info-link-heading">Resources</p>
+            <a href="/internships.html">Internship</a>
+            <a href="/events.html">Events</a>
+            <a href="#">Contact Info</a>
+            <a href="#">Privacy Policy</a>
+          </div>
+        </div>
+        <p class="info-copyright">&copy; 2024 CampusConnect University Platform. All rights reserved.</p>
+      </aside>
+    </div>
+
     <script type="module" src="/src/modules/dashboard/index.js"></script>
   </body>
 </html>
-

@@ -1,0 +1,141 @@
+/* ============================================================
+   CampusConnect – Notifications Specific Styles
+   ============================================================ */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.mark-read-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  color: #6b6b8d;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+  border: 1px solid transparent;
+}
+.mark-read-btn:hover {
+  background: #f0f2ff;
+  color: #635bff;
+  border: 1px solid #e0e4ff;
+}
+.mark-read-btn .material-symbols-outlined {
+  font-size: 18px;
+}
+
+.notifications-container {
+  max-width: 800px;
+  margin-top: 24px;
+}
+
+.notifications-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Individual Notification Card */
+.notif-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: #fff;
+  border: 1px solid #e8eaf6;
+  border-radius: 12px;
+  padding: 16px 20px;
+  position: relative;
+  transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+  cursor: pointer;
+}
+.notif-card:hover {
+  box-shadow: 0 4px 12px rgba(99, 91, 255, 0.08);
+  transform: translateY(-2px);
+  border-color: #d8dbfa;
+}
+.notif-card.unread {
+  background: #fcfcff;
+  border-color: #c4c8fa;
+}
+
+/* Icons */
+.notif-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #fff;
+}
+.notif-icon-wrap.bg-blue { background: #3b82f6; }
+.notif-icon-wrap.bg-purple { background: #8b5cf6; }
+.notif-icon-wrap.bg-green { background: #22c55e; }
+.notif-icon-wrap.bg-orange { background: #f97316; }
+
+.notif-icon-wrap .material-symbols-outlined {
+  font-size: 22px;
+}
+
+/* Body */
+.notif-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.notif-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #1e1b4b;
+}
+
+.notif-desc {
+  font-size: 0.85rem;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+/* Delete/Action area if needed */
+.notif-action-btn {
+  padding: 6px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #635bff;
+  background: #f0f2ff;
+  border-radius: 6px;
+  width: fit-content;
+  margin-top: 6px;
+  transition: background 0.15s;
+}
+.notif-action-btn:hover { background: #e0e4ff; }
+
+/* Metadata */
+.notif-time {
+  font-size: 0.7rem;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+/* Unread indicator dot */
+.notif-unread-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #635bff;
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  display: none;
+}
+.notif-card.unread .notif-unread-dot {
+  display: block;
+}
