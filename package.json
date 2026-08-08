@@ -12,6 +12,7 @@
     "vite": "^8.2.0"
   },
   "dependencies": {
-    "firebase": "^12.17.0"
+    "firebase": "^12.17.0",
+    "firebase-admin": "^14.2.0"
   }
 }
