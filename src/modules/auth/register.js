@@ -59,15 +59,11 @@ import {
         document.getElementById("formError").classList.remove("hidden");
       }
 
-      const blockedDomains = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'aol.com', 'icloud.com'];
       function isValidEmail(v) {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
       }
-      
-      function isInstitutionalEmail(email) {
-        const domain = email.split('@')[1]?.toLowerCase();
-        return domain && !blockedDomains.includes(domain);
-      }
+
+
 
       // —— Password strength ——
       function scorePassword(pw) {
@@ -198,9 +194,6 @@ import {
           ok = false;
         } else if (!isValidEmail(email)) {
           setFieldError("emailField", "emailError", "Enter a valid email address.");
-          ok = false;
-        } else if (!isInstitutionalEmail(email)) {
-          setFieldError("emailField", "emailError", "Please use your institutional university email.");
           ok = false;
         } else {
           setFieldError("emailField", "emailError", "");
@@ -354,12 +347,7 @@ import {
           const provider = new GoogleAuthProvider();
           const result = await signInWithPopup(auth, provider);
           
-          if (!isInstitutionalEmail(result.user.email)) {
-            await auth.signOut();
-            showToast("Access denied! Please use an institutional email.", "error");
-            return;
-          }
-          
+
           showToast("Signed up with Google successfully", "check_circle");
           setTimeout(() => {
             window.location.href = "/dashboard.html";

@@ -21,7 +21,7 @@ import {
 
 // ─── Configuration ───────────────────────────────────────────
 const TRANSACTIONS_COL = 'transactions';
-const CURRENCY = 'XAF'; // Central African CFA franc
+const CURRENCY = 'FCFA'; // Central African CFA franc
 
 // MTN MoMo API config (replace with your sandbox/production credentials)
 const MOMO_CONFIG = {
@@ -70,7 +70,7 @@ async function getMoMoAccessToken() {
  * Request a payment via MTN MoMo
  * @param {Object} params - Payment parameters
  * @param {string} params.phoneNumber - Payer phone number (e.g. "237670000000")
- * @param {number} params.amount - Amount in XAF
+ * @param {number} params.amount - Amount in FCFA
  * @param {string} params.externalId - Your internal transaction reference
  * @param {string} params.payerMessage - Message shown to payer
  * @returns {Promise<string>} MoMo reference UUID
@@ -140,7 +140,7 @@ async function checkMoMoPaymentStatus(referenceId) {
 /**
  * Initiate an Orange Money web payment
  * @param {Object} params - Payment parameters
- * @param {number} params.amount - Amount in XAF
+ * @param {number} params.amount - Amount in FCFA
  * @param {string} params.orderId - Your internal order reference
  * @returns {Promise<Object>} Contains payment_url to redirect user
  */
@@ -453,16 +453,16 @@ export function onTransactionUpdate(transactionId, callback) {
 
 // ─── UI Controller (DOM Interactions) ────────────────────────
 
-const DELIVERY_FEE = 1500; // Fixed campus delivery fee in XAF
+const DELIVERY_FEE = 1500; // Fixed campus delivery fee in FCFA
 const TAX_RATE = 0.07;     // 7% estimated tax
 
 /**
- * Format amount in XAF (e.g. "50,000 XAF")
+ * Format amount in FCFA (e.g. "50,000 FCFA")
  */
 function formatAmount(amount) {
   return new Intl.NumberFormat('fr-CM', {
     minimumFractionDigits: 0
-  }).format(amount) + ' XAF';
+  }).format(amount) + ' FCFA';
 }
 
 /**
@@ -793,7 +793,7 @@ async function handlePayNow() {
   } finally {
     btnPay.disabled = false;
     const totalAmount = document.getElementById('btn-pay-amount')?.textContent || '0';
-    btnPay.innerHTML = `🔒 Pay ${totalAmount} XAF Now`;
+    btnPay.innerHTML = `🔒 Pay ${totalAmount} FCFA Now`;
   }
 }
 
