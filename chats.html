@@ -1,32 +1,213 @@
 <!DOCTYPE html>
-<html lang=""en"">
+<html lang="en">
   <head>
-    <meta charset=""UTF-8"" />
-    <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"" />
-    <title>CampusConnect - Chats</title>    <link rel="stylesheet" href="/src/modules/chats/chats.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CampusConnect - Messages</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="/src/modules/chats/chats.css" />
   </head>
   <body>
-    <div id=""app"">
-      <nav>
-        <a href=""/"">Home</a>
-        <a href=""/dashboard.html"">Dashboard</a>
-        <a href=""/marketplace.html"">Marketplace</a>
-        <a href=""/services.html"">Services</a>
-        <a href=""/internships.html"">Internships</a>
-        <a href=""/events.html"">Events</a>
-        <a href=""/auth.html"">Auth</a>
-        <a href=""/chats.html"">Chats</a>
-        <a href=""/announcements.html"">Announcements</a>
-        <a href=""/profile.html"">Profile</a>
-        <a href=""/referrals.html"">Referrals</a>
-      </nav>
-      <main>
-        <h1>Chats</h1>
-        <p>This module uses Firebase entirely for backend.</p>
-      </main>
-    </div>
-    <!-- Script corresponding to this module -->
-    <script type=""module"" src=""/src/modules/chats/index.js""></script>
+    <div id="app">
+
+      <!-- ========== LEFT SIDEBAR ========== -->
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <img src="/src/assets/campusconnect-logo.png" alt="CampusConnect" class="sidebar-logo">
+          <span class="sidebar-app-name">CampusConnect</span>
+        </div>
+
+        <div class="sidebar-user">
+          <img src="https://ui-avatars.com/api/?name=Alex+Johnson&background=2563eb&color=fff&size=40" alt="Avatar" class="user-avatar" id="userAvatar">
+          <div class="user-info">
+            <span class="user-name" id="userName">Alex Johnson</span>
+            <span class="user-sub" id="userSub">Academic Year 2024</span>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="/dashboard.html" class="nav-item">
+            <span class="material-symbols-outlined">grid_view</span>
+            <span>Dashboard</span>
+          </a>
+          <a href="/chats.html" class="nav-item active">
+            <span class="material-symbols-outlined">mail</span>
+            <span>Messages</span>
+          </a>
+          <a href="#" class="nav-item">
+            <span class="material-symbols-outlined">bookmark</span>
+            <span>Saved Items</span>
+          </a>
+          <a href="#" class="nav-item">
+            <span class="material-symbols-outlined">settings</span>
+            <span>Settings</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <button class="quick-connect-btn" id="quickConnectBtn">
+            Quick Connect
+          </button>
+          <a href="#" class="help-link">
+            <span class="material-symbols-outlined">help_outline</span>
+            <span>Help Support</span>
+          </a>
+        </div>
+      </aside>
+
+      <!-- ========== CONVERSATIONS LIST ========== -->
+      <section class="conversations-panel">
+        <div class="conv-header">
+          <h2>Messages</h2>
+          <button class="icon-btn" title="New conversation" id="newConvBtn">
+            <span class="material-symbols-outlined">edit_square</span>
+          </button>
+        </div>
+
+        <div class="search-wrap">
+          <span class="material-symbols-outlined search-icon">search</span>
+          <input type="text" id="convSearch" placeholder="Search conversations..." autocomplete="off">
+        </div>
+
+        <div class="conv-list" id="convList">
+
+          <!-- Active conversation -->
+          <div class="conv-item active" data-convo="sarah">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face" alt="Prof. Sarah Mitchell" class="conv-avatar">
+            <div class="conv-info">
+              <div class="conv-top">
+                <span class="conv-name">Prof. Sarah Mitchell</span>
+                <span class="conv-time">12:45 PM</span>
+              </div>
+              <p class="conv-preview">Looking forward to seeing your internship...</p>
+            </div>
+          </div>
+
+          <div class="conv-item" data-convo="david">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face" alt="David Chen" class="conv-avatar">
+            <div class="conv-info">
+              <div class="conv-top">
+                <span class="conv-name">David Chen</span>
+                <span class="conv-time">Yesterday</span>
+              </div>
+              <p class="conv-preview">Did you finish the group project section f...</p>
+            </div>
+          </div>
+
+          <div class="conv-item" data-convo="career">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&h=80&fit=crop&crop=face" alt="Career Center" class="conv-avatar">
+            <div class="conv-info">
+              <div class="conv-top">
+                <span class="conv-name">Career Center (Lisa)</span>
+                <span class="conv-time">Tue</span>
+              </div>
+              <p class="conv-preview">Your interview with TechCorp has been c...</p>
+            </div>
+          </div>
+
+          <div class="conv-item" data-convo="acm">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=80&h=80&fit=crop&crop=face" alt="ACM Chapter" class="conv-avatar online">
+            <div class="conv-info">
+              <div class="conv-top">
+                <span class="conv-name">ACM Chapter Group</span>
+                <span class="conv-time">Mon</span>
+              </div>
+              <p class="conv-preview">Marcus: Don't forget about the coding c...</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ========== CHAT PANEL ========== -->
+      <section class="chat-panel">
+        <!-- Chat header -->
+        <div class="chat-header">
+          <div class="chat-header-info">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face" alt="" class="chat-avatar" id="chatAvatar">
+            <div>
+              <p class="chat-name" id="chatName">Prof. Sarah Mitchell</p>
+              <p class="chat-status online-status" id="chatStatus">Online</p>
+            </div>
+          </div>
+          <div class="chat-header-actions">
+            <button class="icon-btn" title="Video call"><span class="material-symbols-outlined">videocam</span></button>
+            <button class="icon-btn" title="Voice call"><span class="material-symbols-outlined">call</span></button>
+            <button class="icon-btn" title="Info"><span class="material-symbols-outlined">info</span></button>
+          </div>
+        </div>
+
+        <!-- Messages area -->
+        <div class="messages-area" id="messagesArea">
+          <div class="date-separator"><span>TODAY</span></div>
+
+          <!-- Received -->
+          <div class="message-row received">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face" alt="" class="msg-avatar">
+            <div class="bubble received-bubble">
+              <p>Hello Alex! I've reviewed your preliminary proposal for the Summer Internship at TechCorp.</p>
+              <span class="msg-time">12:30 PM</span>
+            </div>
+          </div>
+
+          <!-- Received -->
+          <div class="message-row received">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face" alt="" class="msg-avatar">
+            <div class="bubble received-bubble">
+              <p>The methodology section is strong, but you might want to elaborate more on the specific skills you wish to acquire. Can you send the updated draft by Friday?</p>
+              <span class="msg-time">12:31 PM</span>
+            </div>
+          </div>
+
+          <!-- Sent -->
+          <div class="message-row sent">
+            <div class="bubble sent-bubble">
+              <p>Thank you for the feedback, Professor! I'll definitely add those details. I'm focusing on cloud architecture and data pipelines.</p>
+              <span class="msg-time">12:42 PM <span class="material-symbols-outlined check-icon">done_all</span></span>
+            </div>
+          </div>
+
+          <!-- Sent -->
+          <div class="message-row sent">
+            <div class="bubble sent-bubble">
+              <p>I'll have the updated version to you by tomorrow afternoon instead. I want to make sure the skill alignment is perfect.</p>
+              <span class="msg-time">12:43 PM <span class="material-symbols-outlined check-icon">done_all</span></span>
+            </div>
+          </div>
+
+          <!-- Received -->
+          <div class="message-row received">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face" alt="" class="msg-avatar">
+            <div class="bubble received-bubble">
+              <p>That sounds excellent. Looking forward to seeing your internship application draft!</p>
+              <span class="msg-time">12:45 PM</span>
+            </div>
+          </div>
+
+          <!-- Dynamic messages inserted here via JS -->
+          <div id="dynamicMessages"></div>
+        </div>
+
+        <!-- Message input -->
+        <div class="chat-input-area">
+          <div class="chat-input-bar">
+            <button class="icon-btn sm" title="Add"><span class="material-symbols-outlined">add_circle</span></button>
+            <button class="icon-btn sm" title="Attach file"><span class="material-symbols-outlined">attach_file</span></button>
+            <input type="text" id="messageInput" placeholder="Type a message..." autocomplete="off">
+            <button class="icon-btn sm" title="Emoji"><span class="material-symbols-outlined">sentiment_satisfied</span></button>
+            <button class="send-btn" id="sendBtn" title="Send">
+              <span class="material-symbols-outlined">send</span>
+            </button>
+          </div>
+          <p class="input-hint">Shortcuts: ⌘+Enter to send</p>
+        </div>
+      </section>
+
+    </div><!-- /#app -->
+
+    <script type="module" src="/src/modules/chats/index.js"></script>
   </body>
 </html>
-
