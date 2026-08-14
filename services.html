@@ -1,30 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CampusConnect - Services</title>    <link rel="stylesheet" href="/src/modules/services/services.css" />
-  </head>
-  <body>
-    <div id="app">
-      <nav>
-        <a href="/">Home</a>
-        <a href="/dashboard.html">Dashboard</a>
-        <a href="/marketplace.html">Marketplace</a>
-        <a href="/services.html">Services</a>
-        <a href="/internships.html">Internships</a>
-        <a href="/events.html">Events</a>
-        <a href="/announcements.html">Announcements</a>
-        <a href="/profile.html">Profile</a>
-        <a href="/referrals.html">Referrals</a>
-      </nav>
-      <main>
-        <h1>Services</h1>
-        <p>This module uses Firebase entirely for backend.</p>
-      </main>
-    </div>
-    <!-- Script corresponding to this module -->
-    <script type="module" src="/src/modules/services/services.js"></script>
-  </body>
-</html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Services - CampusConnect</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
+<header class="navbar">
+    <div class="nav-left">
+      <a href="marketplace.html" class="logo">
+        <img src="logo.png" alt="CampusConnect Logo" class="logo-img">
+        <span class="logo-text">CampusConnect</span>
+      </a>
+    </div>
+    <nav class="nav-links">
+      <a href="marketplace.html">Marketplace</a>
+      <a href="services.html" class="active">Services</a>
+    </nav>
+    <div class="nav-right">
+      <a href="offer-service.html" class="btn-primary">+ Offer a Service</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="header-section">
+      <h1>Student Services</h1>
+      <div class="search-filter-group">
+        <input type="text" id="serviceSearchInput" placeholder="Search tutoring, tech repair...">
+      </div>
+    </div>
+
+    <main class="grid-container">
+      <div class="grid" id="servicesGrid">
+        <!-- Dynamic Firebase service cards render here -->
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="js/firebase-services.js"></script>
+</body>
+</html>
