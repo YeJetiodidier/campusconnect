@@ -1,0 +1,17 @@
+{
+  "name": "campusconnect-tm4-module",
+  "version": "1.0.0",
+  "description": "CampusConnect \u2014 Internships, Events & Dashboard module (TM4 \u2014 Siela). Plain HTML/CSS/JS, bundled with Vite.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "firebase": "^10.13.0"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  }
+}
