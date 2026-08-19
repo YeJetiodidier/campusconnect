@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Internships & Jobs · CampusConnect</title>
+  <link rel="stylesheet" href="/src/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <div id="app-sidebar"></div>
+
+    <main class="app-main">
+      <h1 class="page-title">Internships &amp; Jobs</h1>
+      <p class="page-subtitle">Discover opportunities posted by verified recruiters and alumni.</p>
+
+      <div class="filter-bar">
+        <input type="text" id="keyword-input" placeholder="Search by title or company" />
+        <select id="type-select">
+          <option value="">All types</option>
+          <option value="internship">Internship</option>
+          <option value="job">Job</option>
+        </select>
+        <select id="category-select">
+          <option value="">All categories</option>
+          <option>Engineering</option>
+          <option>Business</option>
+          <option>Design</option>
+          <option>Marketing</option>
+          <option>IT &amp; Data</option>
+        </select>
+      </div>
+
+      <div id="listings-mount"></div>
+
+      <div class="load-more-row" id="load-more-row" hidden>
+        <button class="btn btn-primary" id="load-more-btn">Load more</button>
+      </div>
+      <div id="app-footer"></div>
+    </main>
+  </div>
+
+  <script type="module" src="/src/pages/internships.js"></script>
+</body>
+</html>

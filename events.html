@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campus Events · CampusConnect</title>
+  <link rel="stylesheet" href="/src/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <div id="app-sidebar"></div>
+
+    <main class="app-main">
+      <h1 class="page-title">Campus Events</h1>
+      <p class="page-subtitle">Browse and RSVP to what's happening on campus.</p>
+
+      <div class="filter-bar" id="category-chips">
+        <button class="chip active" data-category="">All</button>
+        <button class="chip" data-category="Academic">Academic</button>
+        <button class="chip" data-category="Social">Social</button>
+        <button class="chip" data-category="Career">Career</button>
+        <button class="chip" data-category="Sports">Sports</button>
+        <button class="chip" data-category="Cultural">Cultural</button>
+      </div>
+
+      <div id="events-mount"></div>
+      <div id="app-footer"></div>
+    </main>
+  </div>
+
+  <script type="module" src="/src/pages/events.js"></script>
+</body>
+</html>

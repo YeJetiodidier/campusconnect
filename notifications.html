@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notifications · CampusConnect</title>
+  <link rel="stylesheet" href="/src/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <div id="app-sidebar"></div>
+
+    <main class="app-main app-main--narrow">
+      <div class="page-header-row">
+        <div>
+          <h1 class="page-title">Notifications</h1>
+          <p class="page-subtitle">Stay updated on your campus activities.</p>
+        </div>
+        <button type="button" id="mark-all-read" class="mark-read-btn">
+          <span class="icon"></span> Mark all as read
+        </button>
+      </div>
+
+      <div id="notifications-mount">
+        <p class="loading-text">Loading…</p>
+      </div>
+      <div id="app-footer"></div>
+    </main>
+  </div>
+
+  <script type="module" src="/src/pages/notifications.js"></script>
+</body>
+</html>
