@@ -1,0 +1,59 @@
+.material-symbols-outlined {
+      font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      vertical-align: middle;
+      user-select: none;
+    }
+    .material-symbols-outlined.filled {
+      font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+    }
+    .nav-item.active {
+      color: #4648d4;
+      font-weight: 700;
+      background: rgba(96, 99, 238, 0.1);
+      border-right: 3px solid #4648d4;
+    }
+    .dark .nav-item.active {
+      color: #c0c1ff;
+      background: rgba(96, 99, 238, 0.2);
+      border-right-color: #c0c1ff;
+    }
+    .tab-btn[aria-selected="true"] {
+      border-bottom: 2px solid #4648d4;
+      color: #4648d4;
+      font-weight: 700;
+    }
+    .dark .tab-btn[aria-selected="true"] { color: #c0c1ff; border-bottom-color: #c0c1ff; }
+    #toast {
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    #sideNav {
+      transition: transform 0.25s ease;
+    }
+    #sideNav.closed-mobile {
+      transform: translateX(-100%);
+    }
+    @media (min-width: 1024px) {
+      #sideNav.closed-mobile { transform: none; }
+    }
+    #overlay {
+      transition: opacity 0.25s ease;
+    }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #c7c4d7; border-radius: 10px; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+    .dark body { background: #0b1c30; color: #eaf1ff; }
+    .dark .bg-surface { background: #0b1c30; }
+    .dark .bg-surface-container-low { background: #152538; }
+    .dark .bg-surface-container { background: #1a2d42; }
+    .dark .bg-surface-container-high { background: #213145; }
+    .dark .bg-surface-container-lowest { background: #152538; }
+    .dark .text-on-surface { color: #eaf1ff; }
+    .dark .text-on-surface-variant { color: #a8b4c8; }
+    .dark .border-outline-variant { border-color: #3a4d65; }
+    .dark .bg-white { background: #152538; }

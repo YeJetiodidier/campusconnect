@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta name="description" content="Alex Rivera’s CampusConnect profile — listings, services, and campus activity.">
+  <meta name="theme-color" content="#4648d4">
+  <title>Alex Rivera | Profile · CampusConnect</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "inverse-surface": "#213145",
+            "surface-dim": "#cbdbf5",
+            "on-primary": "#ffffff",
+            "on-error-container": "#93000a",
+            "secondary-fixed-dim": "#ffb95f",
+            "primary-fixed-dim": "#c0c1ff",
+            "error": "#ba1a1a",
+            "surface": "#f8f9ff",
+            "on-background": "#0b1c30",
+            "primary-container": "#6063ee",
+            "on-tertiary": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "background": "#f8f9ff",
+            "inverse-on-surface": "#eaf1ff",
+            "error-container": "#ffdad6",
+            "surface-tint": "#494bd6",
+            "outline": "#767586",
+            "on-surface-variant": "#464554",
+            "secondary-container": "#fea619",
+            "on-error": "#ffffff",
+            "primary-fixed": "#e1e0ff",
+            "surface-container-highest": "#d3e4fe",
+            "on-tertiary-container": "#000703",
+            "on-secondary": "#ffffff",
+            "tertiary": "#006c49",
+            "on-tertiary-fixed": "#002113",
+            "surface-bright": "#f8f9ff",
+            "surface-container": "#e5eeff",
+            "surface-container-low": "#eff4ff",
+            "surface-container-high": "#dce9ff",
+            "on-tertiary-fixed-variant": "#005236",
+            "tertiary-container": "#00885d",
+            "on-secondary-fixed": "#2a1700",
+            "outline-variant": "#c7c4d7",
+            "secondary-fixed": "#ffddb8",
+            "on-surface": "#0b1c30",
+            "secondary": "#855300",
+            "on-secondary-fixed-variant": "#653e00",
+            "inverse-primary": "#c0c1ff",
+            "tertiary-fixed": "#6ffbbe",
+            "surface-variant": "#d3e4fe",
+            "tertiary-fixed-dim": "#4edea3",
+            "on-secondary-container": "#684000",
+            "primary": "#4648d4",
+            "on-primary-fixed-variant": "#2f2ebe",
+            "on-primary-fixed": "#07006c",
+            "on-primary-container": "#fffbff"
+          },
+          borderRadius: {
+            DEFAULT: "0.25rem",
+            lg: "0.5rem",
+            xl: "0.75rem",
+            "2xl": "1rem",
+            "3xl": "1.5rem",
+            full: "9999px"
+          },
+          spacing: {
+            lg: "40px",
+            "container-max": "1280px",
+            gutter: "24px",
+            xl: "64px",
+            sm: "12px",
+            md: "24px",
+            xs: "4px",
+            base: "8px"
+          },
+          fontFamily: {
+            "label-md": ["Inter", "system-ui", "sans-serif"],
+            "headline-md": ["Plus Jakarta Sans", "system-ui", "sans-serif"],
+            display: ["Plus Jakarta Sans", "system-ui", "sans-serif"],
+            "body-lg": ["Inter", "system-ui", "sans-serif"],
+            "headline-lg-mobile": ["Plus Jakarta Sans", "system-ui", "sans-serif"],
+            "headline-lg": ["Plus Jakarta Sans", "system-ui", "sans-serif"],
+            "body-md": ["Inter", "system-ui", "sans-serif"],
+            "label-sm": ["Inter", "system-ui", "sans-serif"],
+            "body-sm": ["Inter", "system-ui", "sans-serif"]
+          },
+          fontSize: {
+            "label-md": ["14px", { lineHeight: "16px", letterSpacing: "0.01em", fontWeight: "600" }],
+            "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+            display: ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "800" }],
+            "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+            "headline-lg-mobile": ["24px", { lineHeight: "32px", fontWeight: "700" }],
+            "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "700" }],
+            "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+            "label-sm": ["12px", { lineHeight: "16px", fontWeight: "500" }],
+            "body-sm": ["14px", { lineHeight: "20px", fontWeight: "400" }]
+          },
+          boxShadow: {
+            soft: "0 4px 24px -4px rgba(70, 72, 212, 0.12)",
+            card: "0 2px 12px -2px rgba(11, 28, 48, 0.08)"
+          },
+          keyframes: {
+            fadeIn: { "0%": { opacity: "0", transform: "translateY(8px)" }, "100%": { opacity: "1", transform: "translateY(0)" } }
+          },
+          animation: {
+            "fade-in": "fadeIn 0.35s ease-out forwards"
+          }
+        }
+      }
+    };
+  </script>
+  
+  <link rel="stylesheet" href="profile.css">
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden antialiased">
+  <!-- Toast -->
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[9999] opacity-0 pointer-events-none translate-y-3 bg-inverse-surface text-inverse-on-surface px-5 py-3 rounded-xl shadow-lg text-body-sm font-medium flex items-center gap-2 max-w-[90vw]" role="status" aria-live="polite">
+    <span class="material-symbols-outlined text-[20px]" id="toastIcon">info</span>
+    <span id="toastMsg">Message</span>
+  </div>
+
+  <!-- Mobile overlay -->
+  <div id="overlay" class="fixed inset-0 bg-black/40 z-40 opacity-0 pointer-events-none lg:hidden" aria-hidden="true"></div>
+
+  <!-- Side nav -->
+  <aside id="sideNav" class="h-full w-64 fixed left-0 top-0 bg-surface-container-low border-r border-outline-variant flex flex-col py-md px-sm z-50 closed-mobile lg:translate-x-0" aria-label="Student portal">
+    <div class="mb-lg px-sm flex items-start justify-between gap-2">
+      <div>
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6pZIwjFRVQMFEZI9MbybUCBAwKRLGBviYj6OvCLBA_Da4G7OgfheVECTzOJIbWOCOj92iHvejBFR4XtGQBMstJHmwGa8b-YdYX_Rggog08nV6Pa-Cc9rgA59Yhhew-kpveFVuiNUYs4lAS3UNLoYgsuyNk2EIzgPrKLGd2i1nNjoVpNl4vBP9QjEas4w8T8sGWlDYf4fwbrv_ZXuN5L51ISfNaGmFC56wEAtR0CTwNPZuu0otDWRwiADAQUKUlyKvyw" alt="CampusConnect" class="h-10 w-auto object-contain">
+        <p class="font-label-sm text-on-surface-variant mt-1">Student Portal</p>
+      </div>
+      <button type="button" id="closeNav" class="lg:hidden p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="Close menu">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <nav class="flex-1 space-y-0.5 overflow-y-auto">
+      <a class="nav-item flex items-center gap-sm px-sm py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+        <span class="material-symbols-outlined" aria-hidden="true">dashboard</span>
+        <span class="font-label-md">Dashboard</span>
+      </a>
+      <a class="nav-item flex items-center gap-sm px-sm py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+        <span class="material-symbols-outlined" aria-hidden="true">mail</span>
+        <span class="font-label-md">Messages</span>
+        <span class="ml-auto bg-primary text-on-primary text-[10px] font-bold px-1.5 py-0.5 rounded-full">3</span>
+      </a>
+      <a class="nav-item flex items-center gap-sm px-sm py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+        <span class="material-symbols-outlined" aria-hidden="true">bookmark</span>
+        <span class="font-label-md">Saved Items</span>
+      </a>
+      <a class="nav-item flex items-center gap-sm px-sm py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+        <span class="material-symbols-outlined" aria-hidden="true">notifications</span>
+        <span class="font-label-md">Notifications</span>
+        <span class="ml-auto w-2 h-2 rounded-full bg-error" aria-label="Unread"></span>
+      </a>
+      <a class="nav-item active flex items-center gap-sm px-sm py-sm rounded-lg transition-opacity" href="#" aria-current="page">
+        <span class="material-symbols-outlined filled" aria-hidden="true">person</span>
+        <span class="font-label-md">Profile</span>
+      </a>
+      <a class="nav-item flex items-center gap-sm px-sm py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+        <span class="material-symbols-outlined" aria-hidden="true">settings</span>
+        <span class="font-label-md">Settings</span>
+      </a>
+    </nav>
+    <div class="mt-auto px-sm pt-md border-t border-outline-variant space-y-md">
+      <button type="button" id="quickPostBtn" class="w-full bg-secondary text-on-secondary font-label-md py-sm px-md rounded-xl hover:brightness-95 transition-all flex items-center justify-center gap-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2">
+        <span class="material-symbols-outlined text-[20px]" aria-hidden="true">add</span>
+        Quick Post
+      </button>
+      <div class="flex items-center gap-sm">
+        <div class="w-10 h-10 rounded-full overflow-hidden bg-primary-fixed shrink-0 ring-2 ring-primary/20">
+          <img class="w-full h-full object-cover" alt="" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEJjr2rfo89dtsHTPNPsbPgTF7mg8nT_noPsGS-oAvioC3rvEoQmsdwLM2WolAZCh832wpEk4qS8ngS-CLAHyq-RaobOADRdvKk6G_kumEG0fakskHZuC-uRXzZAzSQqAtBaIuukwVnAusOX8N7Glp4HkeIy_24Xuc4sse_ce-57wyORPpOXRzrg3VNWW35V4JJOYUHs_AD0XkMMo2BPT9qye46Tvf_46rBVjpP0FOCCEFbhSaMHb3">
+        </div>
+        <div class="flex flex-col min-w-0">
+          <span class="font-label-md text-on-surface truncate">Alex Rivera</span>
+          <span class="font-label-sm text-on-surface-variant truncate">alex.r@techuni.edu</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <div class="lg:ml-64 min-h-screen flex flex-col">
+    <!-- Top bar (mobile + desktop actions) -->
+    <div class="sticky top-0 z-30 bg-surface/90 backdrop-blur-md border-b border-outline-variant px-4 lg:px-xl h-14 flex items-center justify-between gap-3">
+      <div class="flex items-center gap-2">
+        <button type="button" id="openNav" class="lg:hidden p-2 rounded-lg border border-outline-variant text-on-surface hover:bg-surface-container-low focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="Open menu">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+        <span class="font-label-md text-on-surface-variant hidden sm:inline">Profile</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <button type="button" id="themeToggle" class="p-2 rounded-full border border-outline-variant text-on-surface-variant hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="Toggle dark mode">
+          <span class="material-symbols-outlined text-[22px]" id="themeIcon">dark_mode</span>
+        </button>
+        <button type="button" class="p-2 rounded-full border border-outline-variant text-on-surface-variant hover:text-primary relative focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="Notifications">
+          <span class="material-symbols-outlined text-[22px]">notifications</span>
+          <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full"></span>
+        </button>
+      </div>
+    </div>
+
+    <main class="flex-1">
+      <!-- Cover + identity -->
+      <header class="relative w-full">
+        <div class="h-44 sm:h-56 md:h-64 bg-primary overflow-hidden relative">
+          <div class="absolute inset-0 bg-gradient-to-br from-primary via-primary-container to-secondary/40"></div>
+          <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_20%,rgba(255,255,255,0.15),transparent_50%)]"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+        </div>
+        <div class="max-w-container-max mx-auto px-4 sm:px-xl -mt-16 sm:-mt-20 relative z-10 pb-md">
+          <div class="flex flex-col sm:flex-row gap-md sm:items-end">
+            <div class="relative shrink-0">
+              <div class="w-28 h-28 sm:w-36 sm:h-36 rounded-3xl border-4 border-surface shadow-soft overflow-hidden bg-white">
+                <img class="w-full h-full object-cover" alt="Alex Rivera" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOFd9sLTe_iwd0doS2boS-AXYt9gTiql357AZShWgkEz409Mxxbc7J2HLDqauEr2ipj0BTq6rNTtysqtOpyhuXxNDbfywhmcF3SerBqxkDFUu3vdXqTeBkz6qtGO_u1V8DNGtYb0d2YBGjWv5ACNc9ksXXYg_DXwUd8iWbphVvbvOwts8JF76T6s_ayHhhcbykChbNnCIyQKy82WhVO7r6C-WFj82ZYk2PLPTIxyRgZU7Ot5X6hwF0">
+              </div>
+              <span class="absolute bottom-1 right-1 w-4 h-4 bg-tertiary border-2 border-surface rounded-full" title="Online" aria-label="Online"></span>
+            </div>
+            <div class="flex-1 flex flex-col sm:flex-row sm:justify-between sm:items-end gap-md min-w-0">
+              <div>
+                <div class="flex flex-wrap items-center gap-2">
+                  <h1 class="font-display text-headline-lg text-on-surface">Alex Rivera</h1>
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-tertiary/15 text-tertiary text-label-sm font-semibold">
+                    <span class="material-symbols-outlined text-[14px] filled" aria-hidden="true">verified</span>
+                    Verified student
+                  </span>
+                </div>
+                <p class="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1 text-on-surface-variant font-body-sm">
+                  <span class="inline-flex items-center gap-1"><span class="material-symbols-outlined text-[18px]" aria-hidden="true">school</span> Tech University · Computer Science</span>
+                  <span class="inline-flex items-center gap-1"><span class="material-symbols-outlined text-[18px]" aria-hidden="true">calendar_month</span> Joined Sep 2022</span>
+                </p>
+              </div>
+              <div class="flex flex-wrap gap-sm">
+                <button type="button" id="editProfileBtn" class="bg-surface border border-outline-variant text-primary font-label-md px-md py-sm rounded-xl hover:bg-surface-container-low transition-colors flex items-center gap-xs shadow-card focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+                  <span class="material-symbols-outlined text-[20px]" aria-hidden="true">edit</span>
+                  Edit Profile
+                </button>
+                <button type="button" id="shareBtn" class="bg-primary text-on-primary font-label-md px-md py-sm rounded-xl hover:bg-primary-container transition-colors flex items-center gap-xs shadow-card focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                  <span class="material-symbols-outlined text-[20px]" aria-hidden="true">share</span>
+                  Share
+                </button>
+                <button type="button" id="messageBtn" class="bg-surface-container-high text-on-surface font-label-md px-md py-sm rounded-xl hover:bg-surface-container-highest transition-colors flex items-center gap-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+                  <span class="material-symbols-outlined text-[20px]" aria-hidden="true">chat</span>
+                  Message
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stats strip -->
+          <div class="mt-lg grid grid-cols-2 sm:grid-cols-4 gap-sm sm:gap-md">
+            <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-card text-center sm:text-left">
+              <p class="font-headline-md text-headline-md text-primary">12</p>
+              <p class="font-label-sm text-on-surface-variant">Active listings</p>
+            </div>
+            <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-card text-center sm:text-left">
+              <p class="font-headline-md text-headline-md text-primary">4.9</p>
+              <p class="font-label-sm text-on-surface-variant">Service rating</p>
+            </div>
+            <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-card text-center sm:text-left">
+              <p class="font-headline-md text-headline-md text-primary">48</p>
+              <p class="font-label-sm text-on-surface-variant">Completed deals</p>
+            </div>
+            <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-card text-center sm:text-left">
+              <p class="font-headline-md text-headline-md text-primary">3</p>
+              <p class="font-label-sm text-on-surface-variant">Services offered</p>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <div class="max-w-container-max mx-auto px-4 sm:px-xl py-lg">
+        <div class="grid grid-cols-12 gap-lg">
+          <!-- Left column -->
+          <aside class="col-span-12 lg:col-span-4 flex flex-col gap-md order-2 lg:order-1">
+            <section class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant shadow-card">
+              <h2 class="font-label-md text-on-surface mb-sm">About</h2>
+              <p class="text-on-surface-variant font-body-sm leading-relaxed" id="bioText">
+                Passionate CS senior at Tech University specializing in full-stack development and UI design. I love helping fellow students find reliable tech gear and offering tutoring for intro coding courses.
+              </p>
+              <div class="mt-md flex flex-wrap gap-xs">
+                <span class="bg-primary-fixed text-on-primary-fixed px-sm py-1 rounded-full text-label-sm">Senior</span>
+                <span class="bg-tertiary-fixed text-on-tertiary-fixed px-sm py-1 rounded-full text-label-sm">Full-Stack</span>
+                <span class="bg-secondary-fixed text-on-secondary-fixed px-sm py-1 rounded-full text-label-sm">Tutor</span>
+                <span class="bg-surface-container-high text-on-surface px-sm py-1 rounded-full text-label-sm">React</span>
+              </div>
+            </section>
+
+            <section class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant shadow-card">
+              <h2 class="font-label-md text-on-surface mb-md">Contact</h2>
+              <ul class="space-y-sm">
+                <li class="flex items-center gap-sm">
+                  <div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center shrink-0">
+                    <span class="material-symbols-outlined text-primary text-[18px]" aria-hidden="true">mail</span>
+                  </div>
+                  <a href="mailto:alex.r@techuni.edu" class="font-body-sm text-on-surface-variant hover:text-primary truncate">alex.r@techuni.edu</a>
+                </li>
+                <li class="flex items-center gap-sm">
+                  <div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center shrink-0">
+                    <span class="material-symbols-outlined text-primary text-[18px]" aria-hidden="true">smartphone</span>
+                  </div>
+                  <span class="font-body-sm text-on-surface-variant">+1 (555) 012-3456</span>
+                </li>
+                <li class="flex items-center gap-sm">
+                  <div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center shrink-0">
+                    <span class="material-symbols-outlined text-primary text-[18px]" aria-hidden="true">location_on</span>
+                  </div>
+                  <span class="font-body-sm text-on-surface-variant">Student Union Hub, Room 302</span>
+                </li>
+              </ul>
+            </section>
+
+            <!-- Recent activity -->
+            <section class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant shadow-card">
+              <h2 class="font-label-md text-on-surface mb-md">Recent activity</h2>
+              <ul class="space-y-md">
+                <li class="flex gap-sm">
+                  <span class="material-symbols-outlined text-primary text-[20px] shrink-0" aria-hidden="true">sell</span>
+                  <div>
+                    <p class="font-body-sm text-on-surface">Listed <strong>MacBook Air M2</strong></p>
+                    <p class="font-label-sm text-on-surface-variant">2 days ago</p>
+                  </div>
+                </li>
+                <li class="flex gap-sm">
+                  <span class="material-symbols-outlined text-tertiary text-[20px] shrink-0" aria-hidden="true">star</span>
+                  <div>
+                    <p class="font-body-sm text-on-surface">Received a 5★ review on tutoring</p>
+                    <p class="font-label-sm text-on-surface-variant">4 days ago</p>
+                  </div>
+                </li>
+                <li class="flex gap-sm">
+                  <span class="material-symbols-outlined text-secondary text-[20px] shrink-0" aria-hidden="true">handshake</span>
+                  <div>
+                    <p class="font-body-sm text-on-surface">Completed sale: Calculus bundle</p>
+                    <p class="font-label-sm text-on-surface-variant">1 week ago</p>
+                  </div>
+                </li>
+              </ul>
+            </section>
+          </aside>
+
+          <!-- Main tabs -->
+          <section class="col-span-12 lg:col-span-8 order-1 lg:order-2">
+            <div class="flex border-b border-outline-variant mb-md gap-1 sm:gap-md overflow-x-auto" role="tablist" aria-label="Profile sections">
+              <button type="button" role="tab" class="tab-btn pb-md px-1 font-label-md text-on-surface-variant hover:text-primary transition-all whitespace-nowrap shrink-0" id="tab-btn-listings" aria-selected="true" aria-controls="tab-listings" data-tab="listings">My Listings</button>
+              <button type="button" role="tab" class="tab-btn pb-md px-1 font-label-md text-on-surface-variant hover:text-primary transition-all whitespace-nowrap shrink-0" id="tab-btn-services" aria-selected="false" aria-controls="tab-services" data-tab="services">My Services</button>
+              <button type="button" role="tab" class="tab-btn pb-md px-1 font-label-md text-on-surface-variant hover:text-primary transition-all whitespace-nowrap shrink-0" id="tab-btn-saved" aria-selected="false" aria-controls="tab-saved" data-tab="saved">Saved</button>
+              <button type="button" role="tab" class="tab-btn pb-md px-1 font-label-md text-on-surface-variant hover:text-primary transition-all whitespace-nowrap shrink-0" id="tab-btn-reviews" aria-selected="false" aria-controls="tab-reviews" data-tab="reviews">Reviews</button>
+            </div>
+
+            <!-- Listings -->
+            <div class="tab-panel animate-fade-in" id="tab-listings" role="tabpanel" aria-labelledby="tab-btn-listings">
+              <div class="flex justify-between items-center mb-md">
+                <p class="font-body-sm text-on-surface-variant"><span id="listingsCount">2</span> active listings</p>
+                <button type="button" class="text-primary font-label-md text-label-md hover:underline flex items-center gap-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded" id="newListingBtn">
+                  <span class="material-symbols-outlined text-[18px]" aria-hidden="true">add</span>
+                  New listing
+                </button>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+                <article class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden shadow-card hover:shadow-soft transition-shadow group">
+                  <div class="h-40 bg-surface-container-high relative overflow-hidden">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" alt="MacBook Air M2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5TzzHM0oJatP5oYIaddYivhkq2FGRgHhvncFdvO1wvmFY9WN89SdaQ8fxJ72Omvh4V4EdZzWNN_VNyuY03zYvTKUyNxoKggQv3vl0j98j9x79LVBoATe5KlRoX2O-twFIklhQ-8n9PUkGVIFIdMF1le2SERYlBiD9BRxdhzDqWZjXEUfDnWvPjhGadOQt34Y4FParcBNPBnh5Ipvja2S8cSOtrdPZSqIUjWVsPlj1dPaW2BjVPIr7">
+                    <span class="absolute top-sm right-sm bg-primary text-white font-label-sm px-sm py-1 rounded-full shadow-sm">$850</span>
+                  </div>
+                  <div class="p-md">
+                    <div class="flex justify-between items-start gap-2 mb-xs">
+                      <h3 class="font-label-md text-on-surface">MacBook Air M2</h3>
+                      <span class="bg-tertiary/15 text-tertiary px-xs py-0.5 rounded text-[10px] uppercase font-bold shrink-0">Active</span>
+                    </div>
+                    <p class="text-on-surface-variant font-body-sm line-clamp-2">Excellent condition, 16GB RAM, 512GB SSD. Used for one semester.</p>
+                    <div class="mt-md flex justify-between items-center">
+                      <span class="flex items-center gap-xs text-on-surface-variant text-[12px]">
+                        <span class="material-symbols-outlined text-[16px]" aria-hidden="true">schedule</span>
+                        2 days ago
+                      </span>
+                      <button type="button" class="text-primary font-label-sm hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded manage-btn">Manage</button>
+                    </div>
+                  </div>
+                </article>
+                <article class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden shadow-card hover:shadow-soft transition-shadow group">
+                  <div class="h-40 bg-surface-container-high relative overflow-hidden">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" alt="Calculus textbooks" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDv9tCHggHO5Be_OY0xoyZc7HBq5E73EgBcata0Qz1W45-mhUm0_nCBde1EBZoSo2SLNWFkJbgMd13BHy8iwiBQe55O-CNl89BbhHCTSN25dY1Vij66lkE_mCID4FMs6T2ua02zSpK0zoPXez1-Dq4jZEQCLKG6TVtJShJyKeC1413YiVMx9XK2ZubXTw84EYXo1NdpVSXrIBTIcT-f_CY0JXa-Pt2S9nEo3DmPU7GqTVSPeRGItR1s">
+                    <span class="absolute top-sm right-sm bg-primary text-white font-label-sm px-sm py-1 rounded-full shadow-sm">$45</span>
+                  </div>
+                  <div class="p-md">
+                    <div class="flex justify-between items-start gap-2 mb-xs">
+                      <h3 class="font-label-md text-on-surface">Calculus III Bundle</h3>
+                      <span class="bg-tertiary/15 text-tertiary px-xs py-0.5 rounded text-[10px] uppercase font-bold shrink-0">Active</span>
+                    </div>
+                    <p class="text-on-surface-variant font-body-sm line-clamp-2">Calculus 12th Ed by Larson + Solutions Manual. No highlights.</p>
+                    <div class="mt-md flex justify-between items-center">
+                      <span class="flex items-center gap-xs text-on-surface-variant text-[12px]">
+                        <span class="material-symbols-outlined text-[16px]" aria-hidden="true">schedule</span>
+                        5 days ago
+                      </span>
+                      <button type="button" class="text-primary font-label-sm hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded manage-btn">Manage</button>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <!-- Services -->
+            <div class="tab-panel hidden animate-fade-in" id="tab-services" role="tabpanel" aria-labelledby="tab-btn-services" hidden>
+              <div class="flex justify-between items-center mb-md">
+                <p class="font-body-sm text-on-surface-variant">1 service published</p>
+                <button type="button" class="text-primary font-label-md text-label-md hover:underline flex items-center gap-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded" id="newServiceBtn">
+                  <span class="material-symbols-outlined text-[18px]" aria-hidden="true">add</span>
+                  Offer a service
+                </button>
+              </div>
+              <article class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant shadow-card hover:shadow-soft transition-shadow flex flex-col sm:flex-row gap-md">
+                <div class="w-full sm:w-24 h-24 rounded-xl bg-primary-container/20 flex items-center justify-center shrink-0">
+                  <span class="material-symbols-outlined text-primary text-[40px]" aria-hidden="true">code</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
+                    <div>
+                      <h3 class="font-label-md text-on-surface">Python &amp; Java Tutoring</h3>
+                      <p class="text-on-surface-variant font-body-sm mt-xs">Helping students master CS101 and Data Structures. Code reviews &amp; debugging sessions available.</p>
+                    </div>
+                    <span class="text-primary font-bold text-headline-md shrink-0">$25/hr</span>
+                  </div>
+                  <div class="mt-md flex flex-wrap items-center gap-md">
+                    <div class="flex items-center gap-xs text-on-surface-variant">
+                      <span class="material-symbols-outlined text-[18px] text-secondary filled" aria-hidden="true">star</span>
+                      <span class="text-label-sm">4.9 · 24 reviews</span>
+                    </div>
+                    <button type="button" class="sm:ml-auto text-primary font-label-sm hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">Edit service</button>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <!-- Saved -->
+            <div class="tab-panel hidden animate-fade-in" id="tab-saved" role="tabpanel" aria-labelledby="tab-btn-saved" hidden>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+                <article class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden shadow-card hover:shadow-soft transition-shadow group">
+                  <div class="h-40 bg-surface-container-high relative overflow-hidden">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" alt="Ergonomic desk chair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpd_ZqAodXHcxEKDWD1QZXj4HAHXnQQZjgbg2tq3GXb1vI6CwmLZvPcL7eunqJei9nZgpTt_7YbztnIt3tqlqZj7e-fbxmF95wuII98uf_-xwVTnPWtaOzy2KbuhxXYS7MfN_MnY5n0kHcj9u5pLy01NsZRUBSIGgGY8y1vy5DyTQ60e4wDghR2k3pxy4dyiYQI3OST7E3kw8Wt3AddcTTvJNOCrSxZnPn7otHCppZ2Pw6svJifhRn">
+                    <button type="button" class="unsave-btn absolute top-sm right-sm bg-surface/90 backdrop-blur-sm text-error p-1.5 rounded-full hover:bg-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-error" aria-label="Remove from saved">
+                      <span class="material-symbols-outlined text-[20px] filled" aria-hidden="true">bookmark</span>
+                    </button>
+                  </div>
+                  <div class="p-md">
+                    <h3 class="font-label-md text-on-surface mb-xs">Ergonomic Desk Chair</h3>
+                    <p class="text-primary font-bold mb-md">$120</p>
+                    <div class="flex justify-between items-center">
+                      <div class="flex items-center gap-sm min-w-0">
+                        <div class="w-6 h-6 rounded-full bg-surface-dim overflow-hidden shrink-0">
+                          <img class="w-full h-full object-cover" loading="lazy" alt="" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQ8lyDQFsXBPWRJh55-nFfcZaZLNn81gb2QPZG4zsNO6xv8aasiyH8ySy1P54EF1JQQkDoPjtNVm66gKTOZKsZONJ9COnAo7GHxfg8nB90sn0e8XielfM8h93e-X__iC4grBWhjYs0jpTnh3p-X7rKOsNmZ7VAAHe92ZZaI9U8eQjEn7Z1OUISB0OtvvDGKCzpjSZqSONsCfHLIMe0uGMKipP4oyciPsR4wQ9BOGu2JcUncTvs9zyj">
+                        </div>
+                        <span class="text-[12px] text-on-surface-variant font-medium truncate">By Sarah J.</span>
+                      </div>
+                      <button type="button" class="bg-primary text-white text-[12px] font-label-md px-sm py-1.5 rounded-lg hover:bg-primary-container focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">View</button>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <!-- Reviews -->
+            <div class="tab-panel hidden animate-fade-in" id="tab-reviews" role="tabpanel" aria-labelledby="tab-btn-reviews" hidden>
+              <div class="space-y-md">
+                <article class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant shadow-card">
+                  <div class="flex items-start gap-sm mb-sm">
+                    <div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden shrink-0">
+                      <img class="w-full h-full object-cover" loading="lazy" alt="" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQ8lyDQFsXBPWRJh55-nFfcZaZLNn81gb2QPZG4zsNO6xv8aasiyH8ySy1P54EF1JQQkDoPjtNVm66gKTOZKsZONJ9COnAo7GHxfg8nB90sn0e8XielfM8h93e-X__iC4grBWhjYs0jpTnh3p-X7rKOsNmZ7VAAHe92ZZaI9U8eQjEn7Z1OUISB0OtvvDGKCzpjSZqSONsCfHLIMe0uGMKipP4oyciPsR4wQ9BOGu2JcUncTvs9zyj">
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <div class="flex flex-wrap items-center justify-between gap-1">
+                        <h3 class="font-label-md text-on-surface">Maya Chen</h3>
+                        <time class="font-label-sm text-on-surface-variant" datetime="2024-08-01">Aug 1, 2024</time>
+                      </div>
+                      <div class="flex gap-0.5 text-secondary mt-0.5" aria-label="5 out of 5 stars">
+                        <span class="material-symbols-outlined text-[16px] filled" aria-hidden="true">star</span>
+                        <span class="material-symbols-outlined text-[16px] filled" aria-hidden="true">star</span>
+                        <span class="material-symbols-outlined text-[16px] filled" aria-hidden="true">star</span>
+                        <span class="material-symbols-outlined text-[16px] filled" aria-hidden="true">star</span>
+                        <span class="material-symbols-outlined text-[16px] filled" aria-hidden="true">star</span>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="font-body-sm text-on-surface-variant">Alex explained recursion in a way that finally clicked. Super patient and prepared great practice problems.</p>
+                  <p class="mt-sm font-label-sm text-on-surface-variant">For: Python &amp; Java Tutoring</p>
+                </article>
+                <article class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant shadow-card">
+                  <div class="flex items-start gap-sm mb-sm">
+                    <div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center shrink-0 font-label-md text-primary">JK</div>
+                    <div class="flex-1 min-w-0">
+                      <div class="flex flex-wrap items-center justify-between gap-1">
+                        <h3 class="font-label-md text-on-surface">Jordan Kim</h3>
+                        <time class="font-label-sm text-on-surface-variant" datetime="2024-07-18">Jul 18, 2024</time>
+                      </div>
+                      <div class="flex gap-0.5 text-secondary mt-0.5" aria-label="5 out of 5 stars">
+                        <span class="material-symbols-outlined text-[16px] filled" aria-hidden="true">star</span>
+                        <span class="material-symbols-outlined text-[16px] filled" aria-hidden="true">star</span>
+                        <span class="material-symbols-outlined text-[16px] filled" aria-hidden="true">star</span>
+                        <span class="material-symbols-outlined text-[16px] filled" aria-hidden="true">star</span>
+                        <span class="material-symbols-outlined text-[16px] filled" aria-hidden="true">star</span>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="font-body-sm text-on-surface-variant">Smooth textbook meetup. Item exactly as described. Would buy from Alex again.</p>
+                  <p class="mt-sm font-label-sm text-on-surface-variant">For: Marketplace sale</p>
+                </article>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer class="w-full px-4 sm:px-gutter py-lg max-w-container-max mx-auto border-t border-outline-variant mt-auto">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-lg">
+        <div>
+          <h2 class="font-headline-md text-headline-md text-on-surface mb-sm">CampusConnect</h2>
+          <p class="font-body-sm text-on-surface-variant">The premium ecosystem for modern student life and academic collaboration.</p>
+        </div>
+        <div>
+          <h3 class="font-label-md text-on-surface mb-md">Quick Links</h3>
+          <ul class="space-y-sm">
+            <li><a class="font-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">About Us</a></li>
+            <li><a class="font-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Marketplace</a></li>
+            <li><a class="font-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Services</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-label-md text-on-surface mb-md">Resources</h3>
+          <ul class="space-y-sm">
+            <li><a class="font-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Internships</a></li>
+            <li><a class="font-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Events</a></li>
+            <li><a class="font-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Help Center</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-label-md text-on-surface mb-md">Contact</h3>
+          <ul class="space-y-sm">
+            <li class="font-body-sm text-on-surface-variant">support@campusconnect.edu</li>
+            <li class="font-body-sm text-on-surface-variant">Tech University Campus, Building A</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pt-md border-t border-outline-variant text-center">
+        <p class="font-body-sm text-on-surface-variant">© 2024–2026 CampusConnect University Platform. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Edit profile modal -->
+  <div id="editModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="editModalTitle">
+    <div class="absolute inset-0 bg-black/50" id="editModalBackdrop"></div>
+    <div class="relative bg-surface rounded-2xl shadow-soft max-w-md w-full p-lg border border-outline-variant max-h-[90vh] overflow-y-auto">
+      <div class="flex justify-between items-center mb-md">
+        <h2 id="editModalTitle" class="font-headline-md text-headline-md text-on-surface">Edit profile</h2>
+        <button type="button" id="closeEditModal" class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="Close">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <form id="editForm" class="space-y-md">
+        <div>
+          <label class="font-label-md text-label-md text-on-surface block mb-xs" for="editName">Display name</label>
+          <input id="editName" class="w-full px-md py-2.5 rounded-lg bg-surface-container-low border-none focus:ring-2 focus:ring-primary font-body-md" value="Alex Rivera" required>
+        </div>
+        <div>
+          <label class="font-label-md text-label-md text-on-surface block mb-xs" for="editBio">Bio</label>
+          <textarea id="editBio" rows="4" class="w-full px-md py-2.5 rounded-lg bg-surface-container-low border-none focus:ring-2 focus:ring-primary font-body-md resize-y">Passionate CS senior at Tech University specializing in full-stack development and UI design. I love helping fellow students find reliable tech gear and offering tutoring for intro coding courses.</textarea>
+        </div>
+        <div class="flex gap-sm pt-sm">
+          <button type="button" id="cancelEdit" class="flex-1 py-2.5 rounded-xl border border-outline-variant font-label-md text-on-surface hover:bg-surface-container-low">Cancel</button>
+          <button type="submit" class="flex-1 py-2.5 rounded-xl bg-primary text-on-primary font-label-md hover:bg-primary-container">Save changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  
+  <script src="profile.js" defer></script>
+</body>
+</html>

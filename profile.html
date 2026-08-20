@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile · CampusConnect</title>
+  <link rel="stylesheet" href="/src/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <div id="app-sidebar"></div>
+
+    <main class="app-main app-main--narrow">
+      <h1 class="page-title">My Profile</h1>
+      <p class="page-subtitle">Manage your account and campus identity.</p>
+
+      <!-- Profile header card -->
+      <div class="profile-card" id="profile-card">
+        <div class="profile-card-top">
+          <div class="profile-avatar-lg" id="profile-avatar"></div>
+          <div class="profile-info">
+            <h2 class="profile-name" id="profile-name">…</h2>
+            <p class="profile-email" id="profile-email">…</p>
+          </div>
+          <button type="button" class="btn btn-secondary profile-edit-btn" id="edit-btn">
+            <span class="icon" id="edit-icon"></span>
+            <span id="edit-label">Edit Profile</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Profile form -->
+      <form class="profile-form" id="profile-form">
+        <div class="profile-field">
+          <label for="pf-name">Display Name</label>
+          <input type="text" id="pf-name" placeholder="Your name" disabled />
+        </div>
+        <div class="profile-field">
+          <label for="pf-bio">Bio</label>
+          <textarea id="pf-bio" rows="3" placeholder="Tell others about yourself…" disabled></textarea>
+        </div>
+        <div class="profile-field">
+          <label for="pf-campus">Campus</label>
+          <select id="pf-campus" disabled>
+            <option value="">Select your campus</option>
+            <option value="main">Main Campus</option>
+            <option value="tech">Technology Institute</option>
+            <option value="med">Medical Science Center</option>
+            <option value="arts">Global Arts University</option>
+          </select>
+        </div>
+        <div class="profile-field">
+          <label for="pf-phone">Phone</label>
+          <input type="tel" id="pf-phone" placeholder="+237 6XX XXX XXX" disabled />
+        </div>
+        <div class="profile-form-actions" id="form-actions" hidden>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+          <button type="button" class="btn btn-secondary" id="cancel-btn">Cancel</button>
+        </div>
+      </form>
+
+      <!-- Sign out -->
+      <div class="profile-signout">
+        <button type="button" class="btn btn-secondary sign-out-btn" id="signout-btn">
+          <span class="icon" id="signout-icon"></span>
+          Sign Out
+        </button>
+      </div>
+
+      <div id="app-footer"></div>
+    </main>
+  </div>
+
+  <script type="module" src="/src/pages/profile.js"></script>
+</body>
+</html>

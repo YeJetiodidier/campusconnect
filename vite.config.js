@@ -19,6 +19,8 @@ export default defineConfig({
         notifications: resolve(__dirname, "notifications.html"),
         favorites: resolve(__dirname, "favorites.html"),
         marketplace: resolve(__dirname, "marketplace.html"),
+        messages: resolve(__dirname, "messages.html"),
+        profile: resolve(__dirname, "profile.html"),
       },
     },
   },

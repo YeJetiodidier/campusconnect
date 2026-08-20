@@ -21,10 +21,10 @@ const NAV_ITEMS = [
   { key: "dashboard", label: "Dashboard", href: "/dashboard.html", icon: icons.dashboard },
   { key: "internships", label: "Internships", href: "/internships.html", icon: icons.briefcase },
   { key: "events", label: "Events", href: "/events.html", icon: icons.calendar },
-  { key: "messages", label: "Messages", href: "#", icon: icons.messages }, // Messaging module
+  { key: "messages", label: "Messages", href: "/messages.html", icon: icons.messages },
   { key: "favorites", label: "Saved Items", href: "/favorites.html", icon: icons.heart },
   { key: "notifications", label: "Notifications", href: "/notifications.html", icon: icons.bell },
-  { key: "profile", label: "Profile", href: "#", icon: icons.user }, // TM2's page
+  { key: "profile", label: "Profile", href: "/profile.html", icon: icons.user },
   { key: "settings", label: "Settings", href: "#", icon: icons.settings }, // TM2's page
 ];
 

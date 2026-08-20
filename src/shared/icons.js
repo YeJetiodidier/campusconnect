@@ -24,6 +24,10 @@ export const icons = {
   close: svg('<path d="M6 6l12 12M18 6L6 18"/>'),
   checkDouble: svg('<path d="M2 12.5l4 4L14 8"/><path d="M9 12.5l4 4L21 8"/>'),
   megaphone: svg('<path d="M3 11v2a2 2 0 0 0 2 2h1l2 5h2l-1.2-5H10l9 4V6l-9 4H3Z"/>'),
+  send: svg('<path d="M22 2 11 13"/><path d="M22 2 15 22 11 13 2 9 22 2Z"/>'),
+  edit: svg('<path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5Z"/>'),
+  logout: svg('<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/>'),
+  camera: svg('<path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2Z"/><circle cx="12" cy="13" r="4"/>'),
 };
 
 export function iconSpan(name, extraClass = "") {
