@@ -3,28 +3,190 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CampusConnect - Marketplace</title>    <link rel="stylesheet" href="/src/modules/marketplace/marketplace.css" />
+    <meta name="description" content="Marketplace — buy and sell textbooks, electronics, furniture and more across campus. Prices in FCFA, verified student sellers." />
+    <meta name="theme-color" content="#4D61FC" />
+    <title>Marketplace · CampusConnect</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/modules/marketplace/marketplace.css" />
   </head>
   <body>
-    <div id="app">
-      <nav>
+    <!-- ═══ HEADER ═══ -->
+    <header class="mp-header">
+      <div class="mp-header-inner">
+        <a href="/" class="mp-logo" aria-label="CampusConnect home">
+          <img src="/src/assets/campusconnect-logo.png" alt="CampusConnect" />
+        </a>
+        <nav class="mp-nav" aria-label="Primary">
+          <a href="/">Home</a>
+          <a href="/marketplace.html" class="active" aria-current="page">Marketplace</a>
+          <a href="/services.html">Services</a>
+          <a href="/internships.html">Internships</a>
+          <a href="/events.html">Events</a>
+        </nav>
+        <div class="mp-header-actions">
+          <a href="/login.html" id="mpLoginBtn" class="btn btn-outline btn-sm">Login</a>
+          <a href="/dashboard.html" id="mpDashboardBtn" class="btn btn-primary btn-sm" hidden>Dashboard</a>
+          <a href="/profile.html" class="btn btn-primary btn-sm">Sell / List</a>
+        </div>
+        <button type="button" class="mp-menu-btn" id="mpMenuBtn" aria-label="Open menu" aria-expanded="false">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+      </div>
+      <div class="mp-mobile-menu" id="mpMobileMenu" hidden>
         <a href="/">Home</a>
-        <a href="/dashboard.html">Dashboard</a>
-        <a href="/marketplace.html">Marketplace</a>
+        <a href="/marketplace.html" class="active">Marketplace</a>
         <a href="/services.html">Services</a>
         <a href="/internships.html">Internships</a>
         <a href="/events.html">Events</a>
-        <a href="/announcements.html">Announcements</a>
-        <a href="/profile.html">Profile</a>
-        <a href="/referrals.html">Referrals</a>
-      </nav>
-      <main>
-        <h1>Marketplace</h1>
-        <p>This module uses Firebase entirely for backend.</p>
-      </main>
-    </div>
-    <!-- Script corresponding to this module -->
+        <a href="/login.html" id="mpMobileLogin">Login</a>
+        <a href="/dashboard.html" id="mpMobileDashboard" hidden>Dashboard</a>
+      </div>
+    </header>
+
+    <!-- ═══ SEARCH BAND ═══ -->
+    <section class="mp-search-band">
+      <div class="mp-search-band-inner">
+        <div class="mp-search-row">
+          <div class="mp-search-box">
+            <span class="material-symbols-outlined">search</span>
+            <input type="search" id="mpSearchAll" placeholder="Search marketplace..." autocomplete="off" />
+          </div>
+          <div class="mp-search-box">
+            <span class="material-symbols-outlined">sell</span>
+            <input type="search" id="mpSearchHint" placeholder="Search for textbooks, electronics, and more..." autocomplete="off" />
+          </div>
+          <button type="button" class="btn btn-filter" id="mpFilterToggle">
+            <span class="material-symbols-outlined">tune</span>
+            Filters
+            <span class="filter-count" id="mpFilterCount" hidden>0</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ MAIN LAYOUT ═══ -->
+    <main class="mp-layout">
+      <!-- Filter Sidebar -->
+      <aside class="mp-sidebar" id="mpSidebar" aria-label="Filters">
+        <div class="sidebar-head">
+          <h2>Filters</h2>
+          <button type="button" class="icon-btn" id="mpCloseFilters" aria-label="Close filters">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+
+        <!-- Price Range -->
+        <div class="filter-group">
+          <h3>Price Range (FCFA)</h3>
+          <div class="price-inputs">
+            <input type="number" id="mpPriceMin" placeholder="Min" min="0" step="100" />
+            <span>–</span>
+            <input type="number" id="mpPriceMax" placeholder="Max" min="0" step="100" />
+          </div>
+        </div>
+
+        <!-- Condition -->
+        <div class="filter-group">
+          <h3>Condition</h3>
+          <label class="check-row"><input type="checkbox" value="brand-new" class="cond-input" /><span class="badge badge-brand-new">Brand New</span></label>
+          <label class="check-row"><input type="checkbox" value="like-new" class="cond-input" /><span class="badge badge-like-new">Like New</span></label>
+          <label class="check-row"><input type="checkbox" value="good" class="cond-input" /><span class="badge badge-good">Good</span></label>
+          <label class="check-row"><input type="checkbox" value="fair" class="cond-input" /><span class="badge badge-fair">Fair</span></label>
+        </div>
+
+        <!-- Pickup Location -->
+        <div class="filter-group">
+          <h3>Pickup Location</h3>
+          <label class="radio-row"><input type="radio" name="pickup" value="" checked /><span>Anywhere</span></label>
+          <label class="radio-row"><input type="radio" name="pickup" value="North Campus" /><span>North Campus</span></label>
+          <label class="radio-row"><input type="radio" name="pickup" value="South Campus" /><span>South Campus</span></label>
+          <label class="radio-row"><input type="radio" name="pickup" value="Off-Campus" /><span>Off-Campus</span></label>
+        </div>
+
+        <!-- Category quick filters -->
+        <div class="filter-group">
+          <h3>Category</h3>
+          <div class="category-rows" id="mpCategoryList"></div>
+        </div>
+
+        <!-- Campus Safety -->
+        <div class="safety-card">
+          <div class="safety-head">
+            <span class="material-symbols-outlined">shield</span>
+            <strong>Campus Safety</strong>
+          </div>
+          <p>Verify sellers before you meet up. Always meet in well-lit public campus areas.</p>
+        </div>
+
+        <button type="button" class="btn btn-primary btn-block" id="mpApplyFilters">Apply Filters</button>
+      </aside>
+
+      <!-- Product Grid -->
+      <section class="mp-results" aria-label="Listings">
+        <div class="results-head">
+          <p id="mpResultsInfo">Showing 1–12 of 156 items</p>
+          <select id="mpSort" class="sort-select" aria-label="Sort listings">
+            <option value="newest">Newest</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="popular">Most Popular</option>
+          </select>
+        </div>
+
+        <div class="product-grid" id="mpGrid"></div>
+
+        <div class="empty-state" id="mpEmpty" hidden>
+          <span class="material-symbols-outlined">search_off</span>
+          <p>No items match your filters. Try adjusting your search.</p>
+        </div>
+
+        <div class="load-more-wrap">
+          <button type="button" class="btn btn-outline" id="mpLoadMore">Load More Items</button>
+        </div>
+      </section>
+    </main>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="mp-footer">
+      <div class="mp-footer-grid">
+        <div class="footer-brand">
+          <img src="/src/assets/campusconnect-logo.png" alt="CampusConnect" />
+          <p>The unified platform for students to connect, trade, and discover opportunities within the university ecosystem.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <a href="/marketplace.html">Marketplace</a>
+          <a href="/services.html">Services</a>
+          <a href="/announcements.html">Announcements</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="/internships.html">Internships</a>
+          <a href="/events.html">Events</a>
+          <a href="#" id="helpLink">Help Center</a>
+        </div>
+        <div class="footer-col">
+          <h4>Stay Connected</h4>
+          <div class="social-row">
+            <a href="#" aria-label="Chat"><span class="material-symbols-outlined">chat</span></a>
+            <a href="#" aria-label="Community"><span class="material-symbols-outlined">groups</span></a>
+            <a href="#" aria-label="Mail"><span class="material-symbols-outlined">mail</span></a>
+          </div>
+          <p class="contact-line">support@campusconnect.edu</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024–2026 CampusConnect University Platform. All rights reserved.</p>
+        <div>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </footer>
+
     <script type="module" src="/src/modules/marketplace/marketplace.js"></script>
   </body>
 </html>
-

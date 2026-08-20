@@ -52,6 +52,13 @@ function clearFormError() {
   formError.classList.add("hidden");
 }
 
+// After login, return to the page the user was heading to (?next=...)
+function postLoginRedirect() {
+  const params = new URLSearchParams(window.location.search);
+  const next = params.get("next");
+  window.location.href = next && next.startsWith("/") ? next : "/dashboard.html";
+}
+
 function showFormError(message) {
   formErrorText.textContent = message;
   formError.classList.remove("hidden");
@@ -132,7 +139,7 @@ loginForm.addEventListener("submit", async (e) => {
     showToast("Signed in successfully", "check_circle");
     submitLabel.textContent = "Success";
     setTimeout(() => {
-      window.location.href = "/dashboard.html";
+      postLoginRedirect();
     }, 1000);
   } catch (error) {
     console.error("Login Default Error:", error);
@@ -152,7 +159,7 @@ document.getElementById("googleBtn").addEventListener("click", async () => {
 
     showToast("Signed in with Google successfully", "check_circle");
     setTimeout(() => {
-      window.location.href = "/dashboard.html";
+      postLoginRedirect();
     }, 1000);
   } catch (error) {
     console.error("Google Auth Error:", error);

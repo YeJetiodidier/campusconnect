@@ -316,11 +316,10 @@ import {
         createUserWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
             const user = userCredential.user;
-            const firstName = document.getElementById("firstName").value.trim();
-            const lastName = document.getElementById("lastName").value.trim();
+            const fullName = document.getElementById("fullName").value.trim();
             
             return updateProfile(user, {
-              displayName: `${firstName} ${lastName}`.trim()
+              displayName: fullName
             }).then(() => {
               showToast("Account created successfully! Redirecting...", "check_circle");
               setTimeout(() => {
@@ -383,4 +382,3 @@ import {
       applyTheme(saved === "dark" || (!saved && prefersDark));
       themeToggle.addEventListener("click", () => applyTheme(!root.classList.contains("dark")));
     })();
-
