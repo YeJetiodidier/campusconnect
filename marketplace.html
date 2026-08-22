@@ -1,89 +1,46 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Marketplace · CampusConnect</title>
-  <link rel="stylesheet" href="/src/styles.css" />
-  <script>
-    if (localStorage.getItem("campusconnect_theme") === "dark") {
-      document.documentElement.classList.add("dark-theme");
-    }
-  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Marketplace - CampusConnect</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div class="app-shell">
-    <div id="app-sidebar"></div>
 
-    <main class="app-main">
-      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px;">
-        <div>
-          <h1 class="page-title" style="margin-bottom: 4px;">Marketplace</h1>
-          <p class="page-subtitle">Buy, sell, and advertise items to fellow students.</p>
-        </div>
-        <button id="post-item-btn" class="btn btn-primary">+ Post Item</button>
+<header class="navbar">
+    <div class="nav-left">
+      <a href="marketplace.html" class="logo">
+        <img src="logo.png" alt="CampusConnect Logo" class="logo-img">
+        <span class="logo-text">CampusConnect</span>
+      </a>
+    </div>
+    <nav class="nav-links">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="marketplace.html" class="active">Marketplace</a>
+      <a href="services.html">Services</a>
+    </nav>
+    <div class="nav-right">
+      <a href="sell.html" class="btn-primary">+ Sell / List</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="header-section">
+      <h1>Campus Marketplace</h1>
+      <div class="search-filter-group">
+        <input type="text" id="searchInput" placeholder="Search textbooks, electronics...">
       </div>
+    </div>
 
-      <!-- Create Post Form (Hidden by Default) -->
-      <div id="create-post-panel" class="panel" style="display: none; margin-bottom: 24px;">
-        <h2 style="margin-bottom: 16px;">Create a New Listing</h2>
-        <form id="create-post-form">
-          <div style="display: flex; gap: 16px; margin-bottom: 16px;">
-            <div style="flex: 2;">
-              <label class="form-label" for="item-title">Title</label>
-              <input class="input" id="item-title" type="text" required placeholder="e.g. Calculus Textbook" />
-            </div>
-            <div style="flex: 1;">
-              <label class="form-label" for="item-price">Price (FCFA)</label>
-              <input class="input" id="item-price" type="number" required placeholder="0" />
-            </div>
-          </div>
-          
-          <div style="display: flex; gap: 16px; margin-bottom: 16px;">
-            <div style="flex: 1;">
-              <label class="form-label" for="item-category">Category</label>
-              <select class="input" id="item-category" required>
-                <option value="Textbooks">Textbooks</option>
-                <option value="Tech">Tech</option>
-                <option value="Furniture">Furniture</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-            <div style="flex: 1;">
-              <label class="form-label" for="item-condition">Condition</label>
-              <select class="input" id="item-condition" required>
-                <option value="New">New</option>
-                <option value="Like New">Like New</option>
-                <option value="Good">Good</option>
-                <option value="Fair">Fair</option>
-              </select>
-            </div>
-          </div>
-
-          <div style="margin-bottom: 16px;">
-            <label class="form-label" for="item-desc">Description</label>
-            <textarea class="input" id="item-desc" rows="3" required placeholder="Describe what you're selling..."></textarea>
-          </div>
-
-          <div style="display: flex; gap: 8px;">
-            <button type="submit" class="btn btn-primary" id="submit-post-btn">Publish Item</button>
-            <button type="button" class="btn btn-secondary" id="cancel-post-btn">Cancel</button>
-          </div>
-        </form>
+    <main class="grid-container">
+      <div class="grid" id="marketplaceGrid">
+        <!-- Dynamic Firebase cards render here -->
       </div>
-
-      <div id="marketplace-grid" class="grid grid-3">
-        <!-- Rendered items go here -->
-      </div>
-
-      <div id="loading-state" style="text-align: center; padding: 48px; color: var(--text-muted);">
-        Loading marketplace items...
-      </div>
-
-      <div id="app-footer" style="margin-top: 48px;"></div>
     </main>
   </div>
 
-  <script type="module" src="/src/pages/marketplace.js"></script>
+  <script type="module" src="js/firebase-config.js"></script>
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>
