@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Settings · CampusConnect</title>
+  <link rel="stylesheet" href="/src/styles.css" />
+  <!-- Theme preload to prevent flash -->
+  <script>
+    if (localStorage.getItem("campusconnect_theme") === "dark") {
+      document.documentElement.classList.add("dark-theme");
+    }
+  </script>
+</head>
+<body>
+  <div class="app-shell">
+    <div id="app-sidebar"></div>
+
+    <main class="app-main app-main--narrow">
+      <h1 class="page-title">Settings</h1>
+      <p class="page-subtitle">Manage your account preferences and app experience.</p>
+
+      <div class="panel" style="margin-top: 24px;">
+        <h2 style="margin-bottom: 20px;">Display Preferences</h2>
+        
+        <div class="setting-row" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 16px; margin-bottom: 16px;">
+          <div>
+            <p style="font-weight: 600; margin: 0; font-size: 14px;">Dark Mode</p>
+            <p style="color: var(--text-muted); font-size: 13px; margin: 4px 0 0;">Toggle the app's visual theme based on your preference.</p>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="theme-toggle" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+        <h2 style="margin-top: 32px; margin-bottom: 20px;">Notifications</h2>
+        <div class="setting-row" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 16px; margin-bottom: 16px;">
+          <div>
+            <p style="font-weight: 600; margin: 0; font-size: 14px;">Email Alerts</p>
+            <p style="color: var(--text-muted); font-size: 13px; margin: 4px 0 0;">Receive emails for new messages and accepted offers.</p>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="email-toggle" checked />
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+      </div>
+
+      <div id="app-footer"></div>
+    </main>
+  </div>
+
+  <script type="module" src="/src/pages/settings.js"></script>
+</body>
+</html>

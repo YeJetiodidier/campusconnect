@@ -21,6 +21,7 @@ export default defineConfig({
         marketplace: resolve(__dirname, "marketplace.html"),
         messages: resolve(__dirname, "messages.html"),
         profile: resolve(__dirname, "profile.html"),
+        settings: resolve(__dirname, "settings.html"),
         login: resolve(__dirname, "login.html"),
         register: resolve(__dirname, "register.html"),
         forgotPassword: resolve(__dirname, "forgot-password.html"),

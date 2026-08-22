@@ -323,7 +323,7 @@ import {
             }).then(() => {
               showToast("Account created successfully! Redirecting...", "check_circle");
               setTimeout(() => {
-                  window.location.href = "/dashboard.html";
+                  window.location.href = "/profile.html";
               }, 1500);
             });
           })
@@ -349,7 +349,7 @@ import {
 
           showToast("Signed up with Google successfully", "check_circle");
           setTimeout(() => {
-            window.location.href = "/dashboard.html";
+            window.location.href = "/profile.html";
           }, 1000);
         } catch (error) {
           console.error("Google Auth Error:", error);
