@@ -1,6 +1,6 @@
-import { db, storage } from "./firebase-config.js";
-import { collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
+import { db, storage } from "../src/firebase-config.js";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const offerForm = document.getElementById("offerServiceForm");
 const submitBtn = document.getElementById("submitServiceBtn");

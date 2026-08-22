@@ -1,5 +1,5 @@
-import { db } from "./firebase-config.js";
-import { collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { db } from "../src/firebase-config.js";
+import { collection, getDocs } from "firebase/firestore";
 
 const marketplaceGrid = document.getElementById("marketplaceGrid");
 const searchInput = document.getElementById("searchInput");

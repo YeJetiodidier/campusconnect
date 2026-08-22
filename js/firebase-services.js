@@ -1,5 +1,5 @@
-import { db } from "./firebase-config.js";
-import { collection, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { db } from "../src/firebase-config.js";
+import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 
 const servicesGrid = document.getElementById("servicesGrid");
 const searchInput = document.getElementById("serviceSearchInput");
