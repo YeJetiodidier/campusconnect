@@ -1,5 +1,6 @@
-import { db } from "../src/firebase-config.js";
+import { db, auth } from "../src/firebase-config.js";
 import { collection, getDocs } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
 
 const marketplaceGrid = document.getElementById("marketplaceGrid");
 const searchInput = document.getElementById("searchInput");
@@ -57,4 +58,13 @@ function renderProducts() {
 }
 
 searchInput?.addEventListener("input", renderProducts);
-fetchProducts();
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    fetchProducts();
+  } else {
+    if (marketplaceGrid) {
+      marketplaceGrid.innerHTML = `<p style="grid-column: span 3; text-align: center; color: red;">Please <a href="login.html">log in</a> to view the marketplace.</p>`;
+    }
+  }
+});

@@ -1,5 +1,6 @@
-import { db } from "../src/firebase-config.js";
+import { db, auth } from "../src/firebase-config.js";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
 
 const offerForm = document.getElementById("offerServiceForm");
 const submitBtn = document.getElementById("submitServiceBtn");
@@ -39,6 +40,11 @@ const compressImageToBase64 = (file) => {
 
 offerForm?.addEventListener("submit", async (e) => {
   e.preventDefault();
+
+  if (!auth.currentUser) {
+    alert("You must be logged in to offer a service.");
+    return;
+  }
 
   const title = document.getElementById("serviceTitle").value;
   const rate = parseFloat(document.getElementById("serviceRate").value);

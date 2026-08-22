@@ -1,5 +1,6 @@
-import { db } from "../src/firebase-config.js";
+import { db, auth } from "../src/firebase-config.js";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
 
 const sellForm = document.getElementById("sellItemForm");
 const submitBtn = document.getElementById("submitItemBtn");
@@ -40,6 +41,11 @@ const compressImageToBase64 = (file) => {
 
 sellForm?.addEventListener("submit", async (e) => {
   e.preventDefault();
+
+  if (!auth.currentUser) {
+    alert("You must be logged in to publish an item.");
+    return;
+  }
 
   const title = document.getElementById("itemTitle").value;
   const price = parseFloat(document.getElementById("itemPrice").value);

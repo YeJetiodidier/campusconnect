@@ -1,5 +1,6 @@
-import { db } from "../src/firebase-config.js";
+import { db, auth } from "../src/firebase-config.js";
 import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
 
 const servicesGrid = document.getElementById("servicesGrid");
 const searchInput = document.getElementById("serviceSearchInput");
@@ -65,4 +66,13 @@ function renderServices() {
 }
 
 searchInput?.addEventListener("input", renderServices);
-fetchServices();
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    fetchServices();
+  } else {
+    if (servicesGrid) {
+      servicesGrid.innerHTML = `<p style="grid-column: span 3; text-align: center; color: red;">Please <a href="login.html">log in</a> to view services.</p>`;
+    }
+  }
+});
