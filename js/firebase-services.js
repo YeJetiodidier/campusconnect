@@ -43,7 +43,7 @@ function renderServices() {
       <div class="card-body">
         <div class="card-title-row">
           <h3>${service.title}</h3>
-          <span class="price">${service.rate} XAF/hr</span>
+          <span class="price">${service.rate} FCFA/hr</span>
         </div>
       </div>
       <div class="card-footer">

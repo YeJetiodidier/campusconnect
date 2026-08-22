@@ -44,7 +44,7 @@ function renderProducts() {
       <div class="card-body">
         <div class="card-title-row">
           <h3>${item.title}</h3>
-          <span class="price">${item.price}XAF</span>
+          <span class="price">${item.price} FCFA</span>
         </div>
         <p class="location">📍 ${item.location || 'Campus'}</p>
       </div>
