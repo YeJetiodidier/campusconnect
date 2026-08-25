@@ -37,6 +37,8 @@ export async function createInternshipListing(data, user) {
     salary: data.salary || "",
     applicationLink: data.link,
     logoUrl: data.logoUrl || "",
+    description: data.description || "",
+    deadline: data.deadline || null,
     status: "open",
     postedBy: user.uid,
     postedDate: serverTimestamp()

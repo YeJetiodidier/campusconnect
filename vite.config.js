@@ -30,6 +30,7 @@ export default defineConfig({
         login: resolve(__dirname, "login.html"),
         register: resolve(__dirname, "register.html"),
         forgotPassword: resolve(__dirname, "forgot-password.html"),
+        postOpportunity: resolve(__dirname, "post-opportunity.html"),
       },
     },
   },

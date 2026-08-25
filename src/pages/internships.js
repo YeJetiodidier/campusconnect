@@ -39,70 +39,7 @@ onAuthStateChanged(auth, (user) => {
 });
 
 agencyPostBtn.addEventListener("click", () => {
-  createJobPanel.style.display = "block";
-});
-
-cancelJobBtn.addEventListener("click", () => {
-  createJobPanel.style.display = "none";
-  createJobForm.reset();
-});
-
-// Helper: compress logo to base64
-const compressLogoToBase64 = (file) => {
-  return new Promise((resolve, reject) => {
-    if (!file) { resolve(""); return; }
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = (event) => {
-      const img = new Image();
-      img.src = event.target.result;
-      img.onload = () => {
-        const canvas = document.createElement("canvas");
-        const MAX = 200; // Logos can be small
-        let w = img.width, h = img.height;
-        if (w > h && w > MAX) { h *= MAX / w; w = MAX; }
-        else if (h > MAX) { w *= MAX / h; h = MAX; }
-        canvas.width = w; canvas.height = h;
-        const ctx = canvas.getContext("2d");
-        ctx.drawImage(img, 0, 0, w, h);
-        resolve(canvas.toDataURL("image/webp", 0.6));
-      };
-    };
-    reader.onerror = error => reject(error);
-  });
-};
-
-createJobForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  if (!isUserAgency(currentUser)) return;
-  
-  submitJobBtn.disabled = true;
-  submitJobBtn.textContent = "Publishing...";
-
-  try {
-    const file = document.getElementById("job-logo").files[0];
-    const logoUrl = await compressLogoToBase64(file);
-
-    await createInternshipListing({
-      title: document.getElementById("job-title").value.trim(),
-      company: document.getElementById("job-company").value.trim(),
-      type: document.getElementById("job-type").value,
-      location: document.getElementById("job-location").value.trim(),
-      salary: document.getElementById("job-salary").value.trim(),
-      link: document.getElementById("job-link").value.trim(),
-      logoUrl: logoUrl
-    }, currentUser);
-
-    createJobPanel.style.display = "none";
-    createJobForm.reset();
-    await loadFirstPage(); // refresh grid
-  } catch(err) {
-    console.error("Job publish failed:", err);
-    alert("Could not post job. Check permissions.");
-  } finally {
-    submitJobBtn.disabled = false;
-    submitJobBtn.textContent = "Publish";
-  }
+  window.location.href = "/post-opportunity.html";
 });
 
 let allItems = [];
