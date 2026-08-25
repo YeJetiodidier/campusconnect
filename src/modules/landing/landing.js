@@ -99,21 +99,24 @@ import { onAuthStateChanged } from 'firebase/auth';
   const mobileMenuIcon = document.getElementById('mobileMenuIcon');
 
   function closeMobileMenu() {
+    if (!mobileMenu) return;
     mobileMenu.classList.add('hidden');
     mobileMenu.classList.remove('open');
-    mobileMenuBtn.setAttribute('aria-expanded', 'false');
-    mobileMenuIcon.textContent = 'menu';
+    mobileMenuBtn?.setAttribute('aria-expanded', 'false');
+    if (mobileMenuIcon) mobileMenuIcon.textContent = 'menu';
   }
 
   function openMobileMenu() {
+    if (!mobileMenu) return;
     mobileMenu.classList.remove('hidden');
-    requestAnimationFrame(() => mobileMenu.classList.add('open'));
-    mobileMenuBtn.setAttribute('aria-expanded', 'true');
-    mobileMenuIcon.textContent = 'close';
+    mobileMenu.classList.add('open');
+    mobileMenuBtn?.setAttribute('aria-expanded', 'true');
+    if (mobileMenuIcon) mobileMenuIcon.textContent = 'close';
   }
 
   if (mobileMenuBtn && mobileMenu) {
-    mobileMenuBtn.addEventListener('click', () => {
+    mobileMenuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
       const open = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
       open ? closeMobileMenu() : openMobileMenu();
     });

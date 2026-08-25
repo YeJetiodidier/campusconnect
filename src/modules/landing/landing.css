@@ -2,7 +2,9 @@
   --header-h: 5rem;
 }
 
-html { scroll-padding-top: calc(var(--header-h) + 0.5rem); }
+html {
+  scroll-padding-top: calc(var(--header-h) + 0.5rem);
+}
 
 .glass-card {
   background: rgba(255, 255, 255, 0.72);
@@ -61,16 +63,19 @@ html { scroll-padding-top: calc(var(--header-h) + 0.5rem); }
   font-weight: 700;
 }
 
-.dark .nav-link.active { color: #c0c1ff; }
+.dark .nav-link.active {
+  color: #c0c1ff;
+}
 
 #mobileMenu {
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 100;
 }
 
 #mobileMenu.open {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
+  display: block !important;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
 
 #toast {
@@ -89,25 +94,70 @@ html { scroll-padding-top: calc(var(--header-h) + 0.5rem); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  html { scroll-behavior: auto; }
+
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 /* Dark mode surface overrides */
-.dark body { background: #0b1c30; color: #eaf1ff; }
-.dark .bg-surface { background: #0b1c30; }
-.dark .bg-surface-container-low { background: #152538; }
-.dark .bg-surface-container { background: #1a2d42; }
-.dark .bg-surface-container-high { background: #213145; }
-.dark .bg-surface-container-highest { background: #2a3d55; }
-.dark .bg-white { background: #152538; }
-.dark .text-on-surface { color: #eaf1ff; }
-.dark .text-on-surface-variant { color: #a8b4c8; }
-.dark .border-outline-variant { border-color: #3a4d65; }
-.dark .bg-surface\/80 { background: rgba(11, 28, 48, 0.85); }
-.dark .bg-surface\/90 { background: rgba(11, 28, 48, 0.9); }
-.dark header { border-color: #3a4d65; }
+.dark body {
+  background: #0b1c30;
+  color: #eaf1ff;
+}
+
+.dark .bg-surface {
+  background: #0b1c30;
+}
+
+.dark .bg-surface-container-low {
+  background: #152538;
+}
+
+.dark .bg-surface-container {
+  background: #1a2d42;
+}
+
+.dark .bg-surface-container-high {
+  background: #213145;
+}
+
+.dark .bg-surface-container-highest {
+  background: #2a3d55;
+}
+
+.dark .bg-white {
+  background: #152538;
+}
+
+.dark .text-on-surface {
+  color: #eaf1ff;
+}
+
+.dark .text-on-surface-variant {
+  color: #a8b4c8;
+}
+
+.dark .border-outline-variant {
+  border-color: #3a4d65;
+}
+
+.dark .bg-surface\/80 {
+  background: rgba(11, 28, 48, 0.85);
+}
+
+.dark .bg-surface\/90 {
+  background: rgba(11, 28, 48, 0.9);
+}
+
+.dark header {
+  border-color: #3a4d65;
+}
