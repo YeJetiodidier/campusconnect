@@ -18,7 +18,7 @@ const compressImageToBase64 = (file) => {
         const MAX_SIZE = 600;
         let width = img.width;
         let height = img.height;
-        
+
         if (width > height && width > MAX_SIZE) {
           height *= MAX_SIZE / width;
           width = MAX_SIZE;
@@ -66,7 +66,10 @@ sellForm?.addEventListener("submit", async (e) => {
   try {
     const compressedImageUrl = await compressImageToBase64(imageFile);
 
-    await addDoc(collection(db, "products"), {
+    await addDoc(collection(db, "listings"), {
+      sellerId: auth.currentUser.uid,
+      sellerName: auth.currentUser.displayName || auth.currentUser.email || "Student",
+      sellerEmail: auth.currentUser.email || "",
       title,
       price,
       category,

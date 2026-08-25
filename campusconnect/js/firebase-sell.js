@@ -29,7 +29,10 @@ sellForm?.addEventListener("submit", async (e) => {
     const snapshot = await uploadBytes(storageRef, imageFile);
     const imageUrl = await getDownloadURL(snapshot.ref);
 
-    await addDoc(collection(db, "products"), {
+    await addDoc(collection(db, "listings"), {
+      sellerId: auth.currentUser?.uid || "",
+      sellerName: auth.currentUser?.displayName || auth.currentUser?.email || "Student",
+      sellerEmail: auth.currentUser?.email || "",
       title,
       price,
       category,
