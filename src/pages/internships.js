@@ -23,11 +23,6 @@ const categorySelect = document.getElementById("category-select");
 
 // UI nodes for Agency Posts
 const agencyPostBtn = document.getElementById("agency-post-btn");
-const createJobPanel = document.getElementById("create-job-panel");
-const cancelJobBtn = document.getElementById("cancel-job-btn");
-const createJobForm = document.getElementById("create-job-form");
-const submitJobBtn = document.getElementById("submit-job-btn");
-
 let currentUser = null;
 
 // Auth check specifically for the post button

@@ -27,7 +27,11 @@ service cloud.firestore {
     }
 
     function isRecruiter() {
-      return isSignedIn() && getUserRole() == "recruiter";
+      return isSignedIn() && (
+        getUserRole() == "recruiter" ||
+        request.auth.token.email.matches(".*\\+partner@.*") ||
+        request.auth.token.email.matches(".*@campusconnect[.]com$")
+      );
     }
 
     // ---- /users/{userId} ----
