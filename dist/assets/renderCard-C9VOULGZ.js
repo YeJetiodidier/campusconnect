@@ -1,4 +1,4 @@
-import{i as n}from"./footer-S7tz1WGR.js";function b(e,{title:t,description:a}){e.innerHTML=`
+import{i as n}from"./footer-2Fuq8NRQ.js";function b(e,{title:t,description:a}){e.innerHTML=`
     <div class="empty-state">
       <p>${t}</p>
       ${a?`<p>${a}</p>`:""}
