@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offer a Service - CampusConnect</title>
+  <script type="module" crossorigin src="/assets/offerService-CidinT5S.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/index.esm2017-aF7IW9R1.js">
+  <link rel="modulepreload" crossorigin href="/assets/firebase-config-CsnSWmcf.js">
+  <link rel="stylesheet" crossorigin href="/assets/style-DHTpZXJA.css">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="nav-left">
+      <a href="marketplace.html" class="logo">
+        <img src="/assets/logo-sBAi_k4z.png" alt="CampusConnect Logo" class="logo-img">
+        <span class="logo-text">CampusConnect</span>
+      </a>
+    </div>
+    <nav class="nav-links">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="services.html">← Back to Services</a>
+    </nav>
+  </header>
+
+  <div class="container small-container">
+    <div class="form-card">
+      <h2>Offer a Campus Service</h2>
+
+      <form id="offerServiceForm">
+        <div class="form-group">
+          <label for="serviceTitle">Service Title</label>
+          <input type="text" id="serviceTitle" placeholder="e.g. Calculus & Physics Tutoring" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="serviceRate">Rate (FCFA/hr)</label>
+            <input type="number" id="serviceRate" placeholder="e.g. 20" required>
+          </div>
+
+          <div class="form-group">
+            <label for="serviceCategory">Category</label>
+            <select id="serviceCategory" required>
+              <option value="Tutoring">Tutoring</option>
+              <option value="Tech Repair">Tech Repair</option>
+              <option value="Photography">Photography</option>
+              <option value="Design & Coding">Design & Coding</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="serviceDescription">Description</label>
+          <textarea id="serviceDescription" rows="4" placeholder="Describe experience and availability..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="serviceImage">Cover Image</label>
+          <input type="file" id="serviceImage" accept="image/*" required>
+        </div>
+
+        <button type="submit" id="submitServiceBtn" class="btn-primary full-width">Publish Service</button>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

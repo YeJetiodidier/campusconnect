@@ -134,15 +134,17 @@ import { onAuthStateChanged } from 'firebase/auth';
 
   function applyTheme(dark) {
     root.classList.toggle('dark', dark);
-    themeIcon.textContent = dark ? 'light_mode' : 'dark_mode';
+    root.classList.toggle('dark-theme', dark);
+    if (themeIcon) themeIcon.textContent = dark ? 'light_mode' : 'dark_mode';
     try {
       localStorage.setItem('cc-theme', dark ? 'dark' : 'light');
-    } catch (_) {}
+      localStorage.setItem('campusconnect_theme', dark ? 'dark' : 'light');
+    } catch (_) { }
   }
 
   const savedTheme = (() => {
     try {
-      return localStorage.getItem('cc-theme');
+      return localStorage.getItem('campusconnect_theme') || localStorage.getItem('cc-theme');
     } catch (_) {
       return null;
     }
@@ -150,9 +152,11 @@ import { onAuthStateChanged } from 'firebase/auth';
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   applyTheme(savedTheme === 'dark' || (!savedTheme && prefersDark));
 
-  themeToggle.addEventListener('click', () => {
-    applyTheme(!root.classList.contains('dark'));
-  });
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      applyTheme(!root.classList.contains('dark') && !root.classList.contains('dark-theme'));
+    });
+  }
 
   // ── Bookmarks ─────────────────────────────────────────────────
   document.querySelectorAll('.bookmark-btn').forEach((button) => {

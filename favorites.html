@@ -1,23 +1,29 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Saved Items · CampusConnect</title>
   <link rel="stylesheet" href="/src/styles.css" />
 </head>
+
 <body>
   <div class="app-shell">
     <div id="app-sidebar"></div>
 
     <main class="app-main">
       <h1 class="page-title">Saved Items</h1>
-      <p class="page-subtitle">Everything you've saved, in one place.</p>
+      <p class="page-subtitle">Everything you've saved across CampusConnect, in one place.</p>
 
       <div class="filter-bar" id="tab-chips">
         <button class="chip active" data-tab="all">All <span id="count-all" class="chip-count"></span></button>
-        <button class="chip" data-tab="jobs">Internships &amp; Jobs <span id="count-jobs" class="chip-count"></span></button>
+        <button class="chip" data-tab="jobs">Internships &amp; Jobs <span id="count-jobs"
+            class="chip-count"></span></button>
         <button class="chip" data-tab="events">Events <span id="count-events" class="chip-count"></span></button>
+        <button class="chip" data-tab="products">Marketplace <span id="count-products"
+            class="chip-count"></span></button>
+        <button class="chip" data-tab="services">Services <span id="count-services" class="chip-count"></span></button>
       </div>
 
       <div id="favorites-mount"></div>
@@ -28,4 +34,5 @@
 
   <script type="module" src="/src/pages/favorites.js"></script>
 </body>
+
 </html>

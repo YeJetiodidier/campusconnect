@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Marketplace - CampusConnect</title>
+  <link rel="icon" type="image/png" href="/assets/campusconnect-logo-CYjNDdbV.png" />
+  <script>if (localStorage.getItem("campusconnect_theme") === "dark") document.documentElement.classList.add("dark-theme");</script>
+  <script type="module" crossorigin src="/assets/marketplace-O-TZBDGe.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/index.esm2017-aF7IW9R1.js">
+  <link rel="modulepreload" crossorigin href="/assets/firebase-config-CsnSWmcf.js">
+  <link rel="modulepreload" crossorigin href="/assets/favoritesStore-JloAdjsq.js">
+  <link rel="modulepreload" crossorigin href="/assets/firebase-CbhDv4Ov.js">
+  <link rel="stylesheet" crossorigin href="/assets/marketplace-BRGSnNip.css">
+  <link rel="stylesheet" crossorigin href="/assets/style-DHTpZXJA.css">
+</head>
+
+<body>
+
+  <header class="navbar">
+    <div class="nav-left">
+      <a href="/" class="logo">
+        <img src="/assets/campusconnect-logo-CYjNDdbV.png" alt="CampusConnect Logo" class="logo-img">
+        <span class="logo-text">CampusConnect</span>
+      </a>
+    </div>
+    <nav class="nav-links">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="marketplace.html" class="active">Marketplace</a>
+      <a href="services.html">Services</a>
+    </nav>
+    <div class="nav-right">
+      <a href="sell.html" class="btn-primary">+ Sell / List</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="header-section">
+      <h1>Campus Marketplace</h1>
+      <div class="search-filter-group">
+        <input type="text" id="searchInput" placeholder="Search textbooks, electronics...">
+      </div>
+    </div>
+
+    <main class="grid-container">
+      <div class="grid" id="marketplaceGrid">
+        <!-- Dynamic Firebase cards render here -->
+      </div>
+    </main>
+  </div>
+
+</body>
+
+</html>

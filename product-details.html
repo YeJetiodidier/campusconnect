@@ -1,31 +1,123 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product Details - CampusConnect</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Details · CampusConnect</title>
+  <link rel="icon" type="image/png" href="/src/assets/campusconnect-logo.png" />
+  <link rel="stylesheet" href="/src/styles.css" />
+  <link rel="stylesheet" href="/src/modules/marketplace/product-details.css" />
 </head>
+
 <body>
+  <div class="app-shell">
+    <div id="app-sidebar"></div>
 
-<header class="navbar">
-    <div class="nav-left">
-      <a href="marketplace.html" class="logo">
-        <img src="logo.png" alt="CampusConnect Logo" class="logo-img">
-        <span class="logo-text">CampusConnect</span>
-      </a>
-    </div>
-    <nav class="nav-links">
-      <a href="dashboard.html">Dashboard</a>
-      <a href="marketplace.html">← Back to Marketplace</a>
-    </nav>
-  </header>
+    <main class="app-main">
+      <!-- Breadcrumb -->
+      <nav class="pd-breadcrumb">
+        <a href="/marketplace.html">Marketplace</a>
+        <span class="pd-sep">›</span>
+        <a href="#" id="pdCrumbCategory">Electronics</a>
+        <span class="pd-sep">›</span>
+        <span id="pdCrumbSubCategory">Calculators</span>
+      </nav>
 
-  <div class="container">
-    <div id="productDetailContainer" class="form-card">
-      <h2>Loading details...</h2>
-    </div>
+      <!-- Product Layout: Image Gallery + Purchase Panel -->
+      <div class="pd-layout">
+
+        <!-- Left Column: Gallery -->
+        <div class="pd-left">
+          <div class="pd-gallery">
+            <span class="pd-condition-badge" id="pdConditionBadge">👍 Like New</span>
+            <img id="pdImage" src="" alt="Product Image" />
+          </div>
+
+          <div class="pd-thumb-row" id="pdThumbnails">
+            <!-- thumbnails via JS -->
+          </div>
+        </div>
+
+        <!-- Right Column: Info + Actions -->
+        <div class="pd-right">
+          <h1 class="pd-title" id="pdTitle">Loading product...</h1>
+
+          <div class="pd-price-line">
+            <span class="pd-price" id="pdPrice">$0.00</span>
+            <span class="pd-price-old" id="pdOriginalPrice"></span>
+          </div>
+
+          <div class="pd-tags" id="pdTags">
+            <span class="pd-tag">Electronics</span>
+            <span class="pd-tag">STEM Required</span>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="pd-action-box">
+            <button type="button" class="pd-btn-primary" id="pdMessageBtn">
+              💬 Message Seller
+            </button>
+            <div class="pd-btn-row">
+              <button type="button" class="pd-btn-outline" id="pdOfferBtn">
+                Make an Offer
+              </button>
+              <button type="button" class="pd-btn-icon" id="pdBookmarkBtn" aria-label="Save Item">
+                🔖
+              </button>
+            </div>
+          </div>
+
+          <!-- Seller Card -->
+          <div class="pd-seller" id="pdSellerCard">
+            <img id="pdSellerAvatar" src="https://ui-avatars.com/api/?name=Alex+R&background=4f46e5&color=fff"
+              alt="Seller Avatar" class="pd-seller-avatar" />
+            <div class="pd-seller-info">
+              <strong id="pdSellerName">Alex R.</strong>
+              <span class="pd-seller-meta">⭐⭐⭐⭐⭐ <span class="pd-rating-count">(24)</span></span>
+            </div>
+            <span class="pd-seller-chevron">›</span>
+          </div>
+
+          <!-- Description -->
+          <div class="pd-desc-block">
+            <h3>Description</h3>
+            <p id="pdDescription">Loading description...</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Specifications Table -->
+      <section class="pd-specs">
+        <h2>Item Details</h2>
+        <table class="pd-specs-tbl" id="pdSpecsTable">
+          <tbody>
+            <tr>
+              <td class="spec-label">Brand</td>
+              <td id="specBrand">Texas Instruments</td>
+            </tr>
+            <tr>
+              <td class="spec-label">Model</td>
+              <td id="specModel">TI-84 Plus CE</td>
+            </tr>
+            <tr>
+              <td class="spec-label">Color</td>
+              <td id="specColor">Classic Black</td>
+            </tr>
+            <tr>
+              <td class="spec-label">Power Source</td>
+              <td id="specPower">Rechargeable Battery (Included)</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <div id="app-footer"></div>
+    </main>
   </div>
 
+  <script type="module" src="/src/modules/marketplace/product-details.js"></script>
 </body>
+
 </html>

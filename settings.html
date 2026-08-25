@@ -1,51 +1,177 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Settings · CampusConnect</title>
+  <link rel="icon" type="image/png" href="/src/assets/campusconnect-logo.png" />
   <link rel="stylesheet" href="/src/styles.css" />
-  <!-- Theme preload to prevent flash -->
+  <!-- Theme preload -->
   <script>
     if (localStorage.getItem("campusconnect_theme") === "dark") {
       document.documentElement.classList.add("dark-theme");
     }
   </script>
 </head>
+
 <body>
   <div class="app-shell">
     <div id="app-sidebar"></div>
 
-    <main class="app-main app-main--narrow">
+    <main class="app-main">
       <h1 class="page-title">Settings</h1>
-      <p class="page-subtitle">Manage your account preferences and app experience.</p>
+      <p class="page-subtitle">Manage your account preferences and configurations.</p>
 
-      <div class="panel" style="margin-top: 24px;">
-        <h2 style="margin-bottom: 20px;">Display Preferences</h2>
-        
-        <div class="setting-row" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 16px; margin-bottom: 16px;">
-          <div>
-            <p style="font-weight: 600; margin: 0; font-size: 14px;">Dark Mode</p>
-            <p style="color: var(--text-muted); font-size: 13px; margin: 4px 0 0;">Toggle the app's visual theme based on your preference.</p>
+      <div class="settings-layout">
+        <!-- Sidebar Navigation -->
+        <nav class="settings-nav" id="settingsNav">
+          <div class="settings-nav-item is-active" data-target="section-profile">Profile Settings</div>
+          <div class="settings-nav-item" data-target="section-account">Account Preferences</div>
+          <div class="settings-nav-item" data-target="section-notifications">Notification Management</div>
+          <div class="settings-nav-item" data-target="section-privacy">Privacy &amp; Security</div>
+        </nav>
+
+        <!-- Main Settings Content -->
+        <div class="settings-content">
+
+          <!-- 1. Profile Settings Panel -->
+          <div class="settings-card settings-panel" id="section-profile">
+            <h2 class="settings-card-title">Profile Settings</h2>
+
+            <div class="settings-profile-header">
+              <div class="settings-avatar-wrap">
+                <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="User Avatar" class="settings-avatar"
+                  id="avatarImage">
+              </div>
+              <div class="upload-info">
+                <button type="button" class="btn-upload" id="uploadAvatarBtn">Upload New Picture</button>
+                <span>JPG, GIF or PNG. Max size of 5MB.</span>
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="displayNameInput">Display Name</label>
+                <input type="text" class="form-input" id="displayNameInput" placeholder="Jane Doe">
+              </div>
+              <div class="form-group">
+                <label for="emailInput">Email Address</label>
+                <input type="email" class="form-input" id="emailInput" disabled placeholder="user@campus.edu">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="bioInput">Bio</label>
+              <textarea class="form-input" id="bioInput" rows="3" placeholder="Write a short bio..."></textarea>
+            </div>
+
+            <div class="settings-save-row">
+              <button type="button" class="btn-purple" id="saveProfileBtn">Save Changes</button>
+            </div>
           </div>
-          <label class="switch">
-            <input type="checkbox" id="theme-toggle" />
-            <span class="slider round"></span>
-          </label>
-        </div>
 
-        <h2 style="margin-top: 32px; margin-bottom: 20px;">Notifications</h2>
-        <div class="setting-row" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 16px; margin-bottom: 16px;">
-          <div>
-            <p style="font-weight: 600; margin: 0; font-size: 14px;">Email Alerts</p>
-            <p style="color: var(--text-muted); font-size: 13px; margin: 4px 0 0;">Receive emails for new messages and accepted offers.</p>
+          <!-- 2. Account Preferences Panel -->
+          <div class="settings-card settings-panel" id="section-account" style="display: none;">
+            <h2 class="settings-card-title">Account Preferences</h2>
+
+            <div class="pref-row">
+              <div class="pref-info">
+                <h4>Dark Mode</h4>
+                <p>Adjust the visual theme of the interface across all pages.</p>
+              </div>
+              <label class="purple-switch">
+                <input type="checkbox" id="theme-toggle" />
+                <span class="purple-slider"></span>
+              </label>
+            </div>
+
+            <div class="pref-row">
+              <div class="pref-info">
+                <h4>Language</h4>
+                <p>Select your preferred interface language.</p>
+              </div>
+              <select class="pref-select" id="languageSelect">
+                <option value="en">English (US)</option>
+                <option value="fr">French (FR)</option>
+              </select>
+            </div>
+
+            <div class="pref-row">
+              <div class="pref-info">
+                <h4>Timezone</h4>
+                <p>Set your local time formatting.</p>
+              </div>
+              <select class="pref-select" id="timezoneSelect">
+                <option value="WAT">West Africa Time (WAT)</option>
+                <option value="UTC">UTC</option>
+                <option value="EST">Eastern Standard Time (EST)</option>
+              </select>
+            </div>
           </div>
-          <label class="switch">
-            <input type="checkbox" id="email-toggle" checked />
-            <span class="slider round"></span>
-          </label>
-        </div>
 
+          <!-- 3. Notification Management Panel -->
+          <div class="settings-card settings-panel" id="section-notifications" style="display: none;">
+            <h2 class="settings-card-title">Notification Management</h2>
+
+            <div class="pref-row">
+              <div class="pref-info">
+                <h4>Email Alerts</h4>
+                <p>Receive notifications for important campus updates via email.</p>
+              </div>
+              <label class="purple-switch">
+                <input type="checkbox" id="notifEmailToggle" checked />
+                <span class="purple-slider"></span>
+              </label>
+            </div>
+
+            <div class="pref-row">
+              <div class="pref-info">
+                <h4>Marketplace Activity</h4>
+                <p>Get notified when someone inquires about your listed products.</p>
+              </div>
+              <label class="purple-switch">
+                <input type="checkbox" id="notifMarketplaceToggle" checked />
+                <span class="purple-slider"></span>
+              </label>
+            </div>
+
+            <div class="pref-row">
+              <div class="pref-info">
+                <h4>Event Reminders</h4>
+                <p>Receive reminders for events you have registered or favorited.</p>
+              </div>
+              <label class="purple-switch">
+                <input type="checkbox" id="notifEventsToggle" checked />
+                <span class="purple-slider"></span>
+              </label>
+            </div>
+          </div>
+
+          <!-- 4. Privacy & Security Panel -->
+          <div class="settings-card settings-panel" id="section-privacy" style="display: none;">
+            <h2 class="settings-card-title">Privacy &amp; Security</h2>
+
+            <form id="passwordChangeForm" style="display: flex; flex-direction: column; gap: 16px;">
+              <div class="form-group">
+                <label for="newPasswordInput">New Password</label>
+                <input type="password" class="form-input" id="newPasswordInput" placeholder="Minimum 6 characters"
+                  required>
+              </div>
+
+              <div class="form-group">
+                <label for="confirmPasswordInput">Confirm New Password</label>
+                <input type="password" class="form-input" id="confirmPasswordInput" placeholder="Re-enter new password"
+                  required>
+              </div>
+
+              <div class="settings-save-row">
+                <button type="submit" class="btn-purple" id="changePasswordBtn">Update Password</button>
+              </div>
+            </form>
+          </div>
+
+        </div>
       </div>
 
       <div id="app-footer"></div>
@@ -54,4 +180,5 @@
 
   <script type="module" src="/src/pages/settings.js"></script>
 </body>
+
 </html>

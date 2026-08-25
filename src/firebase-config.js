@@ -6,7 +6,7 @@
 // Uses the "firebase" npm package (run `npm install` first) — Vite bundles
 // it, so every page that imports from here shares one initialized app.
 
-import { initializeApp } from "firebase/app";
+import { initializeApp, getApps, getApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
@@ -20,7 +20,7 @@ const firebaseConfig = {
   appId: "1:118873847122:web:ca531760da697841d7b68b",
 };
 
-const app = initializeApp(firebaseConfig);
+const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 
 export const db = getFirestore(app);
 export const auth = getAuth(app);

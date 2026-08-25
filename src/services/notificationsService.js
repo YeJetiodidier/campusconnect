@@ -25,9 +25,21 @@ function notificationsRef(uid) {
 /** Live-subscribe to a user's notification feed, most recent first. Returns an unsubscribe function. */
 export function subscribeToNotifications(uid, callback, max = 30) {
   const q = query(notificationsRef(uid), orderBy("createdDate", "desc"), limit(max));
-  return onSnapshot(q, (snapshot) => {
-    callback(snapshot.docs.map((d) => ({ id: d.id, ...d.data() })));
-  });
+  return onSnapshot(
+    q,
+    (snapshot) => {
+      callback(snapshot.docs.map((d) => ({ id: d.id, ...d.data() })));
+    },
+    (error) => {
+      console.warn("Firestore index error in notifications, falling back to basic collection query:", error);
+      // Fallback query without orderBy if index is missing in Firestore
+      return onSnapshot(notificationsRef(uid), (fallbackSnapshot) => {
+        const items = fallbackSnapshot.docs.map((d) => ({ id: d.id, ...d.data() }));
+        items.sort((a, b) => (b.createdDate?.seconds || 0) - (a.createdDate?.seconds || 0));
+        callback(items.slice(0, max));
+      });
+    }
+  );
 }
 
 /** Mark a single notification as read. */

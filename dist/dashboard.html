@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard · CampusConnect</title>
+  <link rel="icon" type="image/png" href="/assets/campusconnect-logo-CYjNDdbV.png" />
+  <script type="module" crossorigin src="/assets/dashboard-B7Etq-qd.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/index.esm2017-aF7IW9R1.js">
+  <link rel="modulepreload" crossorigin href="/assets/firebase-config-CsnSWmcf.js">
+  <link rel="modulepreload" crossorigin href="/assets/footer-DPNrPZWS.js">
+  <link rel="modulepreload" crossorigin href="/assets/renderCard-CLS294Wn.js">
+  <link rel="modulepreload" crossorigin href="/assets/internshipsService-B4iR-s-o.js">
+  <link rel="modulepreload" crossorigin href="/assets/eventsService-B0KpubtB.js">
+  <link rel="modulepreload" crossorigin href="/assets/favoritesStore-JloAdjsq.js">
+  <link rel="stylesheet" crossorigin href="/assets/footer-BUVkRhBq.css">
+</head>
+
+<body>
+  <div class="app-shell">
+    <div id="app-sidebar"></div>
+
+    <main class="app-main">
+      <h1 class="page-title">Dashboard</h1>
+      <p class="page-subtitle">Welcome back to your campus hub.</p>
+
+      <div class="dashboard-top">
+        <div class="hero-card">
+          <h2 id="hero-greeting">Good Morning!</h2>
+          <p id="hero-message">Check out your latest notifications and saved opportunities.</p>
+          <a href="/notifications.html"><button class="hero-cta">View Notifications <span
+                class="icon">→</span></button></a>
+        </div>
+
+        <div class="stats-col">
+          <a href="/favorites.html" class="stat-card">
+            <div class="stat-icon stat-icon--blue" id="stat-icon-jobs"></div>
+            <div>
+              <p class="stat-label">Saved Internships</p>
+              <p class="stat-value" id="summary-jobs">…</p>
+            </div>
+          </a>
+          <a href="/favorites.html" class="stat-card">
+            <div class="stat-icon stat-icon--amber" id="stat-icon-events"></div>
+            <div>
+              <p class="stat-label">Saved Events</p>
+              <p class="stat-value" id="summary-events">…</p>
+            </div>
+          </a>
+          <a href="/notifications.html" class="stat-card">
+            <div class="stat-icon stat-icon--rose" id="stat-icon-notifs"></div>
+            <div>
+              <p class="stat-label">Unread Notifications</p>
+              <p class="stat-value" id="summary-notifications">…</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="dashboard-columns">
+        <div>
+          <section class="section">
+            <div class="section-header">
+              <h2>New Internships &amp; Jobs</h2>
+              <a href="/internships.html">View all</a>
+            </div>
+            <div id="latest-jobs-mount"></div>
+
+            <div class="cta-banner">
+              <span id="cta-icon"></span>
+              <div class="cta-banner-text">
+                <p>Looking for more opportunities?</p>
+                <p>Browse every open internship and job posted by verified recruiters.</p>
+              </div>
+              <a href="/internships.html"><button class="btn btn-primary">Browse</button></a>
+            </div>
+          </section>
+        </div>
+
+        <div>
+          <div class="panel">
+            <div class="panel-header">
+              <h2>Notifications</h2>
+              <a href="/notifications.html">See all</a>
+            </div>
+            <div id="notifications-panel-mount"></div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <h2>Upcoming Events</h2>
+              <a href="/events.html">See all</a>
+            </div>
+            <div id="events-panel-mount"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="app-footer"></div>
+    </main>
+  </div>
+
+</body>
+
+</html>

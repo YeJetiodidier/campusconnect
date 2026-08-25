@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Campus Marketplace - CampusConnect</title>
+  <link rel="icon" type="image/png" href="/src/assets/campusconnect-logo.png" />
   <link rel="stylesheet" href="css/style.css">
+  <script>if (localStorage.getItem("campusconnect_theme") === "dark") document.documentElement.classList.add("dark-theme");</script>
 </head>
+
 <body>
 
-<header class="navbar">
+  <header class="navbar">
     <div class="nav-left">
-      <a href="marketplace.html" class="logo">
-        <img src="logo.png" alt="CampusConnect Logo" class="logo-img">
+      <a href="/" class="logo">
+        <img src="/src/assets/campusconnect-logo.png" alt="CampusConnect Logo" class="logo-img">
         <span class="logo-text">CampusConnect</span>
       </a>
     </div>
@@ -41,5 +45,7 @@
   </div>
 
   <script type="module" src="js/firebase-main.js"></script>
+  <script type="module" src="/src/main.js"></script>
 </body>
+
 </html>

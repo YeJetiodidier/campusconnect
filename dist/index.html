@@ -1,29 +1,940 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CampusConnect - Home</title>
-    <script type="module" crossorigin src="/assets/index-CTYCIJO6.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CsUDhMuy.css">
-  </head>
-  <body>
-    <div id="app">
-      <nav>
-        <a href="/">Home</a>
-        <a href="/dashboard.html">Dashboard</a>
-        <a href="/marketplace.html">Marketplace</a>
-        <a href="/services.html">Services</a>
-        <a href="/internships.html">Internships</a>
-        <a href="/events.html">Events</a>
-        <a href="/announcements.html">Announcements</a>
-        <a href="/profile.html">Profile</a>
-        <a href="/referrals.html">Referrals</a>
-      </nav>
-      <main>
-        <h1>Home - CampusConnect</h1>
-        <p>A centralized university ecosystem backend entirely by Firebase.</p>
-      </main>
-    </div>
-  </body>
+<html class="scroll-smooth" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta name="description"
+    content="CampusConnect — the exclusive university ecosystem to trade gear, discover student-run services, and land your next internship." />
+  <meta name="theme-color" content="#4648d4" />
+  <title>CampusConnect | Unlock Your Campus Potential</title>
+  <link rel="icon" type="image/png" href="/assets/campusconnect-logo-CYjNDdbV.png" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
+    rel="stylesheet" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-surface-variant": "#464554",
+            "tertiary-fixed-dim": "#4edea3",
+            "on-primary-fixed-variant": "#2f2ebe",
+            "outline-variant": "#c7c4d7",
+            "surface-bright": "#f8f9ff",
+            "on-tertiary": "#ffffff",
+            "secondary-container": "#fea619",
+            "outline": "#767586",
+            "inverse-surface": "#213145",
+            "surface-container-lowest": "#ffffff",
+            "primary-fixed": "#e1e0ff",
+            "secondary-fixed-dim": "#ffb95f",
+            "primary-container": "#6063ee",
+            "on-error": "#ffffff",
+            "on-primary-fixed": "#07006c",
+            "on-secondary-container": "#684000",
+            "on-primary": "#ffffff",
+            "error": "#ba1a1a",
+            "error-container": "#ffdad6",
+            "surface-container-highest": "#d3e4fe",
+            "on-background": "#0b1c30",
+            "on-tertiary-container": "#000703",
+            "inverse-primary": "#c0c1ff",
+            "surface-container": "#e5eeff",
+            "on-tertiary-fixed": "#002113",
+            "tertiary-container": "#00885d",
+            "on-surface": "#0b1c30",
+            "on-secondary-fixed-variant": "#653e00",
+            "surface-variant": "#d3e4fe",
+            "on-error-container": "#93000a",
+            "surface-container-high": "#dce9ff",
+            "secondary-fixed": "#ffddb8",
+            "surface-dim": "#cbdbf5",
+            "tertiary": "#006c49",
+            "primary-fixed-dim": "#c0c1ff",
+            "on-secondary-fixed": "#2a1700",
+            "surface-container-low": "#eff4ff",
+            "surface-tint": "#494bd6",
+            "surface": "#f8f9ff",
+            "inverse-on-surface": "#eaf1ff",
+            "on-primary-container": "#fffbff",
+            "background": "#f8f9ff",
+            "tertiary-fixed": "#6ffbbe",
+            "secondary": "#855300",
+            "primary": "#4648d4",
+            "on-tertiary-fixed-variant": "#005236",
+            "on-secondary": "#ffffff"
+          },
+          borderRadius: {
+            DEFAULT: "0.25rem",
+            lg: "0.5rem",
+            xl: "0.75rem",
+            "2xl": "1rem",
+            "3xl": "1.5rem",
+            full: "9999px"
+          },
+          spacing: {
+            lg: "40px",
+            xl: "64px",
+            base: "8px",
+            "container-max": "1280px",
+            xs: "4px",
+            sm: "12px",
+            gutter: "24px",
+            md: "24px"
+          },
+          fontFamily: {
+            "headline-md": ["Plus Jakarta Sans", "system-ui", "sans-serif"],
+            "label-md": ["Inter", "system-ui", "sans-serif"],
+            "body-md": ["Inter", "system-ui", "sans-serif"],
+            "body-lg": ["Inter", "system-ui", "sans-serif"],
+            "label-sm": ["Inter", "system-ui", "sans-serif"],
+            "headline-lg-mobile": ["Plus Jakarta Sans", "system-ui", "sans-serif"],
+            "body-sm": ["Inter", "system-ui", "sans-serif"],
+            "headline-lg": ["Plus Jakarta Sans", "system-ui", "sans-serif"],
+            display: ["Plus Jakarta Sans", "system-ui", "sans-serif"]
+          },
+          fontSize: {
+            "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+            "label-md": ["14px", { lineHeight: "16px", letterSpacing: "0.01em", fontWeight: "600" }],
+            "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+            "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+            "label-sm": ["12px", { lineHeight: "16px", fontWeight: "500" }],
+            "headline-lg-mobile": ["24px", { lineHeight: "32px", fontWeight: "700" }],
+            "body-sm": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+            "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "700" }],
+            display: ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "800" }]
+          },
+          boxShadow: {
+            soft: "0 4px 24px -4px rgba(70, 72, 212, 0.12)",
+            card: "0 2px 12px -2px rgba(11, 28, 48, 0.08)"
+          },
+          animation: {
+            "fade-in": "fadeIn 0.5s ease-out forwards",
+            "slide-up": "slideUp 0.45s ease-out forwards",
+            "pulse-soft": "pulseSoft 2.5s ease-in-out infinite"
+          },
+          keyframes: {
+            fadeIn: { "0%": { opacity: "0" }, "100%": { opacity: "1" } },
+            slideUp: { "0%": { opacity: "0", transform: "translateY(16px)" }, "100%": { opacity: "1", transform: "translateY(0)" } },
+            pulseSoft: { "0%, 100%": { opacity: "1" }, "50%": { opacity: "0.7" } }
+          }
+        }
+      }
+    };
+  </script>
+
+  <script>if (localStorage.getItem("campusconnect_theme") === "dark") document.documentElement.classList.add("dark-theme");</script>
+  <script type="module" crossorigin src="/assets/index-CA8NLVW2.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/index.esm2017-aF7IW9R1.js">
+  <link rel="modulepreload" crossorigin href="/assets/firebase-CbhDv4Ov.js">
+  <link rel="stylesheet" crossorigin href="/assets/index-DcUXRbxT.css">
+</head>
+
+<body class="bg-surface font-body-md text-on-surface antialiased">
+  <!-- Skip link -->
+  <a href="#main"
+    class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-primary focus:text-on-primary focus:px-4 focus:py-2 focus:rounded-lg focus:outline-none">
+    Skip to main content
+  </a>
+
+  <!-- Reading progress -->
+  <div id="pageProgress"
+    class="fixed top-0 left-0 h-[3px] w-0 bg-primary z-[9999] transition-[width] duration-75 ease-linear"
+    role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Reading progress"></div>
+
+  <!-- Toast -->
+  <div id="toast"
+    class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[9998] opacity-0 pointer-events-none translate-y-3 bg-inverse-surface text-inverse-on-surface px-5 py-3 rounded-xl shadow-lg text-body-sm font-medium flex items-center gap-2 max-w-[90vw]"
+    role="status" aria-live="polite">
+    <span class="material-symbols-outlined text-[20px]" id="toastIcon">check_circle</span>
+    <span id="toastMsg">Done</span>
+  </div>
+
+  <!-- TopNavBar -->
+  <header id="siteHeader"
+    class="fixed top-0 left-0 right-0 z-50 bg-surface/80 backdrop-blur-md border-b border-transparent transition-[box-shadow,border-color] duration-300">
+    <nav class="flex justify-between items-center w-full px-4 sm:px-6 max-w-container-max mx-auto h-16 sm:h-20"
+      aria-label="Primary">
+      <div class="flex items-center gap-2 sm:gap-4 min-w-0">
+        <a class="block h-8 sm:h-10 shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded"
+          href="/" aria-label="CampusConnect home">
+          <img alt="CampusConnect Logo" class="h-full w-auto object-contain" src="/assets/campusconnect-logo-CYjNDdbV.png" />
+        </a>
+        <button id="mobileMenuBtn" type="button" aria-label="Open navigation menu" aria-expanded="false"
+          aria-controls="mobileMenu"
+          class="xl:hidden p-1.5 rounded-lg border border-outline-variant text-on-surface hover:bg-surface-container-low transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary flex items-center justify-center">
+          <span class="material-symbols-outlined text-[20px]" id="mobileMenuIcon">menu</span>
+        </button>
+        <div class="hidden xl:flex items-center gap-md ml-4">
+          <a class="nav-link active text-primary font-label-md text-label-md" href="#top" data-section="top">Home</a>
+          <a class="nav-link text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 font-label-md text-label-md"
+            href="#marketplace" data-section="marketplace">Marketplace</a>
+          <a class="nav-link text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 font-label-md text-label-md"
+            href="#services" data-section="services">Services</a>
+          <a class="nav-link text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 font-label-md text-label-md"
+            href="#internships" data-section="internships">Internships</a>
+          <a class="nav-link text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 font-label-md text-label-md"
+            href="#events" data-section="events">Events</a>
+        </div>
+      </div>
+      <div class="flex items-center gap-1.5 sm:gap-3 shrink-0">
+        <div
+          class="hidden lg:flex items-center bg-surface-container-low px-sm py-xs rounded-full border border-outline-variant focus-within:ring-2 focus-within:ring-primary/40 focus-within:border-primary transition-shadow">
+          <span class="material-symbols-outlined text-on-surface-variant mr-xs text-[20px]"
+            aria-hidden="true">search</span>
+          <input
+            class="bg-transparent border-none focus:ring-0 text-body-sm w-44 placeholder:text-on-surface-variant/70"
+            placeholder="Search campus…" type="search" id="headerSearch" aria-label="Search CampusConnect" />
+        </div>
+        <button type="button" id="themeToggle"
+          class="p-1.5 sm:p-2 rounded-full border border-outline-variant text-on-surface-variant hover:text-primary hover:border-primary/40 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary flex items-center justify-center"
+          aria-label="Toggle dark mode">
+          <span class="material-symbols-outlined text-[18px] sm:text-[22px]" id="themeIcon">dark_mode</span>
+        </button>
+        <a href="/marketplace.html"
+          class="hidden sm:inline-flex px-md py-xs bg-primary text-on-primary rounded-full font-label-md text-label-md active:scale-95 transition-transform hover:bg-primary-container focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+          Sell / List
+        </a>
+        <a href="/login.html" id="headerLoginBtn"
+          class="px-3 py-1.5 sm:px-md sm:py-xs border border-outline-variant rounded-full font-label-md text-label-sm sm:text-label-md hover:bg-surface-container-low transition-colors">Log
+          in</a>
+        <a href="/dashboard.html" id="headerDashboardBtn"
+          class="hidden px-3 py-1.5 sm:px-md sm:py-xs bg-primary text-on-primary rounded-full font-label-md text-label-sm sm:text-label-md hover:bg-primary-container transition-colors flex items-center gap-1">
+          <span class="material-symbols-outlined text-[16px] sm:text-[18px]">dashboard</span>
+          <span>Dashboard</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+  <!-- Mobile menu -->
+  <div id="mobileMenu"
+    class="hidden absolute top-20 left-0 right-0 bg-surface border-b border-outline-variant shadow-lg md:hidden opacity-0 -translate-y-2"
+    role="navigation" aria-label="Mobile">
+    <div class="flex flex-col gap-1 p-md">
+      <a class="text-on-surface font-label-md py-3 px-3 rounded-lg hover:bg-surface-container-low transition-colors"
+        href="#marketplace">Marketplace</a>
+      <a class="text-on-surface font-label-md py-3 px-3 rounded-lg hover:bg-surface-container-low transition-colors"
+        href="#services">Services</a>
+      <a class="text-on-surface font-label-md py-3 px-3 rounded-lg hover:bg-surface-container-low transition-colors"
+        href="#internships">Internships</a>
+      <a class="text-on-surface font-label-md py-3 px-3 rounded-lg hover:bg-surface-container-low transition-colors"
+        href="#events">Events</a>
+      <div class="pt-2 border-t border-outline-variant mt-1">
+        <a href="/marketplace.html"
+          class="w-full block text-center py-3 px-3 bg-primary text-on-primary rounded-lg font-label-md">Sell /
+          List</a>
+        <a href="/login.html" id="mobileLoginBtn"
+          class="mt-2 w-full block text-center py-3 px-3 border border-primary text-primary rounded-lg font-label-md">Login</a>
+        <a href="/dashboard.html" id="mobileDashboardBtn"
+          class="hidden mt-2 w-full block text-center py-3 px-3 bg-primary text-on-primary rounded-lg font-label-md">Dashboard</a>
+      </div>
+    </div>
+  </div>
+  </header>
+
+  <main id="main" class="pt-20">
+    <!-- Hero -->
+    <section id="top" class="relative overflow-hidden bg-surface-container-low py-xl lg:py-28">
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-primary/10 blur-3xl"></div>
+        <div class="absolute bottom-0 -left-16 w-72 h-72 rounded-full bg-tertiary/10 blur-3xl"></div>
+        <div
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-secondary/5 blur-3xl">
+        </div>
+      </div>
+      <div class="relative z-10 px-gutter max-w-container-max mx-auto text-center">
+        <p
+          class="inline-flex items-center gap-2 px-3 py-1.5 mb-md rounded-full bg-primary/10 text-primary text-label-sm font-semibold tracking-wide uppercase">
+          <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse-soft" aria-hidden="true"></span>
+          Trusted by 5,000+ students
+        </p>
+        <h1 class="font-display text-display text-on-surface max-w-4xl mx-auto mb-md">
+          Unlock Your <span class="text-primary">Campus Potential</span>
+        </h1>
+        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-lg">
+          The exclusive university ecosystem to trade gear, discover student-run services, and land your next dream
+          internship.
+        </p>
+        <form id="heroSearchForm"
+          class="max-w-3xl mx-auto mb-lg p-1.5 sm:p-base bg-surface rounded-2xl shadow-soft flex flex-col sm:flex-row gap-1.5 sm:gap-xs border border-outline-variant/60"
+          role="search">
+          <div class="flex-1 flex items-center px-md">
+            <span class="material-symbols-outlined text-primary mr-sm" aria-hidden="true">search</span>
+            <input
+              class="w-full border-none focus:ring-0 bg-transparent text-body-md py-sm placeholder:text-on-surface-variant/60"
+              placeholder="Search products, services, internships…" type="search" id="heroSearch"
+              aria-label="Search products, services, and internships" autocomplete="off" />
+          </div>
+          <button type="submit"
+            class="bg-primary text-on-primary px-lg py-md rounded-xl font-label-md text-label-md hover:bg-primary-container transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 shrink-0">
+            Search Now
+          </button>
+        </form>
+        <div class="flex flex-wrap justify-center gap-md">
+          <a href="#marketplace"
+            class="flex items-center gap-sm px-lg py-md bg-secondary text-on-secondary rounded-xl font-label-md text-label-md hover:opacity-90 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2">
+            <span class="material-symbols-outlined" aria-hidden="true">shopping_bag</span>
+            Browse Marketplace
+          </a>
+          <a href="#services"
+            class="flex items-center gap-sm px-lg py-md border-2 border-primary text-primary rounded-xl font-label-md text-label-md hover:bg-primary/5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+            <span class="material-symbols-outlined" aria-hidden="true">explore</span>
+            Explore Services
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust bar -->
+    <section class="px-gutter py-md bg-white border-y border-outline-variant" aria-label="Key benefits">
+      <div class="max-w-container-max mx-auto grid grid-cols-1 sm:grid-cols-3 gap-md text-center">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-1 sm:gap-2">
+          <span class="material-symbols-outlined text-primary text-[28px]" aria-hidden="true">verified</span>
+          <div>
+            <strong class="block">Student-focused</strong>
+            <p class="text-on-surface-variant text-body-sm">Built around campus needs.</p>
+          </div>
+        </div>
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-1 sm:gap-2">
+          <span class="material-symbols-outlined text-tertiary text-[28px]" aria-hidden="true">groups</span>
+          <div>
+            <strong class="block">Community-powered</strong>
+            <p class="text-on-surface-variant text-body-sm">Connect with fellow students.</p>
+          </div>
+        </div>
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-1 sm:gap-2">
+          <span class="material-symbols-outlined text-secondary text-[28px]" aria-hidden="true">work</span>
+          <div>
+            <strong class="block">Career-ready</strong>
+            <p class="text-on-surface-variant text-body-sm">Find opportunities that fit.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="py-xl px-gutter max-w-container-max mx-auto" aria-labelledby="how-heading">
+      <div class="text-center mb-lg">
+        <h2 id="how-heading" class="font-headline-lg text-headline-lg text-on-surface mb-xs">How CampusConnect works
+        </h2>
+        <p class="text-on-surface-variant font-body-md max-w-xl mx-auto">Three simple steps to buy, sell, or grow on
+          campus.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+        <div
+          class="relative bg-white border border-outline-variant rounded-2xl p-lg text-center hover-lift shadow-card">
+          <div
+            class="w-12 h-12 mx-auto mb-md rounded-full bg-primary/10 text-primary flex items-center justify-center font-headline-md font-bold">
+            1</div>
+          <h3 class="font-headline-md text-headline-md mb-sm">Create your profile</h3>
+          <p class="text-on-surface-variant text-body-sm">Sign up with your university email and verify your student
+            status in minutes.</p>
+        </div>
+        <div
+          class="relative bg-white border border-outline-variant rounded-2xl p-lg text-center hover-lift shadow-card">
+          <div
+            class="w-12 h-12 mx-auto mb-md rounded-full bg-secondary/15 text-secondary flex items-center justify-center font-headline-md font-bold">
+            2</div>
+          <h3 class="font-headline-md text-headline-md mb-sm">List or browse</h3>
+          <p class="text-on-surface-variant text-body-sm">Post gear, offer services, or explore internships tailored to
+            your campus.</p>
+        </div>
+        <div
+          class="relative bg-white border border-outline-variant rounded-2xl p-lg text-center hover-lift shadow-card">
+          <div
+            class="w-12 h-12 mx-auto mb-md rounded-full bg-tertiary/15 text-tertiary flex items-center justify-center font-headline-md font-bold">
+            3</div>
+          <h3 class="font-headline-md text-headline-md mb-sm">Connect & succeed</h3>
+          <p class="text-on-surface-variant text-body-sm">Message peers, book services, and land roles — all in one
+            trusted place.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Marketplace -->
+    <section id="marketplace" class="py-xl px-gutter max-w-container-max mx-auto">
+      <div class="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-md mb-lg">
+        <div>
+          <h2 class="font-headline-lg text-headline-lg text-on-surface">Trending on Marketplace</h2>
+          <p class="text-on-surface-variant font-body-md">Quality items from your fellow students.</p>
+        </div>
+        <a class="text-primary font-label-md flex items-center gap-xs hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+          href="/marketplace.html">
+          View All Marketplace <span class="material-symbols-outlined text-sm" aria-hidden="true">arrow_forward</span>
+        </a>
+      </div>
+      <!-- Category filters -->
+      <div class="flex flex-wrap gap-2 mb-md" role="group" aria-label="Filter by category">
+        <button type="button"
+          class="filter-chip active px-3 py-1.5 rounded-full border border-outline-variant text-label-sm font-medium transition-colors hover:border-primary/50"
+          data-filter="all">All</button>
+        <button type="button"
+          class="filter-chip px-3 py-1.5 rounded-full border border-outline-variant text-label-sm font-medium text-on-surface-variant transition-colors hover:border-primary/50"
+          data-filter="textbook">Textbooks</button>
+        <button type="button"
+          class="filter-chip px-3 py-1.5 rounded-full border border-outline-variant text-label-sm font-medium text-on-surface-variant transition-colors hover:border-primary/50"
+          data-filter="tech">Tech</button>
+        <button type="button"
+          class="filter-chip px-3 py-1.5 rounded-full border border-outline-variant text-label-sm font-medium text-on-surface-variant transition-colors hover:border-primary/50"
+          data-filter="decor">Decor</button>
+        <button type="button"
+          class="filter-chip px-3 py-1.5 rounded-full border border-outline-variant text-label-sm font-medium text-on-surface-variant transition-colors hover:border-primary/50"
+          data-filter="furniture">Furniture</button>
+      </div>
+      <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+        <!-- Product 1 -->
+        <article
+          class="product-card group bg-white rounded-xl overflow-hidden border border-outline-variant hover-lift shadow-card"
+          data-category="textbook">
+          <div class="aspect-[4/3] relative overflow-hidden bg-surface-container-low">
+            <img class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+              loading="lazy" alt="Organic Chemistry textbook on a desk"
+              src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&h=450&fit=crop" />
+            <div
+              class="absolute top-sm right-sm bg-surface/90 backdrop-blur-md px-sm py-1 rounded-full text-primary font-label-md shadow-sm">
+              45.00 FCFA
+            </div>
+          </div>
+          <div class="p-md">
+            <div class="flex items-center gap-xs mb-xs">
+              <span
+                class="px-xs py-0.5 bg-surface-container-high text-primary text-[10px] uppercase font-bold rounded">Textbook</span>
+            </div>
+            <h3 class="font-headline-md text-headline-md mb-xs line-clamp-1">Organic Chemistry Textbook</h3>
+            <div class="flex items-center gap-sm">
+              <div class="w-6 h-6 rounded-full bg-surface-container-highest overflow-hidden shrink-0">
+                <img class="w-full h-full object-cover" loading="lazy" alt=""
+                  src="https://ui-avatars.com/api/?name=Alex+R&background=635bff&color=fff&size=40" />
+              </div>
+              <span class="text-on-surface-variant text-body-sm">Alex R. · 3rd Year</span>
+            </div>
+          </div>
+        </article>
+        <!-- Product 2 -->
+        <article
+          class="product-card group bg-white rounded-xl overflow-hidden border border-outline-variant hover-lift shadow-card"
+          data-category="decor">
+          <div class="aspect-[4/3] relative overflow-hidden bg-surface-container-low">
+            <img class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+              loading="lazy" alt="Modern dorm desk lamp with warm LED glow"
+              src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=600&h=450&fit=crop" />
+            <div
+              class="absolute top-sm right-sm bg-surface/90 backdrop-blur-md px-sm py-1 rounded-full text-primary font-label-md shadow-sm">
+              15.00 FCFA
+            </div>
+          </div>
+          <div class="p-md">
+            <div class="flex items-center gap-xs mb-xs">
+              <span
+                class="px-xs py-0.5 bg-surface-container-high text-primary text-[10px] uppercase font-bold rounded">Decor</span>
+            </div>
+            <h3 class="font-headline-md text-headline-md mb-xs line-clamp-1">Dorm Lamp (Warm LED)</h3>
+            <div class="flex items-center gap-sm">
+              <div class="w-6 h-6 rounded-full bg-surface-container-highest overflow-hidden shrink-0">
+                <img class="w-full h-full object-cover" loading="lazy" alt=""
+                  src="https://ui-avatars.com/api/?name=Sarah+L&background=a855f7&color=fff&size=40" />
+              </div>
+              <span class="text-on-surface-variant text-body-sm">Sarah L. · Senior</span>
+            </div>
+          </div>
+        </article>
+        <!-- Product 3 -->
+        <article
+          class="product-card group bg-white rounded-xl overflow-hidden border border-outline-variant hover-lift shadow-card"
+          data-category="tech">
+          <div class="aspect-[4/3] relative overflow-hidden bg-surface-container-low">
+            <img class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+              loading="lazy" alt="27-inch 4K gaming monitor on a desk"
+              src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?w=600&h=450&fit=crop" />
+            <div
+              class="absolute top-sm right-sm bg-surface/90 backdrop-blur-md px-sm py-1 rounded-full text-primary font-label-md shadow-sm">
+              180.00 FCFA
+            </div>
+          </div>
+          <div class="p-md">
+            <div class="flex items-center gap-xs mb-xs">
+              <span
+                class="px-xs py-0.5 bg-surface-container-high text-primary text-[10px] uppercase font-bold rounded">Tech</span>
+            </div>
+            <h3 class="font-headline-md text-headline-md mb-xs line-clamp-1">27" Gaming Monitor</h3>
+            <div class="flex items-center gap-sm">
+              <div class="w-6 h-6 rounded-full bg-surface-container-highest overflow-hidden shrink-0">
+                <img class="w-full h-full object-cover" loading="lazy" alt=""
+                  src="https://ui-avatars.com/api/?name=Kevin+M&background=22c55e&color=fff&size=40" />
+              </div>
+              <span class="text-on-surface-variant text-body-sm">Kevin M. · Grad Student</span>
+            </div>
+          </div>
+        </article>
+        <!-- Product 4 -->
+        <article
+          class="product-card group bg-white rounded-xl overflow-hidden border border-outline-variant hover-lift shadow-card"
+          data-category="furniture">
+          <div class="aspect-[4/3] relative overflow-hidden bg-surface-container-low">
+            <img class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+              loading="lazy" alt="Ergonomic mesh office chair"
+              src="https://images.unsplash.com/photo-1505798577917-a65157d3320a?w=600&h=450&fit=crop" />
+            <div
+              class="absolute top-sm right-sm bg-surface/90 backdrop-blur-md px-sm py-1 rounded-full text-primary font-label-md shadow-sm">
+              60.00 FCFA
+            </div>
+          </div>
+          <div class="p-md">
+            <div class="flex items-center gap-xs mb-xs">
+              <span
+                class="px-xs py-0.5 bg-surface-container-high text-primary text-[10px] uppercase font-bold rounded">Furniture</span>
+            </div>
+            <h3 class="font-headline-md text-headline-md mb-xs line-clamp-1">Ergonomic Desk Chair</h3>
+            <div class="flex items-center gap-sm">
+              <div class="w-6 h-6 rounded-full bg-surface-container-highest overflow-hidden shrink-0">
+                <img class="w-full h-full object-cover" loading="lazy" alt=""
+                  src="https://ui-avatars.com/api/?name=Jessica+P&background=f97316&color=fff&size=40" />
+              </div>
+              <span class="text-on-surface-variant text-body-sm">Jessica P. · 2nd Year</span>
+            </div>
+          </div>
+        </article>
+      </div>
+      <p id="noProductsMsg" class="hidden text-center text-on-surface-variant py-xl">No items in this category yet.
+        Check back soon!</p>
+    </section>
+
+    <!-- Featured Services -->
+    <section id="services" class="bg-surface-container py-xl">
+      <div class="px-gutter max-w-container-max mx-auto">
+        <div class="mb-lg">
+          <h2 class="font-headline-lg text-headline-lg text-on-surface">Student-Run Services</h2>
+          <p class="text-on-surface-variant font-body-md">Support your peers and get expert help from within the
+            community.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+          <div
+            class="md:col-span-2 glass-card rounded-2xl p-lg flex flex-col md:flex-row gap-lg items-center hover-lift">
+            <div class="flex-1">
+              <span class="text-tertiary font-label-md uppercase tracking-wider mb-xs block">Top Rated</span>
+              <h3 class="font-display text-headline-lg mb-sm">Professional Graphic Design</h3>
+              <p class="text-on-surface-variant font-body-md mb-lg">Need a club poster, social media kit, or logo?
+                Specializing in modern academic and event branding. Over 50+ campus projects completed.</p>
+              <div class="flex items-center gap-md flex-wrap">
+                <a href="/services.html"
+                  class="px-lg py-md bg-primary text-on-primary rounded-xl font-label-md hover:bg-primary-container transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">Book
+                  Service</a>
+                <span class="font-headline-md text-primary">25 FCFA/hr</span>
+              </div>
+            </div>
+            <div class="w-full md:w-64 h-64 rounded-xl overflow-hidden shadow-md shrink-0">
+              <img class="w-full h-full object-cover" loading="lazy" alt="Graphic design work on a tablet"
+                src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=600&h=600&fit=crop" />
+            </div>
+          </div>
+          <div
+            class="bg-white rounded-2xl p-lg border border-outline-variant flex flex-col justify-between hover-lift shadow-card">
+            <div>
+              <div
+                class="w-12 h-12 bg-tertiary-container/20 text-tertiary rounded-full flex items-center justify-center mb-md">
+                <span class="material-symbols-outlined" aria-hidden="true">calculate</span>
+              </div>
+              <h3 class="font-headline-md text-headline-md mb-sm">Math & Physics Tutoring</h3>
+              <p class="text-on-surface-variant text-body-sm">Struggling with Calculus or Mechanics? Personalized 1-on-1
+                sessions.</p>
+            </div>
+            <div class="mt-lg pt-lg border-t border-outline-variant flex justify-between items-center">
+              <span class="font-label-md text-primary">18 FCFA/hr</span>
+              <a class="text-on-surface font-label-md underline hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+                href="/services.html">Learn More</a>
+            </div>
+          </div>
+          <div
+            class="bg-white rounded-2xl p-lg border border-outline-variant flex flex-col justify-between hover-lift shadow-card">
+            <div>
+              <div
+                class="w-12 h-12 bg-secondary-container/20 text-secondary rounded-full flex items-center justify-center mb-md">
+                <span class="material-symbols-outlined" aria-hidden="true">camera</span>
+              </div>
+              <h3 class="font-headline-md text-headline-md mb-sm">Campus Photography</h3>
+              <p class="text-on-surface-variant text-body-sm">Professional graduation portraits and club event coverage.
+                48-hour turnaround.</p>
+            </div>
+            <div class="mt-lg pt-lg border-t border-outline-variant flex justify-between items-center">
+              <span class="font-label-md text-primary">40 FCFA/hr</span>
+              <a class="text-on-surface font-label-md underline hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+                href="/services.html">Learn More</a>
+            </div>
+          </div>
+          <div
+            class="md:col-span-2 bg-primary text-on-primary rounded-2xl p-lg flex flex-col md:flex-row gap-lg items-center hover-lift overflow-hidden relative">
+            <div class="absolute -right-16 -bottom-16 w-64 h-64 bg-white/10 rounded-full blur-3xl" aria-hidden="true">
+            </div>
+            <div class="flex-1 relative z-10">
+              <h3 class="font-display text-headline-lg mb-sm">Custom Essay Reviews</h3>
+              <p class="opacity-90 font-body-md mb-lg">Grammar, flow, and structural feedback for your academic papers.
+                Proofreading by top-tier English majors.</p>
+              <a href="/services.html"
+                class="inline-block px-lg py-md bg-white text-primary rounded-xl font-label-md hover:bg-surface-container-high transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary">Submit
+                Draft</a>
+            </div>
+            <div class="flex flex-col gap-sm relative z-10 w-full md:w-auto">
+              <div class="bg-white/10 backdrop-blur-md p-md rounded-xl border border-white/20">
+                <p class="text-xs font-bold uppercase tracking-widest opacity-70">Popular</p>
+                <p class="text-lg">Structural Edit</p>
+              </div>
+              <div class="bg-white/10 backdrop-blur-md p-md rounded-xl border border-white/20">
+                <p class="text-xs font-bold uppercase tracking-widest opacity-70">Fast Track</p>
+                <p class="text-lg">Quick Proofread</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Internship Highlights -->
+    <section id="internships" class="py-xl px-gutter max-w-container-max mx-auto">
+      <div class="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-md mb-lg">
+        <div>
+          <h2 class="font-headline-lg text-headline-lg text-on-surface">Internship Opportunities</h2>
+          <p class="text-on-surface-variant font-body-md">Kickstart your career with roles tailored for students.</p>
+        </div>
+        <a class="text-primary font-label-md flex items-center gap-xs hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+          href="/internships.html">
+          View Job Board <span class="material-symbols-outlined text-sm" aria-hidden="true">arrow_forward</span>
+        </a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+        <article
+          class="group flex items-start gap-md p-md bg-white border border-outline-variant rounded-xl hover:shadow-md transition-shadow shadow-card">
+          <div class="w-16 h-16 rounded-xl bg-surface-container-highest flex items-center justify-center flex-shrink-0">
+            <span class="material-symbols-outlined text-[32px] text-primary" aria-hidden="true">terminal</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex justify-between items-start gap-2 mb-xs">
+              <h3 class="font-headline-md text-headline-md group-hover:text-primary transition-colors">Software Engineer
+                Intern</h3>
+              <span
+                class="px-sm py-1 bg-tertiary-fixed text-on-tertiary-fixed text-[12px] font-bold rounded-full whitespace-nowrap">Summer
+                2024</span>
+            </div>
+            <p class="text-on-surface-variant font-body-sm mb-md">TechCorp Systems · Remote / New York</p>
+            <div class="flex flex-wrap gap-sm">
+              <span class="flex items-center gap-xs text-on-surface-variant text-[12px]"><span
+                  class="material-symbols-outlined text-[16px]" aria-hidden="true">payments</span> 35–40 FCFA/hr</span>
+              <span class="flex items-center gap-xs text-on-surface-variant text-[12px]"><span
+                  class="material-symbols-outlined text-[16px]" aria-hidden="true">timer</span> Full-time</span>
+            </div>
+          </div>
+          <button type="button"
+            class="bookmark-btn material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded shrink-0"
+            aria-label="Save Software Engineer Intern" data-saved="false">bookmark</button>
+        </article>
+        <article
+          class="group flex items-start gap-md p-md bg-white border border-outline-variant rounded-xl hover:shadow-md transition-shadow shadow-card">
+          <div class="w-16 h-16 rounded-xl bg-surface-container-highest flex items-center justify-center flex-shrink-0">
+            <span class="material-symbols-outlined text-[32px] text-tertiary" aria-hidden="true">biotech</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex justify-between items-start gap-2 mb-xs">
+              <h3 class="font-headline-md text-headline-md group-hover:text-primary transition-colors">Graduate Research
+                Assistant</h3>
+              <span
+                class="px-sm py-1 bg-secondary-fixed text-on-secondary-fixed text-[12px] font-bold rounded-full whitespace-nowrap">Immediate
+                Start</span>
+            </div>
+            <p class="text-on-surface-variant font-body-sm mb-md">UniResearch Labs · On-campus</p>
+            <div class="flex flex-wrap gap-sm">
+              <span class="flex items-center gap-xs text-on-surface-variant text-[12px]"><span
+                  class="material-symbols-outlined text-[16px]" aria-hidden="true">payments</span> Stipend</span>
+              <span class="flex items-center gap-xs text-on-surface-variant text-[12px]"><span
+                  class="material-symbols-outlined text-[16px]" aria-hidden="true">timer</span> Part-time</span>
+            </div>
+          </div>
+          <button type="button"
+            class="bookmark-btn material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded shrink-0"
+            aria-label="Save Graduate Research Assistant" data-saved="false">bookmark</button>
+        </article>
+        <article
+          class="group flex items-start gap-md p-md bg-white border border-outline-variant rounded-xl hover:shadow-md transition-shadow shadow-card">
+          <div class="w-16 h-16 rounded-xl bg-surface-container-highest flex items-center justify-center flex-shrink-0">
+            <span class="material-symbols-outlined text-[32px] text-secondary" aria-hidden="true">campaign</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex justify-between items-start gap-2 mb-xs">
+              <h3 class="font-headline-md text-headline-md group-hover:text-primary transition-colors">Marketing Intern
+              </h3>
+              <span
+                class="px-sm py-1 bg-primary-fixed text-on-primary-fixed text-[12px] font-bold rounded-full whitespace-nowrap">Fall
+                2024</span>
+            </div>
+            <p class="text-on-surface-variant font-body-sm mb-md">Campus Media Co. · Hybrid</p>
+            <div class="flex flex-wrap gap-sm">
+              <span class="flex items-center gap-xs text-on-surface-variant text-[12px]"><span
+                  class="material-symbols-outlined text-[16px]" aria-hidden="true">payments</span> 20 FCFA/hr</span>
+              <span class="flex items-center gap-xs text-on-surface-variant text-[12px]"><span
+                  class="material-symbols-outlined text-[16px]" aria-hidden="true">timer</span> Part-time</span>
+            </div>
+          </div>
+          <button type="button"
+            class="bookmark-btn material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded shrink-0"
+            aria-label="Save Marketing Intern" data-saved="false">bookmark</button>
+        </article>
+        <article
+          class="group flex items-start gap-md p-md bg-white border border-outline-variant rounded-xl hover:shadow-md transition-shadow shadow-card">
+          <div class="w-16 h-16 rounded-xl bg-surface-container-highest flex items-center justify-center flex-shrink-0">
+            <span class="material-symbols-outlined text-[32px] text-primary" aria-hidden="true">science</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex justify-between items-start gap-2 mb-xs">
+              <h3 class="font-headline-md text-headline-md group-hover:text-primary transition-colors">Lab Technician
+                Intern</h3>
+              <span
+                class="px-sm py-1 bg-tertiary-fixed text-on-tertiary-fixed text-[12px] font-bold rounded-full whitespace-nowrap">Rolling</span>
+            </div>
+            <p class="text-on-surface-variant font-body-sm mb-md">BioLab Partners · On-campus</p>
+            <div class="flex flex-wrap gap-sm">
+              <span class="flex items-center gap-xs text-on-surface-variant text-[12px]"><span
+                  class="material-symbols-outlined text-[16px]" aria-hidden="true">payments</span> 22 FCFA/hr</span>
+              <span class="flex items-center gap-xs text-on-surface-variant text-[12px]"><span
+                  class="material-symbols-outlined text-[16px]" aria-hidden="true">timer</span> Part-time</span>
+            </div>
+          </div>
+          <button type="button"
+            class="bookmark-btn material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded shrink-0"
+            aria-label="Save Lab Technician Intern" data-saved="false">bookmark</button>
+        </article>
+      </div>
+    </section>
+
+    <!-- Events -->
+    <section id="events" class="bg-surface-container-low py-xl">
+      <div class="px-gutter max-w-container-max mx-auto">
+        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-md mb-lg">
+          <div>
+            <h2 class="font-headline-lg text-headline-lg text-on-surface">Upcoming Campus Events</h2>
+            <p class="text-on-surface-variant font-body-md">Workshops, fairs, and student meetups near you.</p>
+          </div>
+          <a class="text-primary font-label-md flex items-center gap-xs hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+            href="/events.html">
+            Full calendar <span class="material-symbols-outlined text-sm" aria-hidden="true">arrow_forward</span>
+          </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+          <article class="bg-white rounded-2xl border border-outline-variant overflow-hidden hover-lift shadow-card">
+            <div class="h-2 bg-primary"></div>
+            <div class="p-lg">
+              <div class="flex items-center gap-sm text-primary font-label-md mb-sm">
+                <span class="material-symbols-outlined text-[20px]" aria-hidden="true">calendar_month</span>
+                <time datetime="2024-09-12">Sep 12 · 6:00 PM</time>
+              </div>
+              <h3 class="font-headline-md text-headline-md mb-sm">Startup Pitch Night</h3>
+              <p class="text-on-surface-variant text-body-sm mb-md">Watch student founders pitch ideas to local mentors.
+                Networking after the event.</p>
+              <div class="flex items-center justify-between">
+                <span class="text-body-sm text-on-surface-variant flex items-center gap-1"><span
+                    class="material-symbols-outlined text-[16px]" aria-hidden="true">location_on</span> Student
+                  Union</span>
+                <button type="button"
+                  class="text-primary font-label-md hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">RSVP</button>
+              </div>
+            </div>
+          </article>
+          <article class="bg-white rounded-2xl border border-outline-variant overflow-hidden hover-lift shadow-card">
+            <div class="h-2 bg-secondary"></div>
+            <div class="p-lg">
+              <div class="flex items-center gap-sm text-secondary font-label-md mb-sm">
+                <span class="material-symbols-outlined text-[20px]" aria-hidden="true">calendar_month</span>
+                <time datetime="2024-09-18">Sep 18 · 2:00 PM</time>
+              </div>
+              <h3 class="font-headline-md text-headline-md mb-sm">Fall Career Fair</h3>
+              <p class="text-on-surface-variant text-body-sm mb-md">50+ employers recruiting interns and new grads.
+                Bring your résumé and campus ID.</p>
+              <div class="flex items-center justify-between">
+                <span class="text-body-sm text-on-surface-variant flex items-center gap-1"><span
+                    class="material-symbols-outlined text-[16px]" aria-hidden="true">location_on</span> Gymnasium
+                  Hall</span>
+                <button type="button"
+                  class="text-primary font-label-md hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">RSVP</button>
+              </div>
+            </div>
+          </article>
+          <article class="bg-white rounded-2xl border border-outline-variant overflow-hidden hover-lift shadow-card">
+            <div class="h-2 bg-tertiary"></div>
+            <div class="p-lg">
+              <div class="flex items-center gap-sm text-tertiary font-label-md mb-sm">
+                <span class="material-symbols-outlined text-[20px]" aria-hidden="true">calendar_month</span>
+                <time datetime="2024-09-25">Sep 25 · 5:30 PM</time>
+              </div>
+              <h3 class="font-headline-md text-headline-md mb-sm">Study Skills Workshop</h3>
+              <p class="text-on-surface-variant text-body-sm mb-md">Learn time-blocking, note systems, and exam prep
+                from peer tutors.</p>
+              <div class="flex items-center justify-between">
+                <span class="text-body-sm text-on-surface-variant flex items-center gap-1"><span
+                    class="material-symbols-outlined text-[16px]" aria-hidden="true">location_on</span> Library Room
+                  204</span>
+                <button type="button"
+                  class="text-primary font-label-md hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">RSVP</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-xl px-gutter max-w-container-max mx-auto" aria-labelledby="testimonials-heading">
+      <div class="text-center mb-lg">
+        <h2 id="testimonials-heading" class="font-headline-lg text-headline-lg text-on-surface mb-xs">Loved by students
+        </h2>
+        <p class="text-on-surface-variant font-body-md">Real stories from people using CampusConnect every week.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+        <blockquote class="bg-white border border-outline-variant rounded-2xl p-lg shadow-card">
+          <div class="flex gap-1 text-secondary mb-md" aria-label="5 out of 5 stars">
+            <span class="material-symbols-outlined filled text-[18px]" aria-hidden="true">star</span>
+            <span class="material-symbols-outlined filled text-[18px]" aria-hidden="true">star</span>
+            <span class="material-symbols-outlined filled text-[18px]" aria-hidden="true">star</span>
+            <span class="material-symbols-outlined filled text-[18px]" aria-hidden="true">star</span>
+            <span class="material-symbols-outlined filled text-[18px]" aria-hidden="true">star</span>
+          </div>
+          <p class="text-body-md text-on-surface mb-md">“Sold my old textbooks in two days. Way better than the
+            bookstore buyback.”</p>
+          <footer class="text-body-sm text-on-surface-variant">— Maya T., Junior</footer>
+        </blockquote>
+        <blockquote class="bg-white border border-outline-variant rounded-2xl p-lg shadow-card">
+          <div class="flex gap-1 text-secondary mb-md" aria-label="5 out of 5 stars">
+            <span class="material-symbols-outlined filled text-[18px]" aria-hidden="true">star</span>
+            <span class="material-symbols-outlined filled text-[18px]" aria-hidden="true">star</span>
+            <span class="material-symbols-outlined filled text-[18px]" aria-hidden="true">star</span>
+            <span class="material-symbols-outlined filled text-[18px]" aria-hidden="true">star</span>
+            <span class="material-symbols-outlined filled text-[18px]" aria-hidden="true">star</span>
+          </div>
+          <p class="text-body-md text-on-surface mb-md">“Booked a design student for our club flyer. Professional work,
+            student prices.”</p>
+          <footer class="text-body-sm text-on-surface-variant">— Jordan K., Club Lead</footer>
+        </blockquote>
+        <blockquote class="bg-white border border-outline-variant rounded-2xl p-lg shadow-card">
+          <div class="flex gap-1 text-secondary mb-md" aria-label="5 out of 5 stars">
+            <span class="material-symbols-outlined filled text-[18px]" aria-hidden="true">star</span>
+            <span class="material-symbols-outlined filled text-[18px]" aria-hidden="true">star</span>
+            <span class="material-symbols-outlined filled text-[18px]" aria-hidden="true">star</span>
+            <span class="material-symbols-outlined filled text-[18px]" aria-hidden="true">star</span>
+            <span class="material-symbols-outlined filled text-[18px]" aria-hidden="true">star</span>
+          </div>
+          <p class="text-body-md text-on-surface mb-md">“Found my summer internship here before the career fair even
+            opened.”</p>
+          <footer class="text-body-sm text-on-surface-variant">— Priya S., Sophomore</footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-xl px-gutter">
+      <div
+        class="max-w-container-max mx-auto bg-primary rounded-3xl p-xl flex flex-col md:flex-row items-center justify-between gap-lg relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none" aria-hidden="true">
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,white,transparent_60%)]"></div>
+        </div>
+        <div class="relative z-10 text-on-primary">
+          <h2 class="font-display text-display mb-sm text-[32px] sm:text-display">Ready to get started?</h2>
+          <p class="text-body-lg opacity-90 max-w-xl">Join 5,000+ students already buying, selling, and growing their
+            careers on CampusConnect.</p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-md relative z-10 w-full sm:w-auto">
+          <a href="/register.html"
+            class="px-xl py-md bg-white text-primary rounded-xl font-headline-md hover:bg-surface-container-high transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary">
+            Join Now
+          </a>
+          <a href="/login.html"
+            class="px-xl py-md border-2 border-white text-white rounded-xl font-headline-md hover:bg-white/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary">
+            Student Login
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-surface-container-highest mt-xl">
+    <div class="w-full px-gutter py-lg max-w-container-max mx-auto grid grid-cols-2 md:grid-cols-4 gap-gutter">
+      <div class="col-span-2 md:col-span-1">
+        <div class="mb-md h-16">
+          <img alt="CampusConnect Logo" class="h-full object-contain" width="160" height="64"
+            src="/assets/campusconnect-logo-CYjNDdbV.png" />
+        </div>
+        <p class="text-on-surface-variant font-body-sm mb-lg">The ultimate student-focused ecosystem for university life
+          and career growth.</p>
+        <div class="flex gap-md text-on-surface-variant">
+          <a href="#"
+            class="hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+            aria-label="Website"><span class="material-symbols-outlined">public</span></a>
+          <a href="/chats.html"
+            class="hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+            aria-label="Chat"><span class="material-symbols-outlined">chat</span></a>
+          <a href="#"
+            class="hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+            aria-label="Community"><span class="material-symbols-outlined">groups</span></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-label-md text-on-surface mb-md">Explore</h4>
+        <ul class="flex flex-col gap-sm">
+          <li><a class="text-on-surface-variant font-body-sm hover:text-primary transition-colors"
+              href="/marketplace.html">Marketplace</a></li>
+          <li><a class="text-on-surface-variant font-body-sm hover:text-primary transition-colors"
+              href="/services.html">Services</a></li>
+          <li><a class="text-on-surface-variant font-body-sm hover:text-primary transition-colors"
+              href="/internships.html">Internships</a></li>
+          <li><a class="text-on-surface-variant font-body-sm hover:text-primary transition-colors"
+              href="/events.html">Events</a></li>
+          <li><a class="text-on-surface-variant font-body-sm hover:text-primary transition-colors"
+              href="/announcements.html">Announcements</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-label-md text-on-surface mb-md">Company</h4>
+        <ul class="flex flex-col gap-sm">
+          <li><a class="text-on-surface-variant font-body-sm hover:text-primary transition-colors" href="#">About Us</a>
+          </li>
+          <li><a class="text-on-surface-variant font-body-sm hover:text-primary transition-colors" href="#">Contact
+              Info</a></li>
+          <li><a class="text-on-surface-variant font-body-sm hover:text-primary transition-colors"
+              href="/profile.html">Profile</a></li>
+          <li><a class="text-on-surface-variant font-body-sm hover:text-primary transition-colors"
+              href="/referrals.html">Referrals</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-label-md text-on-surface mb-md">Newsletter</h4>
+        <p class="text-on-surface-variant font-body-sm mb-md">Get the latest opportunities in your inbox.</p>
+        <form id="newsletterForm" class="flex gap-xs" action="#" method="post">
+          <label for="newsletterEmail" class="sr-only">Email address</label>
+          <input id="newsletterEmail" name="email" required
+            class="bg-surface rounded-lg border-outline px-sm py-xs w-full text-body-sm focus:ring-2 focus:ring-primary/40 focus:border-primary"
+            placeholder="Your email" type="email" autocomplete="email" />
+          <button type="submit"
+            class="bg-primary text-on-primary p-xs rounded-lg flex items-center justify-center hover:bg-primary-container transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            aria-label="Subscribe">
+            <span class="material-symbols-outlined">send</span>
+          </button>
+        </form>
+      </div>
+    </div>
+    <div
+      class="w-full px-gutter py-md max-w-container-max mx-auto border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-md">
+      <p class="text-on-surface-variant font-body-sm">© 2024–2026 CampusConnect University Platform. All rights
+        reserved.</p>
+      <div class="flex gap-lg">
+        <a class="text-on-surface-variant font-label-sm hover:text-primary transition-colors" href="#">Help Center</a>
+        <a class="text-on-surface-variant font-label-sm hover:text-primary transition-colors" href="#">Student
+          Guidelines</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
 </html>

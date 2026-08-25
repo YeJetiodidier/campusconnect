@@ -8,6 +8,7 @@ import { onAuthChange } from "../auth.js";
 import { auth, db } from "../firebase-config.js";
 import { signOut, updateProfile } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 renderSidebar("profile");
 renderFooter();
@@ -17,6 +18,7 @@ document.getElementById("edit-icon").innerHTML = icons.edit;
 document.getElementById("signout-icon").innerHTML = icons.logout;
 
 const profileAvatar = document.getElementById("profile-avatar");
+const profileAvatarImg = document.getElementById("profile-avatar-img");
 const profileName = document.getElementById("profile-name");
 const profileEmail = document.getElementById("profile-email");
 const editBtn = document.getElementById("edit-btn");
@@ -25,6 +27,9 @@ const cancelBtn = document.getElementById("cancel-btn");
 const formActions = document.getElementById("form-actions");
 const profileForm = document.getElementById("profile-form");
 const signoutBtn = document.getElementById("signout-btn");
+const avatarWrap = document.getElementById("avatar-wrap");
+const avatarFileInput = document.getElementById("avatar-file-input");
+const avatarHint = document.getElementById("avatar-hint");
 
 const fields = {
   name: document.getElementById("pf-name"),
@@ -37,7 +42,19 @@ let currentUser = null;
 let isEditing = false;
 let profileData = {};
 
-// ── Auth state ──────────────────────────────────────────
+// ── Helper: show uploaded photo or initial letter ────────────────────
+function setAvatarPhoto(url) {
+  if (url) {
+    profileAvatarImg.src = url;
+    profileAvatarImg.style.display = "block";
+    profileAvatar.style.display = "none";
+  } else {
+    profileAvatarImg.style.display = "none";
+    profileAvatar.style.display = "";
+  }
+}
+
+// ── Auth state ──────────────────────────────────────────────────────
 
 onAuthChange(async (user) => {
   currentUser = user;
@@ -46,21 +63,30 @@ onAuthChange(async (user) => {
     profileName.textContent = "Not signed in";
     profileEmail.textContent = "";
     profileAvatar.textContent = "?";
+    setAvatarPhoto(null);
     editBtn.hidden = true;
     signoutBtn.hidden = true;
+    avatarWrap.style.pointerEvents = "none";
+    if (avatarHint) avatarHint.style.display = "none";
     Object.values(fields).forEach((f) => (f.value = ""));
     return;
   }
 
   editBtn.hidden = false;
   signoutBtn.hidden = false;
+  avatarWrap.style.pointerEvents = "auto";
 
-  // Firebase auth data
+  // Set initial letter avatar
   const name = user.displayName || user.email || "Student";
   profileName.textContent = name;
   profileEmail.textContent = user.email || "";
   profileAvatar.textContent = name.charAt(0).toUpperCase();
   fields.name.value = user.displayName || "";
+
+  // Load photo URL from Firebase Auth
+  if (user.photoURL) {
+    setAvatarPhoto(user.photoURL);
+  }
 
   // Firestore extended profile
   try {
@@ -70,13 +96,75 @@ onAuthChange(async (user) => {
       fields.bio.value = profileData.bio || "";
       fields.campus.value = profileData.campus || "";
       fields.phone.value = profileData.phone || "";
+      // Also load photoURL from Firestore in case Auth doesn't have it
+      if (!user.photoURL && profileData.photoURL) {
+        setAvatarPhoto(profileData.photoURL);
+      }
     }
   } catch (err) {
     console.error("Failed to load profile:", err);
   }
 });
 
-// ── Edit mode ───────────────────────────────────────────
+// ── Avatar upload click handler ─────────────────────────────────────
+
+avatarWrap.addEventListener("click", () => {
+  if (currentUser) avatarFileInput.click();
+});
+
+avatarFileInput.addEventListener("change", async (e) => {
+  const file = e.target.files[0];
+  if (!file || !currentUser) return;
+
+  // Validate size (max 5MB) and type
+  if (file.size > 5 * 1024 * 1024) {
+    alert("Image must be smaller than 5MB.");
+    return;
+  }
+  if (!file.type.startsWith("image/")) {
+    alert("Please select an image file.");
+    return;
+  }
+
+  // Preview immediately before upload
+  const localUrl = URL.createObjectURL(file);
+  setAvatarPhoto(localUrl);
+  if (avatarHint) avatarHint.textContent = "Uploading…";
+
+  try {
+    const storage = getStorage();
+    const storageRef = ref(storage, `avatars/${currentUser.uid}/${file.name}`);
+    await uploadBytes(storageRef, file);
+    const downloadURL = await getDownloadURL(storageRef);
+
+    // Update Firebase Auth profile photo
+    await updateProfile(auth.currentUser, { photoURL: downloadURL });
+
+    // Save to Firestore user doc
+    await setDoc(doc(db, "users", currentUser.uid), { photoURL: downloadURL }, { merge: true });
+
+    setAvatarPhoto(downloadURL);
+    if (avatarHint) avatarHint.textContent = "Photo updated ✓";
+    setTimeout(() => {
+      if (avatarHint) avatarHint.textContent = "Click photo to change";
+    }, 2500);
+  } catch (err) {
+    console.error("Failed to upload avatar:", err);
+    alert("Could not upload photo. Please try again.");
+    if (avatarHint) avatarHint.textContent = "Click photo to change";
+    // Revert preview
+    if (currentUser?.photoURL) {
+      setAvatarPhoto(currentUser.photoURL);
+    } else {
+      setAvatarPhoto(null);
+    }
+  } finally {
+    // Reset file input so the same file can be re-selected
+    avatarFileInput.value = "";
+  }
+});
+
+// ── Edit mode ────────────────────────────────────────────────────────
 
 function setEditing(state) {
   isEditing = state;
@@ -91,7 +179,6 @@ editBtn.addEventListener("click", () => {
 });
 
 cancelBtn.addEventListener("click", () => {
-  // Restore values
   if (currentUser) {
     fields.name.value = currentUser.displayName || "";
     fields.bio.value = profileData.bio || "";
@@ -101,7 +188,7 @@ cancelBtn.addEventListener("click", () => {
   setEditing(false);
 });
 
-// ── Save profile ────────────────────────────────────────
+// ── Save profile ─────────────────────────────────────────────────────
 
 profileForm.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -114,14 +201,12 @@ profileForm.addEventListener("submit", async (e) => {
   try {
     const newName = fields.name.value.trim();
 
-    // Update Firebase Auth display name
     if (newName && newName !== currentUser.displayName) {
       await updateProfile(auth.currentUser, { displayName: newName });
       profileName.textContent = newName;
       profileAvatar.textContent = newName.charAt(0).toUpperCase();
     }
 
-    // Save extended profile to Firestore
     const data = {
       bio: fields.bio.value.trim(),
       campus: fields.campus.value,
@@ -141,7 +226,7 @@ profileForm.addEventListener("submit", async (e) => {
   }
 });
 
-// ── Sign out ────────────────────────────────────────────
+// ── Sign out ─────────────────────────────────────────────────────────
 
 signoutBtn.addEventListener("click", async () => {
   try {

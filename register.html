@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html class="light" lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta name="description" content="Create your CampusConnect account — marketplace, services, and internships for students.">
+  <meta name="description"
+    content="Create your CampusConnect account — marketplace, services, and internships for students.">
   <meta name="theme-color" content="#4648d4">
   <title>Register | CampusConnect</title>
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
+    rel="stylesheet">
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <script id="tailwind-config">
     tailwind.config = {
@@ -118,59 +124,81 @@
       }
     };
   </script>
-  
+
   <link rel="stylesheet" href="/src/modules/auth/register.css">
+  <script>if (localStorage.getItem("campusconnect_theme") === "dark") document.documentElement.classList.add("dark-theme");</script>
 </head>
-<body class="bg-background text-on-background min-h-screen selection:bg-primary-container selection:text-on-primary-container antialiased font-body-md">
+
+<body
+  class="bg-background text-on-background min-h-screen selection:bg-primary-container selection:text-on-primary-container antialiased font-body-md">
   <!-- Toast -->
-  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[9998] opacity-0 pointer-events-none translate-y-3 bg-inverse-surface text-inverse-on-surface px-5 py-3 rounded-xl shadow-lg text-body-sm font-medium flex items-center gap-2 max-w-[90vw]" role="status" aria-live="polite">
+  <div id="toast"
+    class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[9998] opacity-0 pointer-events-none translate-y-3 bg-inverse-surface text-inverse-on-surface px-5 py-3 rounded-xl shadow-lg text-body-sm font-medium flex items-center gap-2 max-w-[90vw]"
+    role="status" aria-live="polite">
     <span class="material-symbols-outlined text-[20px]" id="toastIcon">info</span>
     <span id="toastMsg">Message</span>
   </div>
 
-  <a href="#registerForm" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-primary focus:text-on-primary focus:px-4 focus:py-2 focus:rounded-lg focus:outline-none">
+  <a href="#registerForm"
+    class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-primary focus:text-on-primary focus:px-4 focus:py-2 focus:rounded-lg focus:outline-none">
     Skip to registration form
   </a>
 
   <main class="flex min-h-screen overflow-hidden">
     <!-- Left: Form -->
-    <section class="w-full lg:w-[45%] xl:w-[42%] flex flex-col justify-center px-gutter py-xl bg-surface relative z-10 overflow-y-auto max-h-screen">
-      <button type="button" id="themeToggle" class="absolute top-4 right-4 p-2 rounded-full border border-outline-variant text-on-surface-variant hover:text-primary hover:border-primary/40 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="Toggle dark mode">
+    <section
+      class="w-full lg:w-[45%] xl:w-[42%] flex flex-col justify-center px-gutter py-xl bg-surface relative z-10 overflow-y-auto max-h-screen">
+      <button type="button" id="themeToggle"
+        class="absolute top-4 right-4 p-2 rounded-full border border-outline-variant text-on-surface-variant hover:text-primary hover:border-primary/40 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        aria-label="Toggle dark mode">
         <span class="material-symbols-outlined text-[22px]" id="themeIcon">dark_mode</span>
       </button>
 
       <div class="max-w-md mx-auto w-full animate-fade-in">
         <!-- Brand -->
         <div class="mb-md">
-          <a href="/" class="inline-block focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded" aria-label="CampusConnect home">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGAia3vhR4FZ7rv3VWFRR-Em7tmJwfngUwJOjm0JbRXdGd7Ngu0jV1RFBkaTn-wLtGb7jyYxxV-CvDYNWkQa_SohaWRjHkSaAl2-VrIdsZxZZ5V7duAAswtOwtAzRkBwP20Sy9gMLVlFgJkCko5N9AjPQADM1UgS0Z2V2PaBQYQeHMilW_mGWytwc93jmorRh1DjOtaAPVaO3cMY-5tIwmqWO4Prakb-wE7DseAwdmw08Dv2MLjTl_MXbWqaPTzaYs3Q" alt="CampusConnect Logo" class="h-14 w-auto object-contain" width="160" height="56">
+          <a href="/"
+            class="inline-block focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded"
+            aria-label="CampusConnect home">
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGAia3vhR4FZ7rv3VWFRR-Em7tmJwfngUwJOjm0JbRXdGd7Ngu0jV1RFBkaTn-wLtGb7jyYxxV-CvDYNWkQa_SohaWRjHkSaAl2-VrIdsZxZZ5V7duAAswtOwtAzRkBwP20Sy9gMLVlFgJkCko5N9AjPQADM1UgS0Z2V2PaBQYQeHMilW_mGWytwc93jmorRh1DjOtaAPVaO3cMY-5tIwmqWO4Prakb-wE7DseAwdmw08Dv2MLjTl_MXbWqaPTzaYs3Q"
+              alt="CampusConnect Logo" class="h-14 w-auto object-contain" width="160" height="56">
           </a>
           <h1 class="font-headline-md text-headline-md text-on-surface mt-md">Create your account</h1>
-          <p class="font-body-md text-on-surface-variant mt-xs">Join the campus marketplace, services, and career hub.</p>
+          <p class="font-body-md text-on-surface-variant mt-xs">Join the campus marketplace, services, and career hub.
+          </p>
         </div>
 
         <!-- Progress steps -->
         <nav class="mb-lg" aria-label="Registration progress">
           <ol class="flex items-center gap-2">
             <li class="flex items-center gap-2 flex-1">
-              <span id="stepDot1" class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center text-label-sm font-bold shrink-0" aria-current="step">1</span>
+              <span id="stepDot1"
+                class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center text-label-sm font-bold shrink-0"
+                aria-current="step">1</span>
               <span class="hidden sm:inline font-label-sm text-label-sm text-on-surface">About you</span>
               <span class="flex-1 h-0.5 bg-primary rounded-full" id="stepLine1"></span>
             </li>
             <li class="flex items-center gap-2 flex-1">
-              <span id="stepDot2" class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center text-label-sm font-bold shrink-0">2</span>
-              <span class="hidden sm:inline font-label-sm text-label-sm text-on-surface-variant" id="stepLabel2">Security</span>
+              <span id="stepDot2"
+                class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center text-label-sm font-bold shrink-0">2</span>
+              <span class="hidden sm:inline font-label-sm text-label-sm text-on-surface-variant"
+                id="stepLabel2">Security</span>
               <span class="flex-1 h-0.5 bg-outline-variant rounded-full" id="stepLine2"></span>
             </li>
             <li class="flex items-center gap-2">
-              <span id="stepDot3" class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center text-label-sm font-bold shrink-0">3</span>
-              <span class="hidden sm:inline font-label-sm text-label-sm text-on-surface-variant" id="stepLabel3">Confirm</span>
+              <span id="stepDot3"
+                class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center text-label-sm font-bold shrink-0">3</span>
+              <span class="hidden sm:inline font-label-sm text-label-sm text-on-surface-variant"
+                id="stepLabel3">Confirm</span>
             </li>
           </ol>
         </nav>
 
         <!-- Global error -->
-        <div id="formError" class="hidden mb-md p-md rounded-xl bg-error-container text-on-error-container text-body-sm flex items-start gap-sm" role="alert">
+        <div id="formError"
+          class="hidden mb-md p-md rounded-xl bg-error-container text-on-error-container text-body-sm flex items-start gap-sm"
+          role="alert">
           <span class="material-symbols-outlined text-[20px] shrink-0" aria-hidden="true">error</span>
           <span id="formErrorText">Please fix the errors below.</span>
         </div>
@@ -181,8 +209,13 @@
             <div class="space-y-xs" id="fullNameField">
               <label class="font-label-md text-label-md text-on-surface block" for="fullName">Full name</label>
               <div class="relative">
-                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant field-icon" aria-hidden="true">person</span>
-                <input class="w-full pl-10 pr-4 py-3 bg-[#F1F5F9] border-none rounded-lg focus:ring-2 focus:ring-primary focus:bg-white transition-all font-body-md placeholder:text-on-surface-variant/50" id="fullName" name="fullName" placeholder="Alex Rivera" type="text" autocomplete="name" required minlength="2" aria-describedby="fullNameError">
+                <span
+                  class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant field-icon"
+                  aria-hidden="true">person</span>
+                <input
+                  class="w-full pl-10 pr-4 py-3 bg-[#F1F5F9] border-none rounded-lg focus:ring-2 focus:ring-primary focus:bg-white transition-all font-body-md placeholder:text-on-surface-variant/50"
+                  id="fullName" name="fullName" placeholder="Alex Rivera" type="text" autocomplete="name" required
+                  minlength="2" aria-describedby="fullNameError">
               </div>
               <p id="fullNameError" class="hidden font-body-sm text-body-sm text-error" role="alert"></p>
             </div>
@@ -190,39 +223,57 @@
             <div class="space-y-xs" id="emailField">
               <label class="font-label-md text-label-md text-on-surface block" for="email">Email address</label>
               <div class="relative">
-                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant field-icon" aria-hidden="true">mail</span>
-                <input class="w-full pl-10 pr-4 py-3 bg-[#F1F5F9] border-none rounded-lg focus:ring-2 focus:ring-primary focus:bg-white transition-all font-body-md placeholder:text-on-surface-variant/50" id="email" name="email" placeholder="name@example.com" type="email" autocomplete="email" inputmode="email" required aria-describedby="emailHint emailError">
+                <span
+                  class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant field-icon"
+                  aria-hidden="true">mail</span>
+                <input
+                  class="w-full pl-10 pr-4 py-3 bg-[#F1F5F9] border-none rounded-lg focus:ring-2 focus:ring-primary focus:bg-white transition-all font-body-md placeholder:text-on-surface-variant/50"
+                  id="email" name="email" placeholder="name@example.com" type="email" autocomplete="email"
+                  inputmode="email" required aria-describedby="emailHint emailError">
               </div>
-              <p id="emailHint" class="font-body-sm text-body-sm text-on-surface-variant">We'll use this to communicate with you.</p>
+              <p id="emailHint" class="font-body-sm text-body-sm text-on-surface-variant">We'll use this to communicate
+                with you.</p>
               <p id="emailError" class="hidden font-body-sm text-body-sm text-error" role="alert"></p>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
               <div class="space-y-xs" id="studentIdField">
-                <label class="font-label-md text-label-md text-on-surface block" for="studentId">Student ID <span class="text-xs font-normal opacity-70">(optional)</span></label>
+                <label class="font-label-md text-label-md text-on-surface block" for="studentId">Student ID <span
+                    class="text-xs font-normal opacity-70">(optional)</span></label>
                 <div class="relative">
-                  <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant field-icon" aria-hidden="true">badge</span>
-                  <input class="w-full pl-10 pr-4 py-3 bg-[#F1F5F9] border-none rounded-lg focus:ring-2 focus:ring-primary focus:bg-white transition-all font-body-md placeholder:text-on-surface-variant/50" id="studentId" name="studentId" placeholder="ID number" type="text" autocomplete="off">
+                  <span
+                    class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant field-icon"
+                    aria-hidden="true">badge</span>
+                  <input
+                    class="w-full pl-10 pr-4 py-3 bg-[#F1F5F9] border-none rounded-lg focus:ring-2 focus:ring-primary focus:bg-white transition-all font-body-md placeholder:text-on-surface-variant/50"
+                    id="studentId" name="studentId" placeholder="ID number" type="text" autocomplete="off">
                 </div>
               </div>
               <div class="space-y-xs" id="universityField">
                 <label class="font-label-md text-label-md text-on-surface block" for="university">University</label>
                 <div class="relative">
-                  <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant field-icon pointer-events-none" aria-hidden="true">school</span>
-                  <select class="w-full pl-10 pr-10 py-3 bg-[#F1F5F9] border-none rounded-lg focus:ring-2 focus:ring-primary focus:bg-white transition-all font-body-md appearance-none" id="university" name="university" required aria-describedby="universityError">
+                  <span
+                    class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant field-icon pointer-events-none"
+                    aria-hidden="true">school</span>
+                  <select
+                    class="w-full pl-10 pr-10 py-3 bg-[#F1F5F9] border-none rounded-lg focus:ring-2 focus:ring-primary focus:bg-white transition-all font-body-md appearance-none"
+                    id="university" name="university" required aria-describedby="universityError">
                     <option disabled selected value="">Select campus</option>
                     <option value="main">Main Campus</option>
                     <option value="tech">Technology Institute</option>
                     <option value="med">Medical Science Center</option>
                     <option value="arts">Global Arts University</option>
                   </select>
-                  <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline-variant pointer-events-none" aria-hidden="true">expand_more</span>
+                  <span
+                    class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline-variant pointer-events-none"
+                    aria-hidden="true">expand_more</span>
                 </div>
                 <p id="universityError" class="hidden font-body-sm text-body-sm text-error" role="alert"></p>
               </div>
             </div>
 
-            <button type="button" id="nextToStep2" class="w-full py-3.5 bg-primary text-on-primary rounded-xl font-label-md text-label-md shadow-lg hover:bg-primary-container active:scale-[0.98] transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 flex items-center justify-center gap-2">
+            <button type="button" id="nextToStep2"
+              class="w-full py-3.5 bg-primary text-on-primary rounded-xl font-label-md text-label-md shadow-lg hover:bg-primary-container active:scale-[0.98] transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 flex items-center justify-center gap-2">
               Continue
               <span class="material-symbols-outlined text-[20px]" aria-hidden="true">arrow_forward</span>
             </button>
@@ -233,36 +284,63 @@
             <div class="space-y-xs" id="passwordField">
               <label class="font-label-md text-label-md text-on-surface block" for="password">Password</label>
               <div class="relative">
-                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant field-icon" aria-hidden="true">lock</span>
-                <input class="w-full pl-10 pr-12 py-3 bg-[#F1F5F9] border-none rounded-lg focus:ring-2 focus:ring-primary focus:bg-white transition-all font-body-md placeholder:text-on-surface-variant/50" id="password" name="password" placeholder="At least 8 characters" type="password" autocomplete="new-password" required minlength="8" aria-describedby="passwordStrength passwordError">
-                <button type="button" id="togglePassword" class="absolute inset-y-0 right-0 pr-3 flex items-center text-on-surface-variant hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded" aria-label="Show password" aria-pressed="false">
+                <span
+                  class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant field-icon"
+                  aria-hidden="true">lock</span>
+                <input
+                  class="w-full pl-10 pr-12 py-3 bg-[#F1F5F9] border-none rounded-lg focus:ring-2 focus:ring-primary focus:bg-white transition-all font-body-md placeholder:text-on-surface-variant/50"
+                  id="password" name="password" placeholder="At least 8 characters" type="password"
+                  autocomplete="new-password" required minlength="8" aria-describedby="passwordStrength passwordError">
+                <button type="button" id="togglePassword"
+                  class="absolute inset-y-0 right-0 pr-3 flex items-center text-on-surface-variant hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+                  aria-label="Show password" aria-pressed="false">
                   <span class="material-symbols-outlined" id="passwordIcon" aria-hidden="true">visibility</span>
                 </button>
               </div>
               <!-- Strength meter -->
               <div class="pt-1" id="passwordStrength" aria-live="polite">
                 <div class="flex gap-1 mb-1">
-                  <div class="flex-1 bg-outline-variant/40 rounded-full overflow-hidden"><div class="strength-bar w-0 bg-error" id="strBar1"></div></div>
-                  <div class="flex-1 bg-outline-variant/40 rounded-full overflow-hidden"><div class="strength-bar w-0" id="strBar2"></div></div>
-                  <div class="flex-1 bg-outline-variant/40 rounded-full overflow-hidden"><div class="strength-bar w-0" id="strBar3"></div></div>
-                  <div class="flex-1 bg-outline-variant/40 rounded-full overflow-hidden"><div class="strength-bar w-0" id="strBar4"></div></div>
+                  <div class="flex-1 bg-outline-variant/40 rounded-full overflow-hidden">
+                    <div class="strength-bar w-0 bg-error" id="strBar1"></div>
+                  </div>
+                  <div class="flex-1 bg-outline-variant/40 rounded-full overflow-hidden">
+                    <div class="strength-bar w-0" id="strBar2"></div>
+                  </div>
+                  <div class="flex-1 bg-outline-variant/40 rounded-full overflow-hidden">
+                    <div class="strength-bar w-0" id="strBar3"></div>
+                  </div>
+                  <div class="flex-1 bg-outline-variant/40 rounded-full overflow-hidden">
+                    <div class="strength-bar w-0" id="strBar4"></div>
+                  </div>
                 </div>
                 <p class="font-body-sm text-body-sm text-on-surface-variant" id="strengthLabel">Password strength</p>
               </div>
-              <ul class="font-body-sm text-body-sm text-on-surface-variant space-y-0.5" id="passwordRules" aria-label="Password requirements">
-                <li id="ruleLen" class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]" aria-hidden="true">radio_button_unchecked</span> At least 8 characters</li>
-                <li id="ruleUpper" class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]" aria-hidden="true">radio_button_unchecked</span> One uppercase letter</li>
-                <li id="ruleNum" class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]" aria-hidden="true">radio_button_unchecked</span> One number</li>
+              <ul class="font-body-sm text-body-sm text-on-surface-variant space-y-0.5" id="passwordRules"
+                aria-label="Password requirements">
+                <li id="ruleLen" class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]"
+                    aria-hidden="true">radio_button_unchecked</span> At least 8 characters</li>
+                <li id="ruleUpper" class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]"
+                    aria-hidden="true">radio_button_unchecked</span> One uppercase letter</li>
+                <li id="ruleNum" class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]"
+                    aria-hidden="true">radio_button_unchecked</span> One number</li>
               </ul>
               <p id="passwordError" class="hidden font-body-sm text-body-sm text-error" role="alert"></p>
             </div>
 
             <div class="space-y-xs" id="confirmPasswordField">
-              <label class="font-label-md text-label-md text-on-surface block" for="confirmPassword">Confirm password</label>
+              <label class="font-label-md text-label-md text-on-surface block" for="confirmPassword">Confirm
+                password</label>
               <div class="relative">
-                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant field-icon" aria-hidden="true">lock_reset</span>
-                <input class="w-full pl-10 pr-12 py-3 bg-[#F1F5F9] border-none rounded-lg focus:ring-2 focus:ring-primary focus:bg-white transition-all font-body-md placeholder:text-on-surface-variant/50" id="confirmPassword" name="confirmPassword" placeholder="Repeat password" type="password" autocomplete="new-password" required aria-describedby="confirmPasswordError">
-                <button type="button" id="toggleConfirm" class="absolute inset-y-0 right-0 pr-3 flex items-center text-on-surface-variant hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded" aria-label="Show confirm password" aria-pressed="false">
+                <span
+                  class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant field-icon"
+                  aria-hidden="true">lock_reset</span>
+                <input
+                  class="w-full pl-10 pr-12 py-3 bg-[#F1F5F9] border-none rounded-lg focus:ring-2 focus:ring-primary focus:bg-white transition-all font-body-md placeholder:text-on-surface-variant/50"
+                  id="confirmPassword" name="confirmPassword" placeholder="Repeat password" type="password"
+                  autocomplete="new-password" required aria-describedby="confirmPasswordError">
+                <button type="button" id="toggleConfirm"
+                  class="absolute inset-y-0 right-0 pr-3 flex items-center text-on-surface-variant hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+                  aria-label="Show confirm password" aria-pressed="false">
                   <span class="material-symbols-outlined" id="confirmIcon" aria-hidden="true">visibility</span>
                 </button>
               </div>
@@ -270,10 +348,12 @@
             </div>
 
             <div class="flex gap-sm">
-              <button type="button" id="backToStep1" class="flex-1 py-3.5 border-2 border-outline-variant text-on-surface rounded-xl font-label-md text-label-md hover:bg-surface-container-low transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+              <button type="button" id="backToStep1"
+                class="flex-1 py-3.5 border-2 border-outline-variant text-on-surface rounded-xl font-label-md text-label-md hover:bg-surface-container-low transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">
                 Back
               </button>
-              <button type="button" id="nextToStep3" class="flex-[2] py-3.5 bg-primary text-on-primary rounded-xl font-label-md text-label-md shadow-lg hover:bg-primary-container active:scale-[0.98] transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 flex items-center justify-center gap-2">
+              <button type="button" id="nextToStep3"
+                class="flex-[2] py-3.5 bg-primary text-on-primary rounded-xl font-label-md text-label-md shadow-lg hover:bg-primary-container active:scale-[0.98] transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 flex items-center justify-center gap-2">
                 Continue
                 <span class="material-symbols-outlined text-[20px]" aria-hidden="true">arrow_forward</span>
               </button>
@@ -305,20 +385,27 @@
             </div>
 
             <label class="flex items-start gap-3 cursor-pointer group select-none" id="termsField">
-              <input type="checkbox" id="terms" name="terms" class="mt-1 w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary" required>
-              <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-on-surface transition-colors">
-                I agree to the <a href="#" class="text-primary underline font-medium">Terms of Service</a> and <a href="#" class="text-primary underline font-medium">Privacy Policy</a>, and confirm I am a current student at the selected university.
+              <input type="checkbox" id="terms" name="terms"
+                class="mt-1 w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary" required>
+              <span
+                class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-on-surface transition-colors">
+                I agree to the <a href="#" class="text-primary underline font-medium">Terms of Service</a> and <a
+                  href="#" class="text-primary underline font-medium">Privacy Policy</a>, and confirm I am a current
+                student at the selected university.
               </span>
             </label>
             <p id="termsError" class="hidden font-body-sm text-body-sm text-error" role="alert"></p>
 
             <div class="flex gap-sm">
-              <button type="button" id="backToStep2" class="flex-1 py-3.5 border-2 border-outline-variant text-on-surface rounded-xl font-label-md text-label-md hover:bg-surface-container-low transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+              <button type="button" id="backToStep2"
+                class="flex-1 py-3.5 border-2 border-outline-variant text-on-surface rounded-xl font-label-md text-label-md hover:bg-surface-container-low transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">
                 Back
               </button>
-              <button type="submit" id="submitBtn" class="flex-[2] py-3.5 bg-primary text-on-primary rounded-xl font-label-md text-label-md shadow-lg hover:bg-primary-container active:scale-[0.98] transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+              <button type="submit" id="submitBtn"
+                class="flex-[2] py-3.5 bg-primary text-on-primary rounded-xl font-label-md text-label-md shadow-lg hover:bg-primary-container active:scale-[0.98] transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2">
                 <span id="submitLabel">Create account</span>
-                <span id="submitSpinner" class="hidden material-symbols-outlined text-[18px] animate-spin" aria-hidden="true">progress_activity</span>
+                <span id="submitSpinner" class="hidden material-symbols-outlined text-[18px] animate-spin"
+                  aria-hidden="true">progress_activity</span>
               </button>
             </div>
           </div>
@@ -326,40 +413,53 @@
 
         <!-- Success state (hidden until done) -->
         <div id="successPanel" class="hidden text-center py-lg animate-fade-in">
-          <div class="w-16 h-16 mx-auto mb-md rounded-full bg-tertiary/15 text-tertiary flex items-center justify-center">
+          <div
+            class="w-16 h-16 mx-auto mb-md rounded-full bg-tertiary/15 text-tertiary flex items-center justify-center">
             <span class="material-symbols-outlined text-[36px] filled" aria-hidden="true">check_circle</span>
           </div>
           <h2 class="font-headline-md text-headline-md text-on-surface mb-xs">You’re almost in!</h2>
-          <p class="font-body-md text-on-surface-variant mb-lg">We sent a verification link to <strong id="successEmail" class="text-on-surface"></strong>. Open it to activate your account.</p>
-          <a href="#" class="inline-flex items-center justify-center w-full py-3.5 bg-primary text-on-primary rounded-xl font-label-md text-label-md hover:bg-primary-container transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+          <p class="font-body-md text-on-surface-variant mb-lg">We sent a verification link to <strong id="successEmail"
+              class="text-on-surface"></strong>. Open it to activate your account.</p>
+          <a href="#"
+            class="inline-flex items-center justify-center w-full py-3.5 bg-primary text-on-primary rounded-xl font-label-md text-label-md hover:bg-primary-container transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
             Go to login
           </a>
-          <button type="button" id="resendBtn" class="mt-md font-label-md text-label-md text-primary hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">
+          <button type="button" id="resendBtn"
+            class="mt-md font-label-md text-label-md text-primary hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">
             Resend verification email
           </button>
         </div>
 
         <p class="text-center font-body-sm text-on-surface-variant mt-lg" id="loginLinkRow">
           Already have an account?
-          <a class="text-primary font-bold hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded" href="login.html">Log in</a>
+          <a class="text-primary font-bold hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+            href="login.html">Log in</a>
         </p>
       </div>
     </section>
 
     <!-- Right: Branding -->
-    <section class="hidden lg:flex w-[55%] xl:w-[58%] relative bg-primary items-center justify-center overflow-hidden" aria-hidden="true">
+    <section class="hidden lg:flex w-[55%] xl:w-[58%] relative bg-primary items-center justify-center overflow-hidden"
+      aria-hidden="true">
       <div class="absolute inset-0 bg-gradient-to-br from-primary via-primary/85 to-secondary/25"></div>
-      <div class="absolute -top-24 -right-24 w-96 h-96 bg-secondary-container/25 blur-[100px] rounded-full pointer-events-none"></div>
-      <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-tertiary-container/25 blur-[80px] rounded-full pointer-events-none"></div>
+      <div
+        class="absolute -top-24 -right-24 w-96 h-96 bg-secondary-container/25 blur-[100px] rounded-full pointer-events-none">
+      </div>
+      <div
+        class="absolute -bottom-24 -left-24 w-64 h-64 bg-tertiary-container/25 blur-[80px] rounded-full pointer-events-none">
+      </div>
 
       <div class="relative z-10 w-full max-w-2xl px-xl flex flex-col items-start gap-md">
         <div class="glass-panel p-lg rounded-2xl w-full">
           <div class="mb-lg">
-            <div class="w-16 h-16 bg-on-primary rounded-xl flex items-center justify-center shadow-xl mb-md animate-float">
+            <div
+              class="w-16 h-16 bg-on-primary rounded-xl flex items-center justify-center shadow-xl mb-md animate-float">
               <span class="material-symbols-outlined text-primary text-[40px] filled" aria-hidden="true">hub</span>
             </div>
-            <h2 class="font-display text-display text-on-primary mb-sm leading-tight">Everything campus,<br>in one place.</h2>
-            <p class="font-body-lg text-body-lg text-on-primary/80 max-w-lg">Join thousands of students managing academics, marketplace trades, and career growth on CampusConnect.</p>
+            <h2 class="font-display text-display text-on-primary mb-sm leading-tight">Everything campus,<br>in one
+              place.</h2>
+            <p class="font-body-lg text-body-lg text-on-primary/80 max-w-lg">Join thousands of students managing
+              academics, marketplace trades, and career growth on CampusConnect.</p>
           </div>
           <div class="flex gap-md w-full overflow-hidden">
             <div class="bg-white/10 backdrop-blur-md rounded-xl p-md border border-white/20 min-w-[260px] flex-1">
@@ -368,18 +468,21 @@
                 <span class="font-label-md text-on-primary">Marketplace</span>
               </div>
               <div class="w-full h-24 bg-surface-container rounded-lg mb-base overflow-hidden">
-                <img class="w-full h-full object-cover" loading="lazy" alt="" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjqSseNIVpcZ5rrOP6QP8k0EWfPcPfLr1B6ILyZDf-KnX6xcCNhLA0aNLnMIjHPbJNKfTlPnd_K_XtY8MkuQWZIJHF_bPoaqiLaHT-iI0wAdTiIj58xDx-3ThdFpuEbzReWMNnL3DrD-vRTdQaK-0NMnXr6Y6EoFlTMVBv5DRWmt5S4QMdAIx5bHY02T22ZrocO3VImiUYbMCmxi71PCO6wcfSGu9SD0vUv3WTEW30VCCyVpZ-pyL_">
+                <img class="w-full h-full object-cover" loading="lazy" alt=""
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjqSseNIVpcZ5rrOP6QP8k0EWfPcPfLr1B6ILyZDf-KnX6xcCNhLA0aNLnMIjHPbJNKfTlPnd_K_XtY8MkuQWZIJHF_bPoaqiLaHT-iI0wAdTiIj58xDx-3ThdFpuEbzReWMNnL3DrD-vRTdQaK-0NMnXr6Y6EoFlTMVBv5DRWmt5S4QMdAIx5bHY02T22ZrocO3VImiUYbMCmxi71PCO6wcfSGu9SD0vUv3WTEW30VCCyVpZ-pyL_">
               </div>
               <div class="h-2 w-3/4 bg-white/20 rounded-full mb-xs"></div>
               <div class="h-2 w-1/2 bg-white/20 rounded-full"></div>
             </div>
-            <div class="bg-white/10 backdrop-blur-md rounded-xl p-md border border-white/20 min-w-[260px] flex-1 opacity-70 translate-y-3">
+            <div
+              class="bg-white/10 backdrop-blur-md rounded-xl p-md border border-white/20 min-w-[260px] flex-1 opacity-70 translate-y-3">
               <div class="flex items-center gap-sm mb-base">
                 <span class="material-symbols-outlined text-tertiary-fixed" aria-hidden="true">event</span>
                 <span class="font-label-md text-on-primary">Campus Events</span>
               </div>
               <div class="w-full h-24 bg-surface-container rounded-lg mb-base overflow-hidden">
-                <img class="w-full h-full object-cover" loading="lazy" alt="" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqnQDKZAOmlCtLzY6XI5EHlUZr0VFULT6DTwC0tD4OWFAqOKw6ofzTO5Yeq13b_ng3IvaWxsgMxaqDTMIWNalGEBHiQ2AJhAxwEceHINvPwa1ydPg3WwBVXL9lyU9YVNeIbE092AOZzqq01cpe4EevXDGgjl5lswkLKcJ5q309IGP-OqvBnOBXw3zQ4kz5ZZtil0L7vO2MAP2uYjFcmMToWeEFEln9kV55XxRJfgwsIvqWPmbHptZ8">
+                <img class="w-full h-full object-cover" loading="lazy" alt=""
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqnQDKZAOmlCtLzY6XI5EHlUZr0VFULT6DTwC0tD4OWFAqOKw6ofzTO5Yeq13b_ng3IvaWxsgMxaqDTMIWNalGEBHiQ2AJhAxwEceHINvPwa1ydPg3WwBVXL9lyU9YVNeIbE092AOZzqq01cpe4EevXDGgjl5lswkLKcJ5q309IGP-OqvBnOBXw3zQ4kz5ZZtil0L7vO2MAP2uYjFcmMToWeEFEln9kV55XxRJfgwsIvqWPmbHptZ8">
               </div>
               <div class="h-2 w-3/4 bg-white/20 rounded-full mb-xs"></div>
               <div class="h-2 w-1/2 bg-white/20 rounded-full"></div>
@@ -388,9 +491,12 @@
         </div>
         <div class="flex items-center gap-md mt-sm">
           <div class="flex -space-x-3">
-            <img class="w-11 h-11 rounded-full border-4 border-primary object-cover" loading="lazy" alt="" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPXXe4bJobMT3aD5U7GAyRnfZy0H6x7XpAIQXHAes2gfVBCrTuICkt_5ABjbfHtPXSmupUpZRVr_RIvXFgZH6iUJ6u3jmP5-0QqxsghiL4iEeklEkvxreEJx4Vn6ULpqayE4sXmgCZvllWrazacogNcw1FnQKSwB8mMFjDqY-XYC_LGJje9RtcLye4-nGSn2DfX-R_5S8EgYiN-XdYY-1nsXDLvUNJ6-CZZYvDYnxhDq2zQFRDTJKZ">
-            <img class="w-11 h-11 rounded-full border-4 border-primary object-cover" loading="lazy" alt="" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmfJyA9UKEUjHVx_bI7tL00-oCTb477oWTxAsVXjSoHce0tJHH9wWeHLAQWaQl3fq-3jqGg3ji8-pXKEjDwpO_7csky7f3F4uVHigMLd9qw9vdYEPNv26RRrTRSSHZIbkf9W0Cxjk3LdT82G7kvqfc4uiUboMtbyUOsAbVrxEIWzGPl9-6AV6mphYn9n5qyy1G7Te8S6gZ6kKZV3sIIkupng4a2AaakaME58rzuaukk0Eshz7ZL4JU">
-            <img class="w-11 h-11 rounded-full border-4 border-primary object-cover" loading="lazy" alt="" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCj8g2HMP0AXFApwmypiQog1ke_0CsWYxk73FAyVIgwx9awb9YNYJpnbMVKp-6nvqsRdjLi131YcKRwqqEgn6s0lbxrfnKJhiFLNlLvDdLHnsQ8hqGTSzeWbLYomIBFUIYOSDiEhN136lIOsvVPTmXbpc5_qNVP19CcRBht511uuH1dP0G4aWJWk-aoWQvVFPuv37e3G57ds2MFeOud4IKNaZ9EYDpzEHnCkfZThhqZBJSYniFxIfXV">
+            <img class="w-11 h-11 rounded-full border-4 border-primary object-cover" loading="lazy" alt=""
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPXXe4bJobMT3aD5U7GAyRnfZy0H6x7XpAIQXHAes2gfVBCrTuICkt_5ABjbfHtPXSmupUpZRVr_RIvXFgZH6iUJ6u3jmP5-0QqxsghiL4iEeklEkvxreEJx4Vn6ULpqayE4sXmgCZvllWrazacogNcw1FnQKSwB8mMFjDqY-XYC_LGJje9RtcLye4-nGSn2DfX-R_5S8EgYiN-XdYY-1nsXDLvUNJ6-CZZYvDYnxhDq2zQFRDTJKZ">
+            <img class="w-11 h-11 rounded-full border-4 border-primary object-cover" loading="lazy" alt=""
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmfJyA9UKEUjHVx_bI7tL00-oCTb477oWTxAsVXjSoHce0tJHH9wWeHLAQWaQl3fq-3jqGg3ji8-pXKEjDwpO_7csky7f3F4uVHigMLd9qw9vdYEPNv26RRrTRSSHZIbkf9W0Cxjk3LdT82G7kvqfc4uiUboMtbyUOsAbVrxEIWzGPl9-6AV6mphYn9n5qyy1G7Te8S6gZ6kKZV3sIIkupng4a2AaakaME58rzuaukk0Eshz7ZL4JU">
+            <img class="w-11 h-11 rounded-full border-4 border-primary object-cover" loading="lazy" alt=""
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCj8g2HMP0AXFApwmypiQog1ke_0CsWYxk73FAyVIgwx9awb9YNYJpnbMVKp-6nvqsRdjLi131YcKRwqqEgn6s0lbxrfnKJhiFLNlLvDdLHnsQ8hqGTSzeWbLYomIBFUIYOSDiEhN136lIOsvVPTmXbpc5_qNVP19CcRBht511uuH1dP0G4aWJWk-aoWQvVFPuv37e3G57ds2MFeOud4IKNaZ9EYDpzEHnCkfZThhqZBJSYniFxIfXV">
           </div>
           <span class="font-label-md text-on-primary">Join 15,000+ active students</span>
         </div>
@@ -398,11 +504,8 @@
     </section>
   </main>
 
-  
+
   <script type="module" src="/src/modules/auth/register.js"></script>
 </body>
+
 </html>
-
-
-
-

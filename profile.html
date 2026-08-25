@@ -1,11 +1,13 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Profile · CampusConnect</title>
   <link rel="stylesheet" href="/src/styles.css" />
 </head>
+
 <body>
   <div class="app-shell">
     <div id="app-sidebar"></div>
@@ -17,10 +19,21 @@
       <!-- Profile header card -->
       <div class="profile-card" id="profile-card">
         <div class="profile-card-top">
-          <div class="profile-avatar-lg" id="profile-avatar"></div>
+          <!-- Clickable avatar with camera upload overlay -->
+          <div class="profile-avatar-wrap" id="avatar-wrap" title="Change photo">
+            <div class="profile-avatar-lg" id="profile-avatar"></div>
+            <img id="profile-avatar-img" src="" alt="Profile Photo"
+              style="display:none;width:100%;height:100%;object-fit:cover;border-radius:50%;position:absolute;inset:0;" />
+            <div class="avatar-upload-overlay" id="avatar-overlay">
+              <span style="font-size:1.3rem;">📷</span>
+            </div>
+            <input type="file" id="avatar-file-input" accept="image/*" style="display:none;"
+              aria-label="Upload profile photo" />
+          </div>
           <div class="profile-info">
             <h2 class="profile-name" id="profile-name">…</h2>
             <p class="profile-email" id="profile-email">…</p>
+            <p class="avatar-upload-hint" id="avatar-hint">Click photo to change</p>
           </div>
           <button type="button" class="btn btn-secondary profile-edit-btn" id="edit-btn">
             <span class="icon" id="edit-icon"></span>
@@ -73,4 +86,5 @@
 
   <script type="module" src="/src/pages/profile.js"></script>
 </body>
+
 </html>

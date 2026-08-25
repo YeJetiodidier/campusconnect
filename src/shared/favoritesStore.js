@@ -1,38 +1,38 @@
 // src/shared/favoritesStore.js
-// Small in-memory store for the current page's favorites, kept in sync
-// with Firestore. Each page calls initFavoritesStore() once on load; other
-// modules on that page can then read isFavorited() / call toggleFavorite()
-// without each maintaining their own subscription.
+// Client-side local storage implementation for Saved Items / Favorites.
+// Eliminates Firestore document reads/writes for user saved items to avoid billing costs.
 
-import { onAuthChange } from "../auth.js";
-import { subscribeToFavorites, addFavorite, removeFavorite, isFavorited as checkFavorited } from "../services/favoritesService.js";
-
-let favorites = [];
-let currentUser = null;
+const LOCAL_STORAGE_KEY = "campusconnect_favorites";
+let favorites = loadFromLocalStorage();
 let listeners = [];
 
-export function initFavoritesStore(onChange) {
-  if (onChange) listeners.push(onChange);
+function loadFromLocalStorage() {
+  try {
+    const raw = localStorage.getItem(LOCAL_STORAGE_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch (e) {
+    console.error("Failed to read favorites from localStorage:", e);
+    return [];
+  }
+}
 
-  let unsubscribeFavorites = null;
-  onAuthChange((user) => {
-    currentUser = user;
-    if (unsubscribeFavorites) unsubscribeFavorites();
-
-    if (!user) {
-      favorites = [];
-      notify();
-      return;
-    }
-    unsubscribeFavorites = subscribeToFavorites(user.uid, (items) => {
-      favorites = items;
-      notify();
-    });
-  });
+function saveToLocalStorage() {
+  try {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(favorites));
+  } catch (e) {
+    console.error("Failed to write favorites to localStorage:", e);
+  }
 }
 
 function notify() {
   listeners.forEach((fn) => fn(favorites));
+}
+
+export function initFavoritesStore(onChange) {
+  if (onChange) {
+    listeners.push(onChange);
+    onChange(favorites);
+  }
 }
 
 export function getFavorites() {
@@ -40,17 +40,27 @@ export function getFavorites() {
 }
 
 export function isFavorited(sourceCollection, sourceId) {
-  return checkFavorited(favorites, sourceCollection, sourceId);
+  return favorites.some(
+    (f) => f.sourceCollection === sourceCollection && String(f.sourceId) === String(sourceId)
+  );
 }
 
 export async function toggleFavorite(sourceCollection, sourceId, title) {
-  if (!currentUser) {
-    alert("Please log in to save items.");
-    return;
-  }
-  if (checkFavorited(favorites, sourceCollection, sourceId)) {
-    await removeFavorite(currentUser.uid, sourceCollection, sourceId);
+  const index = favorites.findIndex(
+    (f) => f.sourceCollection === sourceCollection && String(f.sourceId) === String(sourceId)
+  );
+
+  if (index >= 0) {
+    favorites.splice(index, 1);
   } else {
-    await addFavorite(currentUser.uid, sourceCollection, sourceId, title);
+    favorites.push({
+      sourceCollection,
+      sourceId: String(sourceId),
+      title: title || "",
+      savedAt: new Date().toISOString(),
+    });
   }
+
+  saveToLocalStorage();
+  notify();
 }

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Messages · CampusConnect</title>
+  <script type="module" crossorigin src="/assets/messages-BcMsEe81.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/index.esm2017-aF7IW9R1.js">
+  <link rel="modulepreload" crossorigin href="/assets/firebase-config-CsnSWmcf.js">
+  <link rel="modulepreload" crossorigin href="/assets/footer-DPNrPZWS.js">
+  <link rel="modulepreload" crossorigin href="/assets/renderCard-CLS294Wn.js">
+  <link rel="stylesheet" crossorigin href="/assets/footer-BUVkRhBq.css">
+</head>
+<body>
+  <div class="app-shell">
+    <div id="app-sidebar"></div>
+
+    <main class="app-main app-main--wide">
+      <div class="page-header-row">
+        <div>
+          <h1 class="page-title">Messages</h1>
+          <p class="page-subtitle">Chat with fellow students on campus.</p>
+        </div>
+      </div>
+
+      <div class="messages-layout" id="messages-layout">
+        <!-- Conversation list (left) -->
+        <div class="convo-panel" id="convo-panel">
+          <div class="convo-search">
+            <input type="text" id="convo-search" placeholder="Search conversations…" autocomplete="off" />
+          </div>
+          <div class="convo-list" id="convo-list">
+            <p class="loading-text">Loading…</p>
+          </div>
+        </div>
+
+        <!-- Chat area (right) -->
+        <div class="chat-panel" id="chat-panel">
+          <div class="chat-empty-state" id="chat-empty">
+            <div class="empty-state">
+              <p>Select a conversation</p>
+              <p>Pick someone from the left to start chatting.</p>
+            </div>
+          </div>
+
+          <div class="chat-active" id="chat-active" hidden>
+            <div class="chat-header" id="chat-header">
+              <button type="button" class="chat-back-btn" id="chat-back-btn" aria-label="Back to conversations">
+                <span class="icon" id="chat-back-icon"></span>
+              </button>
+              <div class="chat-header-avatar" id="chat-header-avatar"></div>
+              <div class="chat-header-info">
+                <p class="chat-header-name" id="chat-header-name"></p>
+                <p class="chat-header-status">Online</p>
+              </div>
+            </div>
+            <div class="chat-messages" id="chat-messages"></div>
+            <form class="chat-input-row" id="chat-form">
+              <input type="text" id="chat-input" placeholder="Type a message…" autocomplete="off" required />
+              <button type="submit" class="chat-send-btn" id="chat-send-btn" aria-label="Send message">
+                <span class="icon" id="chat-send-icon"></span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div id="app-footer"></div>
+    </main>
+  </div>
+
+</body>
+</html>
