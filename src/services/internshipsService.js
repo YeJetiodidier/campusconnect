@@ -20,10 +20,28 @@ import {
   getDoc,
   getDocs,
   onSnapshot,
+  addDoc,
+  serverTimestamp,
 } from "firebase/firestore";
 
 const JOBS_COLLECTION = "jobs";
 const PAGE_SIZE = 12;
+
+export async function createInternshipListing(data, user) {
+  const jobsRef = collection(db, JOBS_COLLECTION);
+  return await addDoc(jobsRef, {
+    title: data.title,
+    company: data.company,
+    type: data.type,
+    location: data.location,
+    salary: data.salary || "",
+    applicationLink: data.link,
+    logoUrl: data.logoUrl || "",
+    status: "open",
+    postedBy: user.uid,
+    postedDate: serverTimestamp()
+  });
+}
 
 function buildListingsQuery(filters = {}, cursor = null) {
   const jobsRef = collection(db, JOBS_COLLECTION);
