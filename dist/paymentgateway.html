@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CampusConnect — Secure mobile money checkout for campus marketplace transactions." />
+    <title>CampusConnect — Secure Checkout</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <script type="module" crossorigin src="/assets/paymentgateway-D3NPOiJZ.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/index.esm2017-Dc5VIc4N.js">
+    <link rel="modulepreload" crossorigin href="/assets/firebase-cT6-Ez2D.js">
+    <link rel="stylesheet" crossorigin href="/assets/paymentgateway-XWLHX7lv.css">
+  </head>
+  <body>
+
+    <!-- ─── Top Navigation Bar ──────────────────────────── -->
+    <nav class="checkout-nav">
+      <div class="nav-left">
+        <div class="nav-logo">
+          <div class="logo-icon">CC</div>
+          <span class="logo-text">CampusConnect</span>
+        </div>
+      </div>
+      <div class="nav-right">
+        <span class="secure-badge">🔒 Secure Checkout</span>
+      </div>
+    </nav>
+
+    <!-- ─── Main Content ────────────────────────────────── -->
+    <main class="checkout-container">
+
+      <!-- Page Header -->
+      <header class="checkout-header">
+        <h1>Complete Your Purchase</h1>
+        <p>Please review your order and enter your payment details below.</p>
+      </header>
+
+      <div class="checkout-grid">
+
+        <!-- ═══ LEFT COLUMN: Payment Methods ═══ -->
+        <section class="payment-methods-card">
+          <div class="card-title">
+            <span class="card-title-icon">📱</span>
+            <h2>Mobile Money</h2>
+          </div>
+
+          <!-- MTN MoMo Option -->
+          <label class="payment-option selected" id="momo-option">
+            <div class="option-header">
+              <input type="radio" name="paymentMethod" value="momo" checked />
+              <span class="option-name">MTN Mobile Money</span>
+              <span class="provider-badge mtn-badge">MTN</span>
+            </div>
+            <div class="option-body" id="momo-fields">
+              <label class="field-label">PHONE NUMBER</label>
+              <input type="tel" id="momo-phone" class="phone-input" placeholder="6xx xxx xxx" />
+            </div>
+          </label>
+
+          <!-- Orange Money Option -->
+          <label class="payment-option" id="orange-option">
+            <div class="option-header">
+              <input type="radio" name="paymentMethod" value="orange_money" />
+              <span class="option-name">Orange Money</span>
+              <span class="provider-badge orange-badge">ORANGE</span>
+            </div>
+            <div class="option-body hidden" id="orange-fields">
+              <label class="field-label">PHONE NUMBER</label>
+              <input type="tel" id="orange-phone" class="phone-input" placeholder="6xx xxx xxx" />
+            </div>
+          </label>
+
+          <!-- Security Badges -->
+          <div class="security-badges">
+            <div class="security-item">
+              <span class="shield-icon">✅</span>
+              <span>256-bit SSL Encryption</span>
+            </div>
+            <div class="security-item">
+              <span class="shield-icon">✅</span>
+              <span>Secure Transaction</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ═══ RIGHT COLUMN: Order Summary ═══ -->
+        <aside class="order-summary-card">
+          <div class="summary-header">
+            <h2>Order Summary</h2>
+            <p>Marketplace Purchase</p>
+          </div>
+
+          <!-- Product Info -->
+          <div class="product-info">
+            <div class="product-image" id="product-image">
+              <img src="" alt="Product" id="product-img" />
+            </div>
+            <div class="product-details">
+              <h3 id="product-title">—</h3>
+              <p class="seller-name" id="seller-name">Seller: —</p>
+              <p class="product-price" id="product-price">0 FCFA</p>
+            </div>
+          </div>
+
+          <hr class="divider" />
+
+          <!-- Price Breakdown -->
+          <div class="price-breakdown">
+            <div class="price-row">
+              <span>Subtotal</span>
+              <span id="subtotal">0 FCFA</span>
+            </div>
+            <div class="price-row">
+              <span>Campus Delivery Fee</span>
+              <span id="delivery-fee">0 FCFA</span>
+            </div>
+            <div class="price-row">
+              <span>Estimated Tax</span>
+              <span id="tax">0 FCFA</span>
+            </div>
+          </div>
+
+          <hr class="divider" />
+
+          <!-- Total -->
+          <div class="total-row">
+            <span>Total</span>
+            <span class="total-amount" id="total-amount">0 FCFA</span>
+          </div>
+
+          <!-- Pay Button -->
+          <button type="button" class="btn-pay" id="btn-pay" disabled>
+            🔒 Pay <span id="btn-pay-amount">0</span> FCFA Now
+          </button>
+
+          <!-- Payment Message -->
+          <div id="payment-message" class="payment-message"></div>
+
+          <!-- Terms -->
+          <p class="terms-text">
+            By placing this order, you agree to CampusConnect's
+            <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+          </p>
+        </aside>
+
+      </div>
+
+      <!-- ═══ Transaction History (below checkout) ═══ -->
+      <section class="transactions-section">
+        <h2>Recent Transactions</h2>
+        <div class="table-wrapper">
+          <table class="transactions-table">
+            <thead>
+              <tr>
+                <th>Item / Service</th>
+                <th>Amount</th>
+                <th>Method</th>
+                <th>Status</th>
+                <th>Direction</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="transactions-body"></tbody>
+          </table>
+        </div>
+        <p id="empty-state" class="empty-state" style="display:none;">No transactions yet.</p>
+      </section>
+    </main>
+
+    <!-- Hidden form data (populated programmatically from marketplace) -->
+    <form id="payment-form" style="display:none;">
+      <input type="hidden" name="listingId" id="listingId" />
+      <input type="hidden" name="listingTitle" id="listingTitle" />
+      <input type="hidden" name="sellerId" id="sellerId" />
+      <input type="hidden" name="amount" id="amount" />
+      <input type="hidden" name="paymentMethod" id="paymentMethodHidden" />
+      <input type="hidden" name="phoneNumber" id="phoneNumber" />
+    </form>
+
+  </body>
+</html>
