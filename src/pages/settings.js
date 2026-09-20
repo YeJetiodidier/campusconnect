@@ -6,27 +6,136 @@ import { db, auth } from "../firebase-config.js";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { updateProfile, updatePassword } from "firebase/auth";
 
-// Render app shell
+// ─── i18n ──────────────────────────────────────────────────────────────────
+const TRANSLATIONS = {
+  en: {
+    "page-title":               "Settings",
+    "page-subtitle":            "Manage your account preferences and configurations.",
+    "nav-profile":              "Profile Settings",
+    "nav-account":              "Account Preferences",
+    "nav-notifications":        "Notification Management",
+    "nav-privacy":              "Privacy & Security",
+    "section-profile-title":    "Profile Settings",
+    "label-display-name":       "Display Name",
+    "label-email":              "Email Address",
+    "label-bio":                "Bio",
+    "btn-save-profile":         "Save Changes",
+    "btn-save-profile-saving":  "Saving…",
+    "section-account-title":    "Account Preferences",
+    "pref-dark-mode":           "Dark Mode",
+    "pref-dark-mode-desc":      "Adjust the visual theme of the interface across all pages.",
+    "pref-language":            "Language",
+    "pref-language-desc":       "Select your preferred interface language.",
+    "pref-timezone":            "Timezone",
+    "pref-timezone-desc":       "Set your local time formatting.",
+    "section-notif-title":      "Notification Management",
+    "pref-email-alerts":        "Email Alerts",
+    "pref-email-alerts-desc":   "Receive notifications for important campus updates via email.",
+    "pref-marketplace-notif":   "Marketplace Activity",
+    "pref-marketplace-notif-desc": "Get notified when someone inquires about your listed products.",
+    "pref-event-reminders":     "Event Reminders",
+    "pref-event-reminders-desc":"Receive reminders for events you have registered or favorited.",
+    "section-privacy-title":    "Privacy & Security",
+    "label-new-password":       "New Password",
+    "label-confirm-password":   "Confirm New Password",
+    "placeholder-new-password": "Minimum 6 characters",
+    "placeholder-confirm-password": "Re-enter new password",
+    "btn-update-password":      "Update Password",
+    "btn-updating-password":    "Updating…",
+    "alert-saved":              "Settings saved successfully!",
+    "alert-save-failed":        "Failed to save settings: ",
+    "alert-pw-short":           "Password must be at least 6 characters long.",
+    "alert-pw-mismatch":        "Passwords do not match.",
+    "alert-pw-updated":         "Password updated successfully!",
+    "alert-pw-relogin":         "For security reasons, please log out and log back in before updating your password.",
+    "alert-pw-failed":          "Failed to update password: ",
+  },
+  fr: {
+    "page-title":               "Paramètres",
+    "page-subtitle":            "Gérez vos préférences et configurations de compte.",
+    "nav-profile":              "Profil",
+    "nav-account":              "Préférences",
+    "nav-notifications":        "Notifications",
+    "nav-privacy":              "Confidentialité",
+    "section-profile-title":    "Paramètres du profil",
+    "label-display-name":       "Nom affiché",
+    "label-email":              "Adresse e-mail",
+    "label-bio":                "Biographie",
+    "btn-save-profile":         "Enregistrer",
+    "btn-save-profile-saving":  "Enregistrement…",
+    "section-account-title":    "Préférences du compte",
+    "pref-dark-mode":           "Mode sombre",
+    "pref-dark-mode-desc":      "Ajustez le thème visuel de l'interface sur toutes les pages.",
+    "pref-language":            "Langue",
+    "pref-language-desc":       "Sélectionnez votre langue d'interface préférée.",
+    "pref-timezone":            "Fuseau horaire",
+    "pref-timezone-desc":       "Définissez votre format d'heure local.",
+    "section-notif-title":      "Gestion des notifications",
+    "pref-email-alerts":        "Alertes par e-mail",
+    "pref-email-alerts-desc":   "Recevez des notifications pour les mises à jour importantes du campus.",
+    "pref-marketplace-notif":   "Activité du marché",
+    "pref-marketplace-notif-desc": "Soyez notifié lorsque quelqu'un s'intéresse à vos annonces.",
+    "pref-event-reminders":     "Rappels d'événements",
+    "pref-event-reminders-desc":"Recevez des rappels pour les événements auxquels vous êtes inscrit.",
+    "section-privacy-title":    "Confidentialité & Sécurité",
+    "label-new-password":       "Nouveau mot de passe",
+    "label-confirm-password":   "Confirmer le mot de passe",
+    "placeholder-new-password": "Minimum 6 caractères",
+    "placeholder-confirm-password": "Ressaisissez le mot de passe",
+    "btn-update-password":      "Mettre à jour",
+    "btn-updating-password":    "Mise à jour…",
+    "alert-saved":              "Paramètres enregistrés avec succès !",
+    "alert-save-failed":        "Échec de l'enregistrement : ",
+    "alert-pw-short":           "Le mot de passe doit comporter au moins 6 caractères.",
+    "alert-pw-mismatch":        "Les mots de passe ne correspondent pas.",
+    "alert-pw-updated":         "Mot de passe mis à jour avec succès !",
+    "alert-pw-relogin":         "Pour des raisons de sécurité, veuillez vous déconnecter et vous reconnecter avant de modifier votre mot de passe.",
+    "alert-pw-failed":          "Échec de la mise à jour : ",
+  },
+};
+
+const currentLang = localStorage.getItem("campusconnect_lang") || "en";
+
+function t(key) {
+  return (TRANSLATIONS[currentLang] || TRANSLATIONS.en)[key] || key;
+}
+
+function applyTranslations() {
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    const key = el.getAttribute("data-i18n");
+    const attr = el.getAttribute("data-i18n-attr");
+    if (attr) {
+      el.setAttribute(attr, t(key));
+    } else {
+      el.textContent = t(key);
+    }
+  });
+}
+
+// ─── App shell ─────────────────────────────────────────────────────────────
 renderSidebar("settings");
 renderFooter();
 
-// Element references
-const settingsNav = document.getElementById("settingsNav");
-const navItems = document.querySelectorAll(".settings-nav-item");
-const panels = document.querySelectorAll(".settings-panel");
-const themeToggle = document.getElementById("theme-toggle");
+// Apply translations after DOM is ready
+applyTranslations();
 
-const displayNameInput = document.getElementById("displayNameInput");
-const emailInput = document.getElementById("emailInput");
-const bioInput = document.getElementById("bioInput");
-const saveProfileBtn = document.getElementById("saveProfileBtn");
+// ─── Element references ────────────────────────────────────────────────────
+const navItems         = document.querySelectorAll(".settings-nav-item");
+const panels           = document.querySelectorAll(".settings-panel");
+const themeToggle      = document.getElementById("theme-toggle");
+const languageSelect   = document.getElementById("languageSelect");
 
-const passwordChangeForm = document.getElementById("passwordChangeForm");
-const newPasswordInput = document.getElementById("newPasswordInput");
-const confirmPasswordInput = document.getElementById("confirmPasswordInput");
-const changePasswordBtn = document.getElementById("changePasswordBtn");
+const displayNameInput  = document.getElementById("displayNameInput");
+const emailInput        = document.getElementById("emailInput");
+const bioInput          = document.getElementById("bioInput");
+const saveProfileBtn    = document.getElementById("saveProfileBtn");
 
-// 1. Theme toggle initialization
+const passwordChangeForm    = document.getElementById("passwordChangeForm");
+const newPasswordInput      = document.getElementById("newPasswordInput");
+const confirmPasswordInput  = document.getElementById("confirmPasswordInput");
+const changePasswordBtn     = document.getElementById("changePasswordBtn");
+
+// ─── 1. Theme toggle ───────────────────────────────────────────────────────
 const currentTheme = localStorage.getItem("campusconnect_theme");
 if (currentTheme === "dark") {
   document.documentElement.classList.add("dark-theme");
@@ -45,24 +154,30 @@ if (themeToggle) {
   });
 }
 
-// 2. Tab navigation switching
+// ─── 2. Language select ─────────────────────────────────────────────────────
+if (languageSelect) {
+  languageSelect.value = currentLang;
+  languageSelect.addEventListener("change", (e) => {
+    const newLang = e.target.value;
+    localStorage.setItem("campusconnect_lang", newLang);
+    // Reload to apply translations site-wide
+    window.location.reload();
+  });
+}
+
+// ─── 3. Tab navigation ─────────────────────────────────────────────────────
 navItems.forEach((item) => {
   item.addEventListener("click", () => {
     const targetId = item.getAttribute("data-target");
     navItems.forEach((n) => n.classList.remove("is-active"));
     item.classList.add("is-active");
-
     panels.forEach((panel) => {
-      if (panel.id === targetId) {
-        panel.style.display = "block";
-      } else {
-        panel.style.display = "none";
-      }
+      panel.style.display = panel.id === targetId ? "block" : "none";
     });
   });
 });
 
-// 3. Live Auth & Firestore Data Population
+// ─── 4. Live auth & Firestore data ─────────────────────────────────────────
 let currentUser = null;
 
 onAuthChange(async (user) => {
@@ -75,7 +190,6 @@ onAuthChange(async (user) => {
   if (displayNameInput) displayNameInput.value = user.displayName || "";
   if (emailInput) emailInput.value = user.email || "";
 
-  // Load bio from Firestore user doc
   try {
     const userDocRef = doc(db, "users", user.uid);
     const userSnap = await getDoc(userDocRef);
@@ -88,77 +202,68 @@ onAuthChange(async (user) => {
   }
 });
 
-// 4. Save Profile Changes
+// ─── 5. Save profile ───────────────────────────────────────────────────────
 if (saveProfileBtn) {
   saveProfileBtn.addEventListener("click", async () => {
-    if (!currentUser) return;
+    const fbUser = auth.currentUser;
+    if (!fbUser && !currentUser) return;
+    const uid = fbUser ? fbUser.uid : currentUser.uid;
     const newName = displayNameInput.value.trim();
-    const newBio = bioInput.value.trim();
+    const newBio  = bioInput.value.trim();
 
     saveProfileBtn.disabled = true;
-    saveProfileBtn.textContent = "Saving...";
+    saveProfileBtn.textContent = t("btn-save-profile-saving");
 
     try {
-      if (newName && newName !== currentUser.displayName) {
-        await updateProfile(currentUser, { displayName: newName });
+      if (fbUser && newName && newName !== fbUser.displayName) {
+        await updateProfile(fbUser, { displayName: newName });
       }
-
       await setDoc(
-        doc(db, "users", currentUser.uid),
-        {
-          displayName: newName,
-          bio: newBio,
-          updatedAt: new Date().toISOString(),
-        },
+        doc(db, "users", uid),
+        { displayName: newName, bio: newBio, updatedAt: new Date().toISOString() },
         { merge: true }
       );
-
-      alert("Settings saved successfully!");
+      alert(t("alert-saved"));
     } catch (err) {
       console.error("Error updating profile:", err);
-      alert("Failed to save settings: " + err.message);
+      alert(t("alert-save-failed") + err.message);
     } finally {
       saveProfileBtn.disabled = false;
-      saveProfileBtn.textContent = "Save Changes";
+      saveProfileBtn.textContent = t("btn-save-profile");
     }
   });
 }
 
-// 5. Change Password Handler
+// ─── 6. Change password ────────────────────────────────────────────────────
 if (passwordChangeForm) {
   passwordChangeForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    if (!currentUser) return;
+    const fbUser = auth.currentUser;
+    if (!fbUser) return;
 
-    const newPassword = newPasswordInput.value;
+    const newPassword     = newPasswordInput.value;
     const confirmPassword = confirmPasswordInput.value;
 
-    if (newPassword.length < 6) {
-      alert("Password must be at least 6 characters long.");
-      return;
-    }
-    if (newPassword !== confirmPassword) {
-      alert("Passwords do not match.");
-      return;
-    }
+    if (newPassword.length < 6) { alert(t("alert-pw-short")); return; }
+    if (newPassword !== confirmPassword) { alert(t("alert-pw-mismatch")); return; }
 
     changePasswordBtn.disabled = true;
-    changePasswordBtn.textContent = "Updating...";
+    changePasswordBtn.textContent = t("btn-updating-password");
 
     try {
-      await updatePassword(currentUser, newPassword);
-      alert("Password updated successfully!");
+      await updatePassword(fbUser, newPassword);
+      alert(t("alert-pw-updated"));
       passwordChangeForm.reset();
     } catch (err) {
       console.error("Error updating password:", err);
       if (err.code === "auth/requires-recent-login") {
-        alert("For security reasons, please log out and log back in before updating your password.");
+        alert(t("alert-pw-relogin"));
       } else {
-        alert("Failed to update password: " + err.message);
+        alert(t("alert-pw-failed") + err.message);
       }
     } finally {
       changePasswordBtn.disabled = false;
-      changePasswordBtn.textContent = "Update Password";
+      changePasswordBtn.textContent = t("btn-update-password");
     }
   });
 }

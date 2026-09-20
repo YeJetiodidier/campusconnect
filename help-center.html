@@ -1,0 +1,232 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CampusConnect Help Center — find answers, guides, and support for the student platform." />
+  <title>Help Center | CampusConnect</title>
+  <link rel="icon" type="image/png" href="/src/assets/campusconnect-logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <style>
+    :root {
+      --primary: #4648d4;
+      --primary-light: #eef0ff;
+      --text: #0b1c30;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8f9ff;
+      --surface: #ffffff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* NAV */
+    nav.topnav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+    .topnav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); font-weight: 700; font-size: 18px; }
+    .topnav-logo img { height: 32px; }
+    .topnav-links { display: flex; align-items: center; gap: 20px; }
+    .topnav-links a { text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 500; transition: color .2s; }
+    .topnav-links a:hover { color: var(--primary); }
+    .topnav-links .btn-nav { background: var(--primary); color: #fff; padding: 8px 18px; border-radius: 8px; }
+    .topnav-links .btn-nav:hover { background: #3730a3; color: #fff; }
+
+    /* HERO */
+    .hc-hero { background: linear-gradient(135deg, #4648d4 0%, #6563f0 100%); color: #fff; padding: 64px 24px; text-align: center; }
+    .hc-hero h1 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(28px, 5vw, 48px); font-weight: 800; margin-bottom: 16px; }
+    .hc-hero p { font-size: 18px; opacity: .85; margin-bottom: 32px; }
+    .hc-search { max-width: 560px; margin: 0 auto; display: flex; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,.15); }
+    .hc-search input { flex: 1; border: none; outline: none; padding: 14px 20px; font-size: 15px; font-family: 'Inter', sans-serif; color: var(--text); }
+    .hc-search button { background: var(--primary); color: #fff; border: none; padding: 14px 24px; cursor: pointer; font-size: 15px; font-weight: 600; display: flex; align-items: center; gap: 6px; transition: background .2s; }
+    .hc-search button:hover { background: #3730a3; }
+
+    /* CATEGORIES */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 56px 0; }
+    .section-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 26px; font-weight: 700; margin-bottom: 32px; }
+    .categories-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+    .cat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 28px 24px; text-decoration: none; color: var(--text); transition: box-shadow .2s, transform .2s; display: flex; flex-direction: column; gap: 12px; }
+    .cat-card:hover { box-shadow: 0 8px 24px rgba(70,72,212,.12); transform: translateY(-3px); }
+    .cat-icon { width: 48px; height: 48px; border-radius: 12px; background: var(--primary-light); display: flex; align-items: center; justify-content: center; }
+    .cat-icon span { color: var(--primary); font-size: 26px; }
+    .cat-card h3 { font-size: 16px; font-weight: 600; }
+    .cat-card p { font-size: 13px; color: var(--muted); }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 12px; }
+    .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .faq-q { width: 100%; text-align: left; background: none; border: none; padding: 18px 24px; font-size: 15px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; color: var(--text); font-family: 'Inter', sans-serif; }
+    .faq-q:hover { background: var(--bg); }
+    .faq-q span.arrow { transition: transform .25s; font-size: 20px; color: var(--muted); }
+    .faq-item.open .faq-q span.arrow { transform: rotate(180deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
+    .faq-item.open .faq-a { max-height: 300px; }
+    .faq-a p { padding: 0 24px 20px; font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+    /* CONTACT */
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+    .contact-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 28px 24px; display: flex; flex-direction: column; gap: 12px; }
+    .contact-card .cc-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+    .contact-card h3 { font-size: 16px; font-weight: 600; }
+    .contact-card p { font-size: 13px; color: var(--muted); }
+    .contact-card a { margin-top: auto; display: inline-block; background: var(--primary); color: #fff; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 600; text-align: center; transition: background .2s; }
+    .contact-card a:hover { background: #3730a3; }
+
+    /* FOOTER */
+    footer { background: #0b1c30; color: #94a3b8; text-align: center; padding: 32px 24px; font-size: 13px; }
+    footer a { color: #c0c1ff; text-decoration: none; margin: 0 10px; }
+    footer a:hover { text-decoration: underline; }
+    footer .copy { margin-top: 12px; }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="/" class="topnav-logo">
+    <img src="/src/assets/campusconnect-logo.png" alt="CampusConnect">
+    CampusConnect
+  </a>
+  <div class="topnav-links">
+    <a href="/marketplace.html">Marketplace</a>
+    <a href="/services.html">Services</a>
+    <a href="/dashboard.html">Dashboard</a>
+    <a href="/login.html" class="btn-nav">Sign In</a>
+  </div>
+</nav>
+
+<section class="hc-hero">
+  <h1>How can we help you?</h1>
+  <p>Search our help articles or browse the categories below.</p>
+  <div class="hc-search">
+    <input type="text" id="hcSearch" placeholder="Search for help articles…" autocomplete="off">
+    <button><span class="material-symbols-outlined">search</span> Search</button>
+  </div>
+</section>
+
+<main>
+  <div class="container">
+
+    <!-- Categories -->
+    <section class="section">
+      <h2 class="section-title">Browse by Category</h2>
+      <div class="categories-grid">
+        <a class="cat-card" href="#faq">
+          <div class="cat-icon"><span class="material-symbols-outlined">shopping_bag</span></div>
+          <h3>Marketplace</h3>
+          <p>Buying, selling, listing items and managing offers.</p>
+        </a>
+        <a class="cat-card" href="#faq">
+          <div class="cat-icon"><span class="material-symbols-outlined">work</span></div>
+          <h3>Internships & Jobs</h3>
+          <p>Posting opportunities, applying, and tracking applications.</p>
+        </a>
+        <a class="cat-card" href="#faq">
+          <div class="cat-icon"><span class="material-symbols-outlined">forum</span></div>
+          <h3>Messages & Chats</h3>
+          <p>Sending messages, conversations, and notifications.</p>
+        </a>
+        <a class="cat-card" href="#faq">
+          <div class="cat-icon"><span class="material-symbols-outlined">person</span></div>
+          <h3>Account & Profile</h3>
+          <p>Registration, login, settings, and profile management.</p>
+        </a>
+        <a class="cat-card" href="#faq">
+          <div class="cat-icon"><span class="material-symbols-outlined">card_giftcard</span></div>
+          <h3>Referrals & Rewards</h3>
+          <p>Earning rewards by inviting fellow students.</p>
+        </a>
+        <a class="cat-card" href="#faq">
+          <div class="cat-icon"><span class="material-symbols-outlined">security</span></div>
+          <h3>Safety & Privacy</h3>
+          <p>Reporting users, blocking, and data privacy.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">How do I list an item on the Marketplace? <span class="material-symbols-outlined arrow">expand_more</span></button>
+          <div class="faq-a"><p>Go to the Marketplace page and click the <strong>+ Sell / List</strong> button in the top right. Fill in the item details, set a price in FCFA, upload a photo, and click Publish. Your listing will be visible to all students immediately.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How do I message a seller about an item? <span class="material-symbols-outlined arrow">expand_more</span></button>
+          <div class="faq-a"><p>Open the product details page and click the <strong>💬 Message Seller</strong> button. You'll need to be logged in. A conversation will be created with the seller, and you can chat directly in the Messages page.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What currency does CampusConnect use? <span class="material-symbols-outlined arrow">expand_more</span></button>
+          <div class="faq-a"><p>All prices on CampusConnect are displayed in <strong>FCFA (Franc CFA)</strong>. When listing an item or service, enter the price in FCFA. Prices are formatted with commas for readability (e.g., 45,000 FCFA).</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How do referrals work? <span class="material-symbols-outlined arrow">expand_more</span></button>
+          <div class="faq-a"><p>Go to the <a href="/referrals.html" style="color:#4648d4">Referrals page</a> and copy your unique referral link. Share it with friends. When they sign up and complete a transaction, you both earn referral credits which can be used within the platform.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can I delete a listing after posting it? <span class="material-symbols-outlined arrow">expand_more</span></button>
+          <div class="faq-a"><p>Yes. Go to your Profile page, navigate to <strong>My Listings</strong>, and click the trash icon next to any item you want to remove. The listing will be unpublished immediately.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How do I report an inappropriate listing or user? <span class="material-symbols-outlined arrow">expand_more</span></button>
+          <div class="faq-a"><p>On any listing or user profile, click the three-dot menu (⋮) and select <strong>Report</strong>. Choose a reason from the list and submit. Our moderation team reviews reports within 24 hours.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">I forgot my password. How do I reset it? <span class="material-symbols-outlined arrow">expand_more</span></button>
+          <div class="faq-a"><p>Go to the <a href="/forgot-password.html" style="color:#4648d4">Forgot Password</a> page, enter your university email address, and check your inbox for a reset link. The link expires after 1 hour for security.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section">
+      <h2 class="section-title">Still need help?</h2>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="cc-icon" style="background:#eef0ff"><span class="material-symbols-outlined" style="color:#4648d4;font-size:26px">chat</span></div>
+          <h3>Live Chat</h3>
+          <p>Chat with our support team in real time. Available Monday–Friday, 8 AM – 6 PM.</p>
+          <a href="/chats.html">Open Chat</a>
+        </div>
+        <div class="contact-card">
+          <div class="cc-icon" style="background:#fef0e6"><span class="material-symbols-outlined" style="color:#f97316;font-size:26px">mail</span></div>
+          <h3>Email Support</h3>
+          <p>Send us a detailed message and we'll get back to you within 1 business day.</p>
+          <a href="mailto:support@campusconnect.app">Send Email</a>
+        </div>
+        <div class="contact-card">
+          <div class="cc-icon" style="background:#f0fdf4"><span class="material-symbols-outlined" style="color:#16a34a;font-size:26px">description</span></div>
+          <h3>Student Guidelines</h3>
+          <p>Read our community guidelines to understand what's allowed on the platform.</p>
+          <a href="/guidelines.html">View Guidelines</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div>
+    <a href="/">Home</a>
+    <a href="/about.html">About Us</a>
+    <a href="/privacy-policy.html">Privacy Policy</a>
+    <a href="/guidelines.html">Guidelines</a>
+    <a href="/referrals.html">Referrals</a>
+  </div>
+  <p class="copy">© 2026 CampusConnect University Platform. All rights reserved.</p>
+</footer>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>

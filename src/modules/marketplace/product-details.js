@@ -4,10 +4,14 @@
  */
 
 import { auth, db } from '../../config/firebase.js';
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, deleteDoc } from 'firebase/firestore';
+import { onAuthStateChanged } from 'firebase/auth';
 import { renderSidebar } from '../../shared/sidebar.js';
 import { renderFooter } from '../../shared/footer.js';
 import { isFavorited, toggleFavorite } from '../../shared/favoritesStore.js';
+
+let currentUser = null;
+onAuthStateChanged(auth, user => { currentUser = user; });
 
 // Render sidebar and footer
 renderSidebar('favorites');
@@ -38,11 +42,14 @@ const specPower = document.getElementById('specPower');
 
 let currentItem = null;
 
-// Helper
+// Helper — always FCFA with comma separators
 function formatCurrency(amount) {
-  if (amount == null) return '$0.00';
-  if (typeof amount === 'string' && (amount.includes('$') || amount.includes('FCFA'))) return amount;
-  return `$${Number(amount).toFixed(2)}`;
+  if (amount == null) return '0 FCFA';
+  if (typeof amount === 'string' && amount.includes('FCFA')) return amount;
+  const num = typeof amount === 'string'
+    ? parseFloat(amount.replace(/[^0-9.]/g, ''))
+    : Number(amount);
+  return num.toLocaleString('fr-FR') + ' FCFA';
 }
 
 async function loadProduct(id) {
@@ -168,7 +175,13 @@ pdBookmarkBtn?.addEventListener('click', () => {
 
 pdMessageBtn?.addEventListener('click', () => {
   if (auth.currentUser) {
-    window.location.href = `/messages.html?seller=${encodeURIComponent(currentItem?.sellerName || 'Seller')}`;
+    const params = new URLSearchParams({
+      sellerId: currentItem?.sellerId || '',
+      sellerName: currentItem?.sellerName || 'Seller',
+      productId: currentItem?.id || '',
+      productTitle: currentItem?.title || '',
+    });
+    window.location.href = `/chats.html?${params.toString()}`;
   } else {
     window.location.href = `/login.html?next=${encodeURIComponent(window.location.pathname + window.location.search)}`;
   }
@@ -176,12 +189,51 @@ pdMessageBtn?.addEventListener('click', () => {
 
 pdOfferBtn?.addEventListener('click', () => {
   const offer = prompt(`Make an offer for "${currentItem?.title}" (Current: ${formatCurrency(currentItem?.price)}):`);
-  if (offer) alert(`Your offer of $${offer} has been sent to ${currentItem?.sellerName || 'the seller'}!`);
+  if (offer) alert(`Your offer of ${offer} FCFA has been sent to ${currentItem?.sellerName || 'the seller'}!`);
 });
+
+// Owner-only delete
+async function deleteProduct(item) {
+  if (!confirm(`Delete "${item.title}"? This cannot be undone.`)) return;
+  try {
+    // Try both collections
+    try { await deleteDoc(doc(db, 'listings', item.id)); } catch (_) {}
+    try { await deleteDoc(doc(db, 'products', item.id)); } catch (_) {}
+    alert('Listing deleted successfully.');
+    window.location.href = '/marketplace.html';
+  } catch (err) {
+    alert('Failed to delete listing: ' + err.message);
+  }
+}
+
+function addDeleteButtonIfOwner(item) {
+  const isOwner = currentUser &&
+    (currentUser.uid === item.postedBy ||
+     currentUser.uid === item.sellerId ||
+     currentUser.uid === item.userId);
+  if (!isOwner) return;
+
+  const actionArea = document.querySelector('.pd-actions');
+  if (!actionArea) return;
+  if (actionArea.querySelector('.pd-delete-btn')) return;
+
+  const deleteBtn = document.createElement('button');
+  deleteBtn.type = 'button';
+  deleteBtn.className = 'btn pd-delete-btn';
+  deleteBtn.style.cssText = 'background:#fee2e2;color:#dc2626;border:1px solid #fca5a5;margin-top:8px;width:100%;';
+  deleteBtn.innerHTML = '🗑 Delete My Listing';
+  deleteBtn.addEventListener('click', () => deleteProduct(item));
+  actionArea.appendChild(deleteBtn);
+}
 
 // Init
 (async function init() {
   const id = new URLSearchParams(window.location.search).get('id');
   const item = await loadProduct(id);
   renderProduct(item);
+  // Wait for auth state then conditionally show delete
+  onAuthStateChanged(auth, user => {
+    currentUser = user;
+    addDeleteButtonIfOwner(item);
+  });
 })();

@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CampusConnect Student Community Guidelines — rules and standards for a safe campus platform." />
+  <title>Student Guidelines | CampusConnect</title>
+  <link rel="icon" type="image/png" href="/src/assets/campusconnect-logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <style>
+    :root { --primary:#4648d4; --primary-light:#eef0ff; --text:#0b1c30; --muted:#64748b; --border:#e2e8f0; --bg:#f8f9ff; --surface:#fff; --danger:#f43f5e; --warn:#f59e0b; --success:#16a34a; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); line-height:1.7; }
+    nav.topnav { background:var(--surface); border-bottom:1px solid var(--border); padding:0 24px; height:64px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:100; }
+    .topnav-logo { display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--text); font-weight:700; font-size:18px; }
+    .topnav-logo img { height:32px; }
+    .topnav-links a { text-decoration:none; color:var(--muted); font-size:14px; font-weight:500; margin-left:20px; transition:color .2s; }
+    .topnav-links a:hover { color:var(--primary); }
+    .topnav-links .btn-nav { background:var(--primary); color:#fff; padding:8px 18px; border-radius:8px; }
+
+    .gl-hero { background:linear-gradient(135deg,#0b1c30 0%,#4648d4 100%); color:#fff; padding:64px 24px; text-align:center; }
+    .gl-hero .badge { display:inline-block; background:rgba(255,255,255,.15); border-radius:100px; padding:6px 16px; font-size:13px; font-weight:600; margin-bottom:20px; }
+    .gl-hero h1 { font-family:'Plus Jakarta Sans',sans-serif; font-size:clamp(28px,4vw,48px); font-weight:800; margin-bottom:12px; }
+    .gl-hero p { opacity:.85; font-size:16px; max-width:580px; margin:0 auto; }
+
+    .container { max-width:900px; margin:0 auto; padding:0 24px; }
+    .section { padding:48px 0; }
+    .section h2 { font-family:'Plus Jakarta Sans',sans-serif; font-size:22px; font-weight:700; margin-bottom:20px; display:flex; align-items:center; gap:10px; color:var(--primary); }
+    .section h2 .ms { font-size:24px; }
+    .section p { color:var(--muted); font-size:15px; margin-bottom:12px; }
+
+    .rule-list { display:flex; flex-direction:column; gap:12px; margin-bottom:16px; }
+    .rule-item { display:flex; align-items:flex-start; gap:14px; background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:18px 20px; }
+    .rule-icon { width:36px; height:36px; border-radius:9px; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
+    .rule-item .rule-text strong { display:block; font-size:14px; font-weight:700; margin-bottom:4px; }
+    .rule-item .rule-text span { font-size:13px; color:var(--muted); line-height:1.6; }
+
+    .do-list .rule-icon { background:#f0fdf4; }
+    .do-list .rule-icon span { color:var(--success); font-size:20px; }
+    .dont-list .rule-icon { background:#fff1f2; }
+    .dont-list .rule-icon span { color:var(--danger); font-size:20px; }
+
+    .warn-box { background:#fffbeb; border:1px solid #fcd34d; border-radius:12px; padding:20px 24px; display:flex; gap:14px; margin-bottom:32px; }
+    .warn-box span.ms { color:var(--warn); font-size:28px; flex-shrink:0; }
+    .warn-box p { color:#92400e; font-size:14px; margin:0; }
+    .warn-box strong { color:#78350f; }
+
+    .enforcement-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:16px; }
+    .enf-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:24px 20px; text-align:center; }
+    .enf-card .step-num { width:40px; height:40px; border-radius:50%; background:var(--primary); color:#fff; font-weight:800; font-size:16px; display:flex; align-items:center; justify-content:center; margin:0 auto 12px; }
+    .enf-card h3 { font-size:14px; font-weight:700; margin-bottom:8px; }
+    .enf-card p { font-size:12px; color:var(--muted); line-height:1.6; }
+
+    .cta-gl { background:var(--primary); border-radius:16px; padding:40px 32px; text-align:center; color:#fff; margin-bottom:56px; }
+    .cta-gl h2 { font-family:'Plus Jakarta Sans',sans-serif; font-size:24px; font-weight:800; margin-bottom:12px; }
+    .cta-gl p { opacity:.85; font-size:15px; margin-bottom:20px; }
+    .cta-gl a { background:#fff; color:var(--primary); padding:12px 28px; border-radius:10px; font-weight:700; font-size:15px; text-decoration:none; display:inline-block; transition:opacity .2s; }
+    .cta-gl a:hover { opacity:.9; }
+
+    footer { background:#0b1c30; color:#94a3b8; text-align:center; padding:32px 24px; font-size:13px; }
+    footer a { color:#c0c1ff; text-decoration:none; margin:0 10px; }
+    footer .copy { margin-top:12px; }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="/" class="topnav-logo">
+    <img src="/src/assets/campusconnect-logo.png" alt="CampusConnect">
+    CampusConnect
+  </a>
+  <div class="topnav-links">
+    <a href="/about.html">About</a>
+    <a href="/help-center.html">Help</a>
+    <a href="/privacy-policy.html">Privacy</a>
+    <a href="/login.html" class="btn-nav">Sign In</a>
+  </div>
+</nav>
+
+<div class="gl-hero">
+  <div class="badge">📋 Community Standards</div>
+  <h1>Student Community Guidelines</h1>
+  <p>These guidelines exist to keep CampusConnect safe, trustworthy, and useful for every student on campus.</p>
+</div>
+
+<main>
+<div class="container">
+
+  <section class="section">
+    <div class="warn-box">
+      <span class="material-symbols-outlined ms">info</span>
+      <p><strong>Important:</strong> By registering on CampusConnect, you agree to follow these community guidelines. Violations may result in warnings, listing removal, temporary suspension, or permanent account termination depending on severity.</p>
+    </div>
+
+    <h2><span class="material-symbols-outlined ms">check_circle</span> What You CAN Do</h2>
+    <div class="rule-list do-list">
+      <div class="rule-item">
+        <div class="rule-icon"><span class="material-symbols-outlined">storefront</span></div>
+        <div class="rule-text"><strong>Buy & Sell Legitimate Items</strong><span>List textbooks, electronics, furniture, clothing, and any legal item relevant to student life. All prices must be in FCFA.</span></div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon"><span class="material-symbols-outlined">design_services</span></div>
+        <div class="rule-text"><strong>Offer Student Services</strong><span>Promote tutoring, graphic design, photography, coding help, and other student-run services.</span></div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon"><span class="material-symbols-outlined">forum</span></div>
+        <div class="rule-text"><strong>Message Other Students Respectfully</strong><span>Use the chat feature to discuss listings, negotiate prices, and coordinate pickups professionally.</span></div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon"><span class="material-symbols-outlined">work</span></div>
+        <div class="rule-text"><strong>Post Genuine Internship Opportunities</strong><span>Post real internships and job opportunities relevant to university students at your institution.</span></div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon"><span class="material-symbols-outlined">flag</span></div>
+        <div class="rule-text"><strong>Report Suspicious Activity</strong><span>Use the report button whenever you encounter content that violates these guidelines. You help keep everyone safe.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2><span class="material-symbols-outlined ms">cancel</span> What You CANNOT Do</h2>
+    <div class="rule-list dont-list">
+      <div class="rule-item">
+        <div class="rule-icon"><span class="material-symbols-outlined">dangerous</span></div>
+        <div class="rule-text"><strong>No Prohibited or Illegal Items</strong><span>Selling drugs, weapons, counterfeit goods, stolen property, or any illegal item is strictly prohibited and will result in immediate account termination and may be reported to university authorities.</span></div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon"><span class="material-symbols-outlined">scam</span></div>
+        <div class="rule-text"><strong>No Scams or Fraud</strong><span>Do not post misleading listings, fake photos, or misrepresent items. Taking payment without delivering goods is fraud and will result in permanent ban.</span></div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon"><span class="material-symbols-outlined">block</span></div>
+        <div class="rule-text"><strong>No Harassment or Abuse</strong><span>Threatening, bullying, or using hate speech in messages or listings is not tolerated under any circumstances.</span></div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon"><span class="material-symbols-outlined">no_accounts</span></div>
+        <div class="rule-text"><strong>No Fake Accounts</strong><span>You must use your real university email to register. Creating multiple accounts or impersonating others will result in all accounts being banned.</span></div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon"><span class="material-symbols-outlined">spam</span></div>
+        <div class="rule-text"><strong>No Spam or Duplicate Listings</strong><span>Do not post the same listing multiple times, send unsolicited messages in bulk, or flood the platform with irrelevant content.</span></div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon"><span class="material-symbols-outlined">attach_money</span></div>
+        <div class="rule-text"><strong>No Off-Platform Payments</strong><span>All price negotiations should be discussed in the app. We cannot protect you from disputes that occur outside the platform.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2><span class="material-symbols-outlined ms">gavel</span> Enforcement Process</h2>
+    <p>We take guidelines violations seriously. Here's how enforcement works:</p>
+    <div class="enforcement-grid">
+      <div class="enf-card">
+        <div class="step-num">1</div>
+        <h3>Warning</h3>
+        <p>First minor violation receives a formal warning via email and notification.</p>
+      </div>
+      <div class="enf-card">
+        <div class="step-num">2</div>
+        <h3>Listing Removal</h3>
+        <p>Violating listings are removed immediately, with explanation provided.</p>
+      </div>
+      <div class="enf-card">
+        <div class="step-num">3</div>
+        <h3>Temporary Suspension</h3>
+        <p>Repeat or serious violations result in 7–30 day account suspension.</p>
+      </div>
+      <div class="enf-card">
+        <div class="step-num">4</div>
+        <h3>Permanent Ban</h3>
+        <p>Severe or repeated violations result in permanent account termination.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-gl">
+    <h2>Questions about our guidelines?</h2>
+    <p>Our support team is here to help. Visit the Help Center for more information.</p>
+    <a href="/help-center.html">Go to Help Center</a>
+  </div>
+
+</div>
+</main>
+
+<footer>
+  <div>
+    <a href="/">Home</a>
+    <a href="/about.html">About Us</a>
+    <a href="/privacy-policy.html">Privacy Policy</a>
+    <a href="/help-center.html">Help Center</a>
+  </div>
+  <p class="copy">© 2026 CampusConnect University Platform. All rights reserved.</p>
+</footer>
+</body>
+</html>

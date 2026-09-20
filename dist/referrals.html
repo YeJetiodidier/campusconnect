@@ -1,33 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CampusConnect - Referrals</title>    
-    <script type="module" crossorigin src="/assets/referrals-DQroYT1R.js"></script>
-    <link rel="modulepreload" crossorigin href="/assets/index.esm2017-Dc5VIc4N.js">
-    <link rel="modulepreload" crossorigin href="/assets/firebase-cT6-Ez2D.js">
-    <link rel="stylesheet" crossorigin href="/assets/announcements-tn0RQdqM.css">
-  </head>
-  <body>
-    <div id="app">
-      <nav>
-        <a href="/">Home</a>
-        <a href="/dashboard.html">Dashboard</a>
-        <a href="/marketplace.html">Marketplace</a>
-        <a href="/services.html">Services</a>
-        <a href="/internships.html">Internships</a>
-        <a href="/events.html">Events</a>
-        <a href="/announcements.html">Announcements</a>
-        <a href="/profile.html">Profile</a>
-        <a href="/referrals.html">Referrals</a>
-      </nav>
-      <main>
-        <h1>Referrals</h1>
-        <p>This module uses Firebase entirely for backend.</p>
-      </main>
-    </div>
-    <!-- Script corresponding to this module -->
-  </body>
-</html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CampusConnect Referrals — invite friends and earn rewards." />
+  <title>Referrals | CampusConnect</title>
+  <link rel="icon" type="image/png" href="/assets/campusconnect-logo-CYjNDdbV.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <style>
+    :root { --primary:#4648d4; --primary-light:#eef0ff; --text:#0b1c30; --muted:#64748b; --border:#e2e8f0; --bg:#f8f9ff; --surface:#fff; --success:#16a34a; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
+    nav.topnav { background:var(--surface); border-bottom:1px solid var(--border); padding:0 24px; height:64px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:100; }
+    .topnav-logo { display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--text); font-weight:700; font-size:18px; }
+    .topnav-logo img { height:32px; }
+    .topnav-links a { text-decoration:none; color:var(--muted); font-size:14px; font-weight:500; margin-left:20px; }
+    .topnav-links a:hover { color:var(--primary); }
+    .topnav-links .btn-nav { background:var(--primary); color:#fff; padding:8px 18px; border-radius:8px; }
 
+    /* HERO */
+    .ref-hero { background:linear-gradient(135deg,#4648d4,#6563f0 50%,#00885d); color:#fff; padding:72px 24px; text-align:center; position:relative; overflow:hidden; }
+    .ref-hero::before { content:''; position:absolute; inset:0; background:radial-gradient(circle at 80% 50%,rgba(255,255,255,.08),transparent 60%); }
+    .ref-hero h1 { font-family:'Plus Jakarta Sans',sans-serif; font-size:clamp(30px,5vw,52px); font-weight:800; margin-bottom:16px; position:relative; }
+    .ref-hero p { font-size:18px; opacity:.85; margin-bottom:32px; position:relative; }
+    .hero-stats { display:flex; gap:32px; justify-content:center; flex-wrap:wrap; position:relative; }
+    .hero-stat { text-align:center; }
+    .hero-stat .num { font-family:'Plus Jakarta Sans',sans-serif; font-size:32px; font-weight:800; }
+    .hero-stat .lbl { font-size:12px; opacity:.7; margin-top:4px; }
+
+    /* MAIN */
+    .container { max-width:1000px; margin:0 auto; padding:0 24px; }
+    .ref-grid { display:grid; grid-template-columns:1fr 360px; gap:32px; padding:48px 0; }
+    @media(max-width:768px) { .ref-grid { grid-template-columns:1fr; } }
+
+    /* LINK CARD */
+    .link-card { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:32px; }
+    .link-card h2 { font-family:'Plus Jakarta Sans',sans-serif; font-size:20px; font-weight:700; margin-bottom:8px; }
+    .link-card p { color:var(--muted); font-size:14px; margin-bottom:24px; }
+    .ref-link-box { display:flex; background:var(--bg); border:1px solid var(--border); border-radius:10px; overflow:hidden; margin-bottom:16px; }
+    .ref-link-box input { flex:1; background:none; border:none; outline:none; padding:12px 16px; font-size:14px; color:var(--text); font-family:'Inter',sans-serif; }
+    .ref-link-box button { background:var(--primary); color:#fff; border:none; padding:12px 20px; cursor:pointer; font-weight:600; font-size:13px; display:flex; align-items:center; gap:6px; transition:background .2s; }
+    .ref-link-box button:hover { background:#3730a3; }
+    .share-btns { display:flex; gap:10px; flex-wrap:wrap; }
+    .share-btn { display:flex; align-items:center; gap:7px; padding:9px 18px; border-radius:9px; font-size:13px; font-weight:600; text-decoration:none; border:1.5px solid var(--border); color:var(--text); transition:all .2s; cursor:pointer; background:var(--surface); }
+    .share-btn:hover { border-color:var(--primary); color:var(--primary); background:var(--primary-light); }
+    .share-btn .ms { font-size:18px; }
+
+    /* STATS CARD */
+    .stats-card { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:28px; }
+    .stats-card h3 { font-size:16px; font-weight:700; margin-bottom:20px; }
+    .stat-row { display:flex; justify-content:space-between; align-items:center; padding:14px 0; border-bottom:1px solid var(--border); }
+    .stat-row:last-child { border-bottom:none; }
+    .stat-row .sr-label { font-size:14px; color:var(--muted); display:flex; align-items:center; gap:8px; }
+    .stat-row .sr-val { font-size:20px; font-weight:800; color:var(--primary); }
+    .progress-bar { height:6px; background:#e2e8f0; border-radius:100px; margin-top:8px; overflow:hidden; }
+    .progress-fill { height:100%; background:linear-gradient(90deg,#4648d4,#6563f0); border-radius:100px; transition:width .8s ease; }
+
+    /* HOW IT WORKS */
+    .how-section { padding:48px 0; }
+    .how-section h2 { font-family:'Plus Jakarta Sans',sans-serif; font-size:24px; font-weight:700; margin-bottom:32px; }
+    .steps-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:20px; }
+    .step-card { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:28px 24px; text-align:center; }
+    .step-num { width:44px; height:44px; border-radius:50%; background:var(--primary); color:#fff; font-weight:800; font-size:18px; display:flex; align-items:center; justify-content:center; margin:0 auto 14px; }
+    .step-card h3 { font-size:15px; font-weight:700; margin-bottom:8px; }
+    .step-card p { font-size:13px; color:var(--muted); line-height:1.6; }
+
+    /* REWARDS */
+    .rewards-section { padding:48px 0; }
+    .rewards-section h2 { font-family:'Plus Jakarta Sans',sans-serif; font-size:24px; font-weight:700; margin-bottom:32px; }
+    .rewards-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:20px; }
+    .reward-card { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:28px 24px; }
+    .reward-badge { display:inline-block; padding:6px 14px; border-radius:100px; font-size:12px; font-weight:700; margin-bottom:14px; }
+    .reward-card h3 { font-size:15px; font-weight:700; margin-bottom:8px; }
+    .reward-card p { font-size:13px; color:var(--muted); line-height:1.6; }
+
+    /* TOAST */
+    .cc-toast { position:fixed; bottom:24px; left:50%; transform:translateX(-50%); background:#1e293b; color:#fff; padding:10px 24px; border-radius:8px; font-size:14px; z-index:999; opacity:0; transition:opacity .3s; pointer-events:none; display:flex; align-items:center; gap:8px; }
+    .cc-toast.show { opacity:1; }
+
+    footer { background:#0b1c30; color:#94a3b8; text-align:center; padding:32px 24px; font-size:13px; margin-top:24px; }
+    footer a { color:#c0c1ff; text-decoration:none; margin:0 10px; }
+    footer .copy { margin-top:12px; }
+  </style>
+  <script type="module" crossorigin src="/assets/referrals-jEaHCXB3.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-B5Qt9EMX.js">
+  <link rel="modulepreload" crossorigin href="/assets/index.esm2017-DMBRuzyj.js">
+  <link rel="modulepreload" crossorigin href="/assets/firebase-0nty2ltb.js">
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="/" class="topnav-logo">
+    <img src="/assets/campusconnect-logo-CYjNDdbV.png" alt="CampusConnect">
+    CampusConnect
+  </a>
+  <div class="topnav-links">
+    <a href="/dashboard.html">Dashboard</a>
+    <a href="/marketplace.html">Marketplace</a>
+    <a href="/help-center.html">Help</a>
+    <a href="/login.html" class="btn-nav">Sign In</a>
+  </div>
+</nav>
+
+<section class="ref-hero">
+  <h1>🎁 Invite Friends, Earn Rewards</h1>
+  <p>Refer fellow students to CampusConnect and earn credits for every successful signup.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">500 FCFA</div><div class="lbl">Per successful referral</div></div>
+    <div class="hero-stat"><div class="num">1,000 FCFA</div><div class="lbl">Bonus at 5 referrals</div></div>
+    <div class="hero-stat"><div class="num">No limit</div><div class="lbl">On earnings</div></div>
+  </div>
+</section>
+
+<main>
+<div class="container">
+  <div class="ref-grid">
+
+    <!-- Link + share -->
+    <div>
+      <div class="link-card" style="margin-bottom:20px">
+        <h2>Your Referral Link</h2>
+        <p>Share this link with friends. When they register and complete their first action, you both earn rewards!</p>
+        <div class="ref-link-box">
+          <input type="text" id="refLinkInput" value="Loading your link…" readonly>
+          <button id="copyBtn"><span class="material-symbols-outlined" style="font-size:18px">content_copy</span> Copy</button>
+        </div>
+        <div class="share-btns">
+          <button class="share-btn" id="shareWhatsapp"><span class="material-symbols-outlined ms">chat</span> WhatsApp</button>
+          <button class="share-btn" id="shareTelegram"><span class="material-symbols-outlined ms">send</span> Telegram</button>
+          <button class="share-btn" id="shareNative"><span class="material-symbols-outlined ms">share</span> Share</button>
+        </div>
+      </div>
+
+      <div class="link-card">
+        <h2>Referral History</h2>
+        <p>Track the friends you've invited and their status.</p>
+        <div id="refHistory" style="min-height:80px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:14px">
+          <span>Log in to see your referral history.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-card">
+      <h3>📊 Your Referral Stats</h3>
+      <div class="stat-row">
+        <span class="sr-label"><span class="material-symbols-outlined" style="font-size:18px">group_add</span> Total Invited</span>
+        <span class="sr-val" id="statInvited">0</span>
+      </div>
+      <div class="stat-row">
+        <span class="sr-label"><span class="material-symbols-outlined" style="font-size:18px">how_to_reg</span> Signed Up</span>
+        <span class="sr-val" id="statSignedUp">0</span>
+      </div>
+      <div class="stat-row">
+        <span class="sr-label"><span class="material-symbols-outlined" style="font-size:18px">payments</span> Credits Earned</span>
+        <span class="sr-val" id="statCredits">0 FCFA</span>
+      </div>
+      <div style="margin-top:20px">
+        <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px">
+          <span style="color:var(--muted)">Progress to bonus</span>
+          <span style="font-weight:700;color:var(--primary)" id="statProgress">0/5</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+        <p style="font-size:12px;color:var(--muted);margin-top:8px">Refer 5 students to unlock your 1,000 FCFA bonus!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- How it works -->
+  <section class="how-section">
+    <h2>How Referrals Work</h2>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h3>Copy Your Link</h3>
+        <p>Get your unique referral link above and share it with friends via WhatsApp, Telegram, or any messaging app.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h3>Friend Signs Up</h3>
+        <p>Your friend clicks the link and creates a CampusConnect account using their university email.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h3>They Take Action</h3>
+        <p>When your friend posts a listing or completes a transaction, the referral is confirmed.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <h3>You Both Earn</h3>
+        <p>You receive 500 FCFA in credits. Your friend gets a welcome bonus too!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rewards tiers -->
+  <section class="rewards-section">
+    <h2>Reward Tiers</h2>
+    <div class="rewards-grid">
+      <div class="reward-card">
+        <div class="reward-badge" style="background:#eef0ff;color:#4648d4">🌱 Starter</div>
+        <h3>1–4 Referrals</h3>
+        <p>Earn 500 FCFA per successful referral. Credits applied to your account instantly.</p>
+      </div>
+      <div class="reward-card">
+        <div class="reward-badge" style="background:#f0fdf4;color:#16a34a">⭐ Pro</div>
+        <h3>5–14 Referrals</h3>
+        <p>Earn 500 FCFA per referral + a one-time 1,000 FCFA milestone bonus at 5 referrals.</p>
+      </div>
+      <div class="reward-card">
+        <div class="reward-badge" style="background:#fffbeb;color:#d97706">🔥 Champion</div>
+        <h3>15+ Referrals</h3>
+        <p>Earn 700 FCFA per referral (increased rate) and access to exclusive Champion badge.</p>
+      </div>
+      <div class="reward-card">
+        <div class="reward-badge" style="background:#fdf4ff;color:#9333ea">👑 Legend</div>
+        <h3>50+ Referrals</h3>
+        <p>Earn 1,000 FCFA per referral and get featured on the CampusConnect leaderboard.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<div class="cc-toast" id="ccToast">
+  <span class="material-symbols-outlined" style="font-size:18px">check_circle</span>
+  <span id="toastMsg">Copied!</span>
+</div>
+
+<footer>
+  <div>
+    <a href="/">Home</a>
+    <a href="/about.html">About Us</a>
+    <a href="/help-center.html">Help Center</a>
+    <a href="/privacy-policy.html">Privacy Policy</a>
+  </div>
+  <p class="copy">© 2026 CampusConnect University Platform. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

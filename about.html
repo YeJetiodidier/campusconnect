@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="About CampusConnect — the exclusive university ecosystem built for students." />
+  <title>About Us | CampusConnect</title>
+  <link rel="icon" type="image/png" href="/src/assets/campusconnect-logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <style>
+    :root { --primary:#4648d4; --primary-light:#eef0ff; --text:#0b1c30; --muted:#64748b; --border:#e2e8f0; --bg:#f8f9ff; --surface:#fff; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
+    nav.topnav { background:var(--surface); border-bottom:1px solid var(--border); padding:0 24px; height:64px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:100; }
+    .topnav-logo { display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--text); font-weight:700; font-size:18px; }
+    .topnav-logo img { height:32px; }
+    .topnav-links { display:flex; align-items:center; gap:20px; }
+    .topnav-links a { text-decoration:none; color:var(--muted); font-size:14px; font-weight:500; transition:color .2s; }
+    .topnav-links a:hover { color:var(--primary); }
+    .topnav-links .btn-nav { background:var(--primary); color:#fff; padding:8px 18px; border-radius:8px; }
+    .topnav-links .btn-nav:hover { background:#3730a3; color:#fff; }
+
+    /* HERO */
+    .about-hero { background:linear-gradient(135deg,#4648d4 0%,#6563f0 60%,#00885d 100%); color:#fff; padding:80px 24px; text-align:center; }
+    .about-hero .badge { display:inline-block; background:rgba(255,255,255,.15); border-radius:100px; padding:6px 16px; font-size:13px; font-weight:600; margin-bottom:20px; letter-spacing:.5px; }
+    .about-hero h1 { font-family:'Plus Jakarta Sans',sans-serif; font-size:clamp(32px,5vw,56px); font-weight:800; margin-bottom:20px; }
+    .about-hero p { font-size:18px; opacity:.85; max-width:640px; margin:0 auto; }
+
+    /* STATS */
+    .stats-bar { background:var(--surface); border-bottom:1px solid var(--border); padding:32px 24px; }
+    .stats-bar .container { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:24px; max-width:900px; margin:0 auto; text-align:center; }
+    .stat-num { font-family:'Plus Jakarta Sans',sans-serif; font-size:36px; font-weight:800; color:var(--primary); }
+    .stat-lbl { font-size:13px; color:var(--muted); margin-top:4px; }
+
+    /* SECTIONS */
+    .container { max-width:1100px; margin:0 auto; padding:0 24px; }
+    .section { padding:64px 0; }
+    .two-col { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
+    @media(max-width:720px) { .two-col { grid-template-columns:1fr; } }
+    .section-badge { display:inline-block; background:var(--primary-light); color:var(--primary); padding:5px 14px; border-radius:100px; font-size:12px; font-weight:700; letter-spacing:.5px; margin-bottom:12px; }
+    .section h2 { font-family:'Plus Jakarta Sans',sans-serif; font-size:clamp(24px,3vw,36px); font-weight:800; margin-bottom:16px; }
+    .section p { color:var(--muted); font-size:15px; line-height:1.8; margin-bottom:12px; }
+    .visual-card { background:linear-gradient(135deg,#eef0ff,#f0fdf4); border-radius:20px; padding:48px 32px; display:flex; flex-direction:column; gap:16px; }
+    .visual-card .vc-item { display:flex; align-items:center; gap:14px; background:#fff; border-radius:12px; padding:16px 20px; box-shadow:0 2px 8px rgba(0,0,0,.05); }
+    .vc-icon { width:40px; height:40px; border-radius:10px; background:var(--primary-light); display:flex; align-items:center; justify-content:center; }
+    .vc-icon span { color:var(--primary); font-size:22px; }
+    .vc-item .vc-text strong { display:block; font-size:14px; font-weight:600; }
+    .vc-item .vc-text small { font-size:12px; color:var(--muted); }
+
+    /* VALUES */
+    .values-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:20px; }
+    .value-card { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:28px 24px; }
+    .value-card .vi { width:48px; height:48px; border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:14px; }
+    .value-card h3 { font-size:16px; font-weight:700; margin-bottom:8px; }
+    .value-card p { font-size:13px; color:var(--muted); line-height:1.7; }
+
+    /* TEAM */
+    .team-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:24px; }
+    .team-card { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:28px 20px; text-align:center; }
+    .team-avatar { width:72px; height:72px; border-radius:50%; margin:0 auto 14px; display:flex; align-items:center; justify-content:center; font-size:28px; font-weight:800; color:#fff; }
+    .team-card h3 { font-size:15px; font-weight:700; margin-bottom:4px; }
+    .team-card p { font-size:13px; color:var(--muted); }
+
+    /* CTA */
+    .cta-section { background:var(--primary); color:#fff; border-radius:20px; padding:56px 40px; text-align:center; margin-bottom:64px; }
+    .cta-section h2 { font-family:'Plus Jakarta Sans',sans-serif; font-size:clamp(24px,3vw,36px); font-weight:800; margin-bottom:16px; }
+    .cta-section p { opacity:.85; font-size:16px; margin-bottom:28px; }
+    .cta-btns { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+    .cta-btns a { padding:12px 28px; border-radius:10px; font-weight:700; font-size:15px; text-decoration:none; }
+    .btn-white { background:#fff; color:var(--primary); }
+    .btn-outline-white { border:2px solid rgba(255,255,255,.5); color:#fff; }
+    .btn-outline-white:hover { background:rgba(255,255,255,.1); }
+
+    footer { background:#0b1c30; color:#94a3b8; text-align:center; padding:32px 24px; font-size:13px; }
+    footer a { color:#c0c1ff; text-decoration:none; margin:0 10px; }
+    footer a:hover { text-decoration:underline; }
+    footer .copy { margin-top:12px; }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="/" class="topnav-logo">
+    <img src="/src/assets/campusconnect-logo.png" alt="CampusConnect">
+    CampusConnect
+  </a>
+  <div class="topnav-links">
+    <a href="/marketplace.html">Marketplace</a>
+    <a href="/services.html">Services</a>
+    <a href="/help-center.html">Help</a>
+    <a href="/login.html" class="btn-nav">Sign In</a>
+  </div>
+</nav>
+
+<section class="about-hero">
+  <div class="badge">🎓 Built For Students, By Students</div>
+  <h1>Connecting Campus Communities</h1>
+  <p>CampusConnect is the exclusive university ecosystem empowering students to trade, collaborate, and build their futures.</p>
+</section>
+
+<div class="stats-bar">
+  <div class="container">
+    <div><div class="stat-num">5,000+</div><div class="stat-lbl">Active Students</div></div>
+    <div><div class="stat-num">12,000+</div><div class="stat-lbl">Listings Created</div></div>
+    <div><div class="stat-num">800+</div><div class="stat-lbl">Internships Posted</div></div>
+    <div><div class="stat-num">95%</div><div class="stat-lbl">Satisfaction Rate</div></div>
+  </div>
+</div>
+
+<main>
+  <div class="container">
+
+    <section class="section">
+      <div class="two-col">
+        <div>
+          <div class="section-badge">Our Mission</div>
+          <h2>Why We Built CampusConnect</h2>
+          <p>University life is expensive, competitive, and fast-paced. Students constantly need to buy affordable textbooks, sell items they no longer need, find part-time jobs, and connect with peers who have skills they need.</p>
+          <p>We built CampusConnect to solve all of this in one place — a trusted, students-only platform where everything happens within your campus ecosystem.</p>
+          <p>All transactions use <strong>FCFA</strong> — the currency your campus runs on.</p>
+        </div>
+        <div class="visual-card">
+          <div class="vc-item">
+            <div class="vc-icon"><span class="material-symbols-outlined">storefront</span></div>
+            <div class="vc-text"><strong>Marketplace</strong><small>Buy & sell items on campus</small></div>
+          </div>
+          <div class="vc-item">
+            <div class="vc-icon"><span class="material-symbols-outlined">work</span></div>
+            <div class="vc-text"><strong>Internships</strong><small>Exclusive student opportunities</small></div>
+          </div>
+          <div class="vc-item">
+            <div class="vc-icon"><span class="material-symbols-outlined">design_services</span></div>
+            <div class="vc-text"><strong>Services</strong><small>Student-run service providers</small></div>
+          </div>
+          <div class="vc-item">
+            <div class="vc-icon"><span class="material-symbols-outlined">forum</span></div>
+            <div class="vc-text"><strong>Real-time Chat</strong><small>Connect instantly with students</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-badge">Our Values</div>
+      <h2 style="margin-bottom:32px">What Drives Us</h2>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="vi" style="background:#eef0ff"><span class="material-symbols-outlined" style="color:#4648d4;font-size:26px">verified_user</span></div>
+          <h3>Trust & Safety</h3>
+          <p>Every user is a verified university student. Listings are moderated, and our community guidelines protect everyone.</p>
+        </div>
+        <div class="value-card">
+          <div class="vi" style="background:#fef0e6"><span class="material-symbols-outlined" style="color:#f97316;font-size:26px">bolt</span></div>
+          <h3>Speed & Simplicity</h3>
+          <p>From posting a listing to messaging a seller — everything should take seconds, not minutes.</p>
+        </div>
+        <div class="value-card">
+          <div class="vi" style="background:#f0fdf4"><span class="material-symbols-outlined" style="color:#16a34a;font-size:26px">groups</span></div>
+          <h3>Community First</h3>
+          <p>We're a platform run by students, for students. Your feedback shapes every feature we build.</p>
+        </div>
+        <div class="value-card">
+          <div class="vi" style="background:#fdf4ff"><span class="material-symbols-outlined" style="color:#9333ea;font-size:26px">lock</span></div>
+          <h3>Privacy by Design</h3>
+          <p>Your data is yours. We never sell your information and use it only to improve your experience.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-badge">Our Team</div>
+      <h2 style="margin-bottom:32px">The People Behind CampusConnect</h2>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar" style="background:#4648d4">AK</div>
+          <h3>Amara Kone</h3>
+          <p>Co-Founder & CEO<br><span style="font-size:11px;color:#94a3b8">Computer Science, Year 4</span></p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar" style="background:#00885d">BN</div>
+          <h3>Brice Nguemo</h3>
+          <p>CTO & Lead Engineer<br><span style="font-size:11px;color:#94a3b8">Software Engineering, Year 3</span></p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar" style="background:#f97316">CM</div>
+          <h3>Clarisse Mbarga</h3>
+          <p>Head of Design<br><span style="font-size:11px;color:#94a3b8">Digital Arts, Year 4</span></p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar" style="background:#9333ea">DT</div>
+          <h3>David Tabi</h3>
+          <p>Community Manager<br><span style="font-size:11px;color:#94a3b8">Business Admin, Year 3</span></p>
+        </div>
+      </div>
+    </section>
+
+    <div class="cta-section">
+      <h2>Ready to join the community?</h2>
+      <p>5,000+ students are already buying, selling, and growing on CampusConnect.</p>
+      <div class="cta-btns">
+        <a href="/register.html" class="btn-white">Create Account</a>
+        <a href="/marketplace.html" class="btn-outline-white">Browse Marketplace</a>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div>
+    <a href="/">Home</a>
+    <a href="/help-center.html">Help Center</a>
+    <a href="/privacy-policy.html">Privacy Policy</a>
+    <a href="/guidelines.html">Guidelines</a>
+  </div>
+  <p class="copy">© 2026 CampusConnect University Platform. All rights reserved.</p>
+</footer>
+</body>
+</html>

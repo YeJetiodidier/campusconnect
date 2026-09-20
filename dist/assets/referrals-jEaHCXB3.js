@@ -1,0 +1,12 @@
+import"./modulepreload-polyfill-B5Qt9EMX.js";import{a}from"./firebase-0nty2ltb.js";import{o as i}from"./index.esm2017-DMBRuzyj.js";const t=document.getElementById("refLinkInput"),d=document.getElementById("copyBtn"),o=document.getElementById("ccToast"),l=document.getElementById("toastMsg");function n(e){l.textContent=e,o.classList.add("show"),setTimeout(()=>o.classList.remove("show"),2500)}i(a,e=>{if(e){const s=`${location.origin}/register.html?ref=${e.uid}`;t.value=s,document.getElementById("statInvited").textContent="3",document.getElementById("statSignedUp").textContent="2",document.getElementById("statCredits").textContent="1,000 FCFA",document.getElementById("statProgress").textContent="2/5",document.getElementById("progressFill").style.width="40%",document.getElementById("refHistory").innerHTML=`
+        <div style="width:100%">
+          <div style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #e2e8f0;font-size:14px">
+            <span>Pascal N.</span><span style="color:#16a34a;font-weight:600">✅ Confirmed</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #e2e8f0;font-size:14px">
+            <span>Marie F.</span><span style="color:#16a34a;font-weight:600">✅ Confirmed</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:12px 0;font-size:14px">
+            <span>Jean-Louis T.</span><span style="color:#f59e0b;font-weight:600">⏳ Pending</span>
+          </div>
+        </div>`}else t.value="Log in to get your referral link"});d.addEventListener("click",()=>{t.value.startsWith("Log in")||navigator.clipboard.writeText(t.value).then(()=>n("Link copied!")).catch(()=>{t.select(),document.execCommand("copy"),n("Link copied!")})});document.getElementById("shareWhatsapp").addEventListener("click",()=>{const e=`https://wa.me/?text=Join%20me%20on%20CampusConnect!%20${encodeURIComponent(t.value)}`;window.open(e,"_blank")});document.getElementById("shareTelegram").addEventListener("click",()=>{const e=`https://t.me/share/url?url=${encodeURIComponent(t.value)}&text=Join%20CampusConnect!`;window.open(e,"_blank")});document.getElementById("shareNative").addEventListener("click",async()=>{navigator.share?await navigator.share({title:"Join CampusConnect",text:"Sign up with my referral link!",url:t.value}):n("Share not supported on this browser.")});

@@ -34,9 +34,26 @@ const NAV_ITEMS = [
   { key: "settings", label: "Settings", href: "/settings.html", icon: icons.settings },
 ];
 
+const LABELS_FR = {
+  dashboard: "Tableau de bord",
+  internships: "Stages",
+  events: "Événements",
+  messages: "Messages",
+  favorites: "Favoris",
+  notifications: "Notifications",
+  profile: "Profil",
+  settings: "Paramètres"
+};
+
 export function renderSidebar(activeKey) {
   const mount = document.getElementById("app-sidebar");
   if (!mount) return;
+
+  const isFr = localStorage.getItem("campusconnect_lang") === "fr";
+  const items = NAV_ITEMS.map(item => ({
+    ...item,
+    label: isFr ? (LABELS_FR[item.key] || item.label) : item.label
+  }));
 
   mount.innerHTML = `
     <div class="mobile-topbar">
@@ -70,7 +87,7 @@ export function renderSidebar(activeKey) {
       </div>
 
       <nav class="sidebar-nav">
-        ${NAV_ITEMS.map(
+        ${items.map(
     (item) => `
           <a href="${item.href}" class="sidebar-nav-item ${item.key === activeKey ? "is-active" : ""}" title="${item.label}">
             <span class="sidebar-nav-icon">${item.icon}</span>
@@ -83,19 +100,19 @@ export function renderSidebar(activeKey) {
       <div style="padding: 0 12px; margin-bottom: 8px;">
         <button type="button" class="theme-toggle-sidebar-btn" id="sidebar-theme-toggle-btn" title="Toggle Dark/Light Mode" style="width: 100%; display: flex; align-items: center; gap: 12px; padding: 10px 14px; border: 1px solid var(--border); background: var(--surface); color: var(--text); border-radius: 10px; font-weight: 500; cursor: pointer; transition: all 0.2s ease;">
           <span class="icon" id="theme-toggle-icon" style="font-size: 1.1rem;">🌙</span>
-          <span class="sidebar-nav-label" id="theme-toggle-text">Dark Mode</span>
+          <span class="sidebar-nav-label" id="theme-toggle-text">${isFr ? "Mode sombre" : "Dark Mode"}</span>
         </button>
       </div>
 
-      <button type="button" class="quick-post-btn" id="quick-post-btn" title="Quick Post">
-        <span class="quick-post-plus">+</span> <span class="sidebar-nav-label">Quick Post</span>
+      <button type="button" class="quick-post-btn" id="quick-post-btn" title="${isFr ? "Publier" : "Quick Post"}">
+        <span class="quick-post-plus">+</span> <span class="sidebar-nav-label">${isFr ? "Publier" : "Quick Post"}</span>
       </button>
 
       <a href="/settings.html" class="sidebar-user" id="sidebar-user" hidden title="Go to Settings" style="text-decoration:none;color:inherit;">
         <div class="sidebar-user-avatar" id="sidebar-user-avatar"></div>
         <div class="sidebar-user-info sidebar-nav-label">
           <p class="sidebar-user-name" id="sidebar-user-name"></p>
-          <p class="sidebar-user-role" id="sidebar-user-role">Student</p>
+          <p class="sidebar-user-role" id="sidebar-user-role">${isFr ? "Étudiant" : "Student"}</p>
         </div>
       </a>
     </aside>

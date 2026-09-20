@@ -1,30 +1,289 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CampusConnect - Announcements</title>    <link rel="stylesheet" href="/src/modules/announcements/announcements.css" />
-  </head>
-  <body>
-    <div id="app">
-      <nav>
-        <a href="/">Home</a>
-        <a href="/dashboard.html">Dashboard</a>
-        <a href="/marketplace.html">Marketplace</a>
-        <a href="/services.html">Services</a>
-        <a href="/internships.html">Internships</a>
-        <a href="/events.html">Events</a>
-        <a href="/announcements.html">Announcements</a>
-        <a href="/profile.html">Profile</a>
-        <a href="/referrals.html">Referrals</a>
-      </nav>
-      <main>
-        <h1>Announcements</h1>
-        <p>This module uses Firebase entirely for backend.</p>
-      </main>
-    </div>
-    <!-- Script corresponding to this module -->
-    <script type="module" src="/src/modules/announcements/announcements.js"></script>
-  </body>
-</html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CampusConnect Announcements — stay informed with the latest campus news and updates." />
+  <title>Announcements | CampusConnect</title>
+  <link rel="icon" type="image/png" href="/src/assets/campusconnect-logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <style>
+    :root { --primary:#4648d4; --primary-light:#eef0ff; --text:#0b1c30; --muted:#64748b; --border:#e2e8f0; --bg:#f8f9ff; --surface:#fff; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); }
+    nav.topnav { background:var(--surface); border-bottom:1px solid var(--border); padding:0 24px; height:64px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:100; }
+    .topnav-logo { display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--text); font-weight:700; font-size:18px; }
+    .topnav-logo img { height:32px; }
+    .topnav-links a { text-decoration:none; color:var(--muted); font-size:14px; font-weight:500; margin-left:20px; }
+    .topnav-links a:hover { color:var(--primary); }
+    .topnav-links .btn-nav { background:var(--primary); color:#fff; padding:8px 18px; border-radius:8px; }
 
+    /* PAGE HEADER */
+    .ann-hero { background:linear-gradient(135deg,#4648d4,#6563f0); color:#fff; padding:56px 24px 40px; }
+    .ann-hero .container { max-width:1100px; margin:0 auto; }
+    .ann-hero h1 { font-family:'Plus Jakarta Sans',sans-serif; font-size:clamp(26px,4vw,42px); font-weight:800; margin-bottom:8px; }
+    .ann-hero p { opacity:.85; font-size:16px; }
+
+    /* MAIN LAYOUT */
+    .container { max-width:1100px; margin:0 auto; padding:0 24px; }
+    .ann-layout { display:grid; grid-template-columns:220px 1fr; gap:32px; padding:40px 0 64px; }
+    @media(max-width:768px) { .ann-layout { grid-template-columns:1fr; } }
+
+    /* SIDEBAR */
+    .ann-sidebar { position:sticky; top:80px; align-self:start; }
+    .ann-sidebar h3 { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.8px; color:var(--muted); margin-bottom:10px; }
+    .cat-btn { width:100%; text-align:left; background:none; border:none; padding:9px 12px; border-radius:9px; font-size:14px; font-family:'Inter',sans-serif; color:var(--muted); cursor:pointer; display:flex; align-items:center; gap:8px; transition:background .15s,color .15s; margin-bottom:2px; }
+    .cat-btn:hover, .cat-btn.active { background:var(--primary-light); color:var(--primary); font-weight:600; }
+    .cat-btn .count { margin-left:auto; background:#e2e8f0; border-radius:100px; padding:1px 8px; font-size:11px; color:var(--muted); }
+    .cat-btn.active .count { background:rgba(70,72,212,.15); color:var(--primary); }
+
+    /* SEARCH */
+    .ann-search { display:flex; background:var(--surface); border:1px solid var(--border); border-radius:10px; overflow:hidden; margin-bottom:24px; }
+    .ann-search input { flex:1; border:none; outline:none; padding:11px 16px; font-size:14px; font-family:'Inter',sans-serif; color:var(--text); }
+    .ann-search span { padding:0 14px; display:flex; align-items:center; color:var(--muted); }
+
+    /* CARDS */
+    .ann-list { display:flex; flex-direction:column; gap:16px; }
+    .ann-card { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:24px; transition:box-shadow .2s, transform .2s; cursor:pointer; }
+    .ann-card:hover { box-shadow:0 6px 20px rgba(70,72,212,.1); transform:translateY(-2px); }
+    .ann-card.pinned { border-color:var(--primary); border-width:2px; }
+    .ann-card-top { display:flex; align-items:flex-start; gap:14px; margin-bottom:12px; }
+    .ann-cat-icon { width:44px; height:44px; border-radius:11px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .ann-cat-icon span { font-size:22px; }
+    .ann-meta { flex:1; }
+    .ann-cat-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.6px; margin-bottom:4px; }
+    .ann-card h2 { font-size:16px; font-weight:700; margin-bottom:6px; line-height:1.4; }
+    .ann-card p { font-size:14px; color:var(--muted); line-height:1.7; }
+    .ann-card-footer { display:flex; align-items:center; justify-content:space-between; margin-top:14px; padding-top:14px; border-top:1px solid var(--border); }
+    .ann-author { display:flex; align-items:center; gap:8px; font-size:13px; color:var(--muted); }
+    .ann-author .avatar { width:24px; height:24px; border-radius:50%; background:var(--primary); color:#fff; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; }
+    .ann-date { font-size:12px; color:var(--muted); }
+    .pin-badge { background:var(--primary-light); color:var(--primary); font-size:11px; font-weight:700; padding:3px 10px; border-radius:100px; display:inline-flex; align-items:center; gap:4px; }
+
+    /* EMPTY */
+    .ann-empty { text-align:center; padding:64px 24px; color:var(--muted); }
+    .ann-empty span { font-size:56px; display:block; margin-bottom:12px; color:#c0c1ff; }
+    .ann-empty h3 { font-size:18px; font-weight:600; color:var(--text); margin-bottom:8px; }
+
+    footer { background:#0b1c30; color:#94a3b8; text-align:center; padding:32px 24px; font-size:13px; }
+    footer a { color:#c0c1ff; text-decoration:none; margin:0 10px; }
+    footer .copy { margin-top:12px; }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="/" class="topnav-logo">
+    <img src="/src/assets/campusconnect-logo.png" alt="CampusConnect">
+    CampusConnect
+  </a>
+  <div class="topnav-links">
+    <a href="/dashboard.html">Dashboard</a>
+    <a href="/marketplace.html">Marketplace</a>
+    <a href="/events.html">Events</a>
+    <a href="/login.html" class="btn-nav">Sign In</a>
+  </div>
+</nav>
+
+<div class="ann-hero">
+  <div class="container">
+    <h1>📢 Announcements</h1>
+    <p>Stay up to date with the latest news, events, and updates from your campus community.</p>
+  </div>
+</div>
+
+<main>
+<div class="container">
+<div class="ann-layout">
+
+  <!-- Sidebar filters -->
+  <aside class="ann-sidebar">
+    <h3>Filter by Category</h3>
+    <button class="cat-btn active" data-cat="all">
+      <span class="material-symbols-outlined" style="font-size:18px">list</span> All
+      <span class="count" id="countAll">0</span>
+    </button>
+    <button class="cat-btn" data-cat="platform">
+      <span class="material-symbols-outlined" style="font-size:18px">devices</span> Platform
+      <span class="count" id="countPlatform">0</span>
+    </button>
+    <button class="cat-btn" data-cat="academic">
+      <span class="material-symbols-outlined" style="font-size:18px">school</span> Academic
+      <span class="count" id="countAcademic">0</span>
+    </button>
+    <button class="cat-btn" data-cat="events">
+      <span class="material-symbols-outlined" style="font-size:18px">event</span> Events
+      <span class="count" id="countEvents">0</span>
+    </button>
+    <button class="cat-btn" data-cat="marketplace">
+      <span class="material-symbols-outlined" style="font-size:18px">storefront</span> Marketplace
+      <span class="count" id="countMarketplace">0</span>
+    </button>
+    <button class="cat-btn" data-cat="community">
+      <span class="material-symbols-outlined" style="font-size:18px">groups</span> Community
+      <span class="count" id="countCommunity">0</span>
+    </button>
+  </aside>
+
+  <!-- Announcements list -->
+  <div>
+    <div class="ann-search">
+      <span class="material-symbols-outlined">search</span>
+      <input type="text" id="annSearch" placeholder="Search announcements…" autocomplete="off">
+    </div>
+    <div class="ann-list" id="annList">
+      <div class="ann-empty">
+        <span class="material-symbols-outlined">campaign</span>
+        <h3>Loading announcements…</h3>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+</main>
+
+<footer>
+  <div>
+    <a href="/">Home</a>
+    <a href="/about.html">About Us</a>
+    <a href="/help-center.html">Help Center</a>
+    <a href="/privacy-policy.html">Privacy</a>
+  </div>
+  <p class="copy">© 2026 CampusConnect University Platform. All rights reserved.</p>
+</footer>
+
+<script type="module">
+// Seed announcements (replace with Firestore fetch when ready)
+const ANNOUNCEMENTS = [
+  {
+    id: 1, pinned: true, category: 'platform',
+    icon: '🚀', iconBg: '#eef0ff', iconColor: '#4648d4', catLabel: 'Platform Update', catColor: '#4648d4',
+    title: 'New Chats Feature: Real-Time Messaging Now Live!',
+    body: 'You can now chat with sellers directly from product listings. Click "Message Seller" on any item to start a conversation in real time. Messages are synced across all your devices.',
+    author: 'CampusConnect Team', authorInitials: 'CC', authorBg: '#4648d4',
+    date: 'Sep 11, 2026'
+  },
+  {
+    id: 2, pinned: true, category: 'platform',
+    icon: '💱', iconBg: '#f0fdf4', iconColor: '#16a34a', catLabel: 'Platform Update', catColor: '#4648d4',
+    title: 'All Prices Now Displayed in FCFA',
+    body: 'Following student feedback, all prices across the Marketplace and Services sections are now displayed in FCFA with comma formatting (e.g., 45,000 FCFA). This applies to new and existing listings.',
+    author: 'CampusConnect Team', authorInitials: 'CC', authorBg: '#4648d4',
+    date: 'Sep 10, 2026'
+  },
+  {
+    id: 3, pinned: false, category: 'academic',
+    icon: '📚', iconBg: '#fffbeb', iconColor: '#d97706', catLabel: 'Academic', catColor: '#d97706',
+    title: 'End-of-Semester Textbook Sale — List Your Books Now!',
+    body: 'With exams approaching, hundreds of students are looking for affordable textbooks. List your used textbooks on the Marketplace and help fellow students save money while earning extra cash.',
+    author: 'Academic Affairs', authorInitials: 'AA', authorBg: '#d97706',
+    date: 'Sep 8, 2026'
+  },
+  {
+    id: 4, pinned: false, category: 'events',
+    icon: '🎉', iconBg: '#fdf4ff', iconColor: '#9333ea', catLabel: 'Events', catColor: '#9333ea',
+    title: 'Campus Tech Fair 2026 — Register Now',
+    body: 'Join us on September 25th for the annual Campus Tech Fair. Showcase your projects, network with industry professionals, and discover internship opportunities. Registration is free for all students.',
+    author: 'Student Affairs', authorInitials: 'SA', authorBg: '#9333ea',
+    date: 'Sep 5, 2026'
+  },
+  {
+    id: 5, pinned: false, category: 'community',
+    icon: '🤝', iconBg: '#eef0ff', iconColor: '#4648d4', catLabel: 'Community', catColor: '#4648d4',
+    title: 'Referral Program: Earn 500 FCFA Per Friend You Invite',
+    body: 'Our referral program is now live! Share your unique referral link with friends. When they sign up and complete their first action, you both earn 500 FCFA in platform credits. No limit on earnings!',
+    author: 'CampusConnect Team', authorInitials: 'CC', authorBg: '#4648d4',
+    date: 'Sep 3, 2026'
+  },
+  {
+    id: 6, pinned: false, category: 'marketplace',
+    icon: '🛒', iconBg: '#fff1f2', iconColor: '#f43f5e', catLabel: 'Marketplace', catColor: '#f43f5e',
+    title: 'New Listing Categories: Dorm Furniture & Kitchen Items',
+    body: 'We have added two new marketplace categories: Dorm Furniture and Kitchen Items. Perfect for students moving in or out of campus accommodation. Start listing your items today!',
+    author: 'Marketplace Team', authorInitials: 'MT', authorBg: '#f43f5e',
+    date: 'Aug 28, 2026'
+  },
+  {
+    id: 7, pinned: false, category: 'platform',
+    icon: '🔒', iconBg: '#eef0ff', iconColor: '#4648d4', catLabel: 'Platform Update', catColor: '#4648d4',
+    title: 'Updated Privacy Policy & Student Guidelines',
+    body: 'We have updated our Privacy Policy and Student Community Guidelines. Key changes include stronger protections for your personal data and clearer rules about marketplace listings. Please review the updated documents.',
+    author: 'CampusConnect Team', authorInitials: 'CC', authorBg: '#4648d4',
+    date: 'Aug 20, 2026'
+  },
+];
+
+let activeCategory = 'all';
+let searchQuery    = '';
+
+function countByCategory(cat) {
+  return cat === 'all' ? ANNOUNCEMENTS.length : ANNOUNCEMENTS.filter(a => a.category === cat).length;
+}
+
+function updateCounts() {
+  document.getElementById('countAll').textContent       = ANNOUNCEMENTS.length;
+  document.getElementById('countPlatform').textContent  = countByCategory('platform');
+  document.getElementById('countAcademic').textContent  = countByCategory('academic');
+  document.getElementById('countEvents').textContent    = countByCategory('events');
+  document.getElementById('countMarketplace').textContent = countByCategory('marketplace');
+  document.getElementById('countCommunity').textContent = countByCategory('community');
+}
+
+function renderAnnouncements() {
+  const list = document.getElementById('annList');
+  let filtered = activeCategory === 'all' ? ANNOUNCEMENTS : ANNOUNCEMENTS.filter(a => a.category === activeCategory);
+  if (searchQuery) filtered = filtered.filter(a =>
+    a.title.toLowerCase().includes(searchQuery) || a.body.toLowerCase().includes(searchQuery)
+  );
+
+  if (filtered.length === 0) {
+    list.innerHTML = `<div class="ann-empty"><span class="material-symbols-outlined">campaign</span><h3>No announcements found</h3><p>Try a different filter or search term.</p></div>`;
+    return;
+  }
+
+  list.innerHTML = filtered.map(a => `
+    <div class="ann-card ${a.pinned ? 'pinned' : ''}">
+      ${a.pinned ? '<div style="margin-bottom:10px"><span class="pin-badge"><span class="material-symbols-outlined" style="font-size:14px">push_pin</span> Pinned</span></div>' : ''}
+      <div class="ann-card-top">
+        <div class="ann-cat-icon" style="background:${a.iconBg}">
+          <span style="font-size:22px">${a.icon}</span>
+        </div>
+        <div class="ann-meta">
+          <div class="ann-cat-label" style="color:${a.catColor}">${a.catLabel}</div>
+          <h2>${a.title}</h2>
+        </div>
+      </div>
+      <p>${a.body}</p>
+      <div class="ann-card-footer">
+        <div class="ann-author">
+          <div class="avatar" style="background:${a.authorBg}">${a.authorInitials}</div>
+          <span>${a.author}</span>
+        </div>
+        <span class="ann-date">${a.date}</span>
+      </div>
+    </div>`).join('');
+}
+
+updateCounts();
+renderAnnouncements();
+
+// Category filters
+document.querySelectorAll('.cat-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeCategory = btn.dataset.cat;
+    renderAnnouncements();
+  });
+});
+
+// Search
+document.getElementById('annSearch').addEventListener('input', e => {
+  searchQuery = e.target.value.toLowerCase();
+  renderAnnouncements();
+});
+</script>
+</body>
+</html>

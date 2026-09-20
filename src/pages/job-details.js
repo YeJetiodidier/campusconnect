@@ -71,8 +71,14 @@ function renderJob() {
 
     <div class="detail-body">${escapeHtml(job.description)}</div>
 
-    <div style="margin-top:32px;">
-      <a href="${job.applyUrl || "#apply"}" class="btn btn-primary">Apply now <span class="icon">${icons.arrowRight}</span></a>
+    <div style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap;">
+      ${(() => {
+        let rawUrl = (job.applicationLink || job.applyUrl || "").trim();
+        if (!rawUrl) return `<span style="color:#94a3b8;font-size:14px;padding:10px 0;">Contact the recruiter to apply for this position.</span>`;
+        const finalUrl = (/^https?:\/\//i.test(rawUrl) || /^mailto:/i.test(rawUrl)) ? rawUrl : `https://${rawUrl}`;
+        return `<a href="${escapeHtml(finalUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="apply-btn">Apply now <span class="icon">${icons.arrowRight}</span></a>`;
+      })()}
+      <a href="/internships.html" class="btn" style="background:var(--surface);border:1px solid var(--border);color:var(--text);">← Back to listings</a>
     </div>
   `;
 

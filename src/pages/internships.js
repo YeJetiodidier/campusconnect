@@ -44,6 +44,10 @@ let hasMore = false;
 initFavoritesStore(() => renderList()); // re-render cards when favorites change
 
 async function loadFirstPage() {
+  // Reset accumulated data so filter changes don't duplicate old results
+  allItems = [];
+  lastDoc = null;
+  hasMore = false;
   renderSkeletonGrid(mount);
   const filters = { type: typeSelect.value, category: categorySelect.value };
   const result = await fetchInternshipListings(filters);

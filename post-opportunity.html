@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="/src/assets/campusconnect-logo.png" />
   <title>Post an Opportunity · CampusConnect</title>
   <link rel="stylesheet" href="/src/styles.css" />
+  <script>if (localStorage.getItem("campusconnect_theme") === "dark") document.documentElement.classList.add("dark-theme");</script>
   <style>
     .post-container {
       max-width: 800px;
@@ -172,7 +174,6 @@
     </div>
   </main>
 
-  <script src="/src/theme-init.js"></script> <!-- To immediately apply dark/light mode -->
   <script type="module" src="/src/pages/post-opportunity.js"></script>
 </body>
 </html>

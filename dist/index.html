@@ -1,4 +1,57 @@
 <!DOCTYPE html>
+<!--
+=============================================================================
+  CAMPUSCONNECT — APPLICATION SITEMAP & URL DIRECTORY
+=============================================================================
+  Core & Landing:
+    - /index.html                   : Landing / Home Page
+    - /dashboard.html               : Student Dashboard (Hub)
+    - /404.html                     : Page Not Found
+
+  Authentication:
+    - /login.html                   : User Login
+    - /register.html                : User Registration / Sign Up
+    - /forgot-password.html         : Password Recovery
+
+  Marketplace & Commerce:
+    - /marketplace.html             : Student Marketplace (Buy & Sell)
+    - /product-details.html         : Product Details & Seller Interaction (?id=...)
+    - /sell.html                    : Create New Marketplace Listing
+    - /favorites.html               : Saved / Bookmarked Items
+    - /paymentgateway.html          : Checkout & Payment Portal
+
+  Services & Gigs:
+    - /services.html                : Student Services & Freelance Gigs
+    - /service-details.html         : Service Details & Booking (?id=...)
+    - /offer-service.html           : Create / Offer a New Service Listing
+
+  Opportunities & Internships:
+    - /internships.html             : Internships & Campus Jobs Board
+    - /job-details.html             : Internship / Job Details & Application (?id=...)
+    - /post-opportunity.html        : Post an Internship / Job Opportunity
+
+  Events & Activities:
+    - /events.html                  : Campus Events & Social Gatherings
+    - /event-details.html           : Event Details & RSVP (?id=...)
+
+  Messaging & Communication:
+    - /chats.html                   : Real-Time Messages & Chat Hub (?sellerId=...)
+    - /messages.html                : Messaging View (Alternative / Legacy)
+    - /notifications.html           : User Alerts & System Notifications
+    - /announcements.html           : Campus & Platform Announcements
+
+  User & Account Management:
+    - /profile.html                 : Student Profile & Public Listings
+    - /settings.html                : User Settings & Language Preferences (EN / FR)
+    - /referrals.html               : Refer-a-Friend & Campus Rewards
+
+  Information & Support:
+    - /about.html                   : About CampusConnect Mission & Team
+    - /help-center.html             : Help Center & Support FAQs
+    - /guidelines.html              : Community Safety & Marketplace Guidelines
+    - /privacy-policy.html          : Privacy Policy & Data Terms
+=============================================================================
+-->
 <html class="scroll-smooth" lang="en">
 
 <head>
@@ -130,9 +183,10 @@
   </script>
 
   <script>if (localStorage.getItem("campusconnect_theme") === "dark") document.documentElement.classList.add("dark-theme");</script>
-  <script type="module" crossorigin src="/assets/index-BnGooi_4.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/index.esm2017-Dc5VIc4N.js">
-  <link rel="modulepreload" crossorigin href="/assets/firebase-cT6-Ez2D.js">
+  <script type="module" crossorigin src="/assets/index-BVrNUPV0.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-B5Qt9EMX.js">
+  <link rel="modulepreload" crossorigin href="/assets/index.esm2017-DMBRuzyj.js">
+  <link rel="modulepreload" crossorigin href="/assets/firebase-0nty2ltb.js">
   <link rel="stylesheet" crossorigin href="/assets/index-C8ICYMzm.css">
 </head>
 
@@ -896,14 +950,11 @@
       <div>
         <h4 class="font-label-md text-on-surface mb-md">Company</h4>
         <ul class="flex flex-col gap-sm">
-          <li><a class="text-on-surface-variant font-body-sm hover:text-primary transition-colors" href="#">About Us</a>
-          </li>
-          <li><a class="text-on-surface-variant font-body-sm hover:text-primary transition-colors" href="#">Contact
-              Info</a></li>
-          <li><a class="text-on-surface-variant font-body-sm hover:text-primary transition-colors"
-              href="/profile.html">Profile</a></li>
-          <li><a class="text-on-surface-variant font-body-sm hover:text-primary transition-colors"
-              href="/referrals.html">Referrals</a></li>
+          <li><a class="text-on-surface-variant font-body-sm hover:text-primary transition-colors" href="/about.html">About Us</a></li>
+          <li><a class="text-on-surface-variant font-body-sm hover:text-primary transition-colors" href="/help-center.html">Help Center</a></li>
+          <li><a class="text-on-surface-variant font-body-sm hover:text-primary transition-colors" href="/privacy-policy.html">Privacy Policy</a></li>
+          <li><a class="text-on-surface-variant font-body-sm hover:text-primary transition-colors" href="/guidelines.html">Guidelines</a></li>
+          <li><a class="text-on-surface-variant font-body-sm hover:text-primary transition-colors" href="/referrals.html">Referrals</a></li>
         </ul>
       </div>
       <div>
@@ -924,12 +975,12 @@
     </div>
     <div
       class="w-full px-gutter py-md max-w-container-max mx-auto border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-md">
-      <p class="text-on-surface-variant font-body-sm">© 2024–2026 CampusConnect University Platform. All rights
-        reserved.</p>
+      <p class="text-on-surface-variant font-body-sm">© 2026 CampusConnect University Platform. All rights reserved.</p>
       <div class="flex gap-lg">
-        <a class="text-on-surface-variant font-label-sm hover:text-primary transition-colors" href="#">Help Center</a>
-        <a class="text-on-surface-variant font-label-sm hover:text-primary transition-colors" href="#">Student
-          Guidelines</a>
+        <a class="text-on-surface-variant font-label-sm hover:text-primary transition-colors" href="/help-center.html">Help Center</a>
+        <a class="text-on-surface-variant font-label-sm hover:text-primary transition-colors" href="/guidelines.html">Student Guidelines</a>
+        <a class="text-on-surface-variant font-label-sm hover:text-primary transition-colors" href="/about.html">About Us</a>
+        <a class="text-on-surface-variant font-label-sm hover:text-primary transition-colors" href="/privacy-policy.html">Privacy Policy</a>
       </div>
     </div>
   </footer>
